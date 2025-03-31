@@ -1,7 +1,6 @@
-import React from 'react';
+import COLORS from '@/assets/colors';
 import { Button as ChakraButton } from '@chakra-ui/react';
 import { ButtonProps } from './props';
-import COLORS from '@/assets/colors';
 
 const Button = ({
   text,
