@@ -14,16 +14,8 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    plugins: {
-      prettier: prettierPlugin,
-    },
-    rules: {
-      ...prettierConfig.rules, // Désactive les règles en conflit avec Prettier
-      "prettier/prettier": "error", // Affiche une erreur si le formatage n'est pas respecté
-    },
-    ignorePatterns: [
+    ignores: [
       "node_modules/",
       "dist/",
       ".next/",
@@ -33,6 +25,18 @@ const eslintConfig = [
       "public/",
       "components/ui/",
     ],
+  },
+
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  {
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      ...prettierConfig.rules,
+      "prettier/prettier": "error",
+    },
   },
 ]
 
