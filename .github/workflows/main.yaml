@@ -24,13 +24,13 @@ jobs:
         run: npm install
 
       - name: Typecheck
-        run: npm run type-check
+        run: npm run lint:check
 
       - name: Formatting Lint
-        run: npm run lint
+        run: npm run lint:fix
 
       - name: Formatting Prettier
-        run: npm run format
+        run: npm run prettier:fix
 
       - name: Test
         run: npm test
