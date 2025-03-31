@@ -5,5 +5,7 @@ public
 package-lock.json
 eslint.config.mjs
 next.config.mjs
+next.config.ts
 postcss.config.mjs
 components/ui/
+README.md
