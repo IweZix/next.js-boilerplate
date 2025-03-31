@@ -23,7 +23,7 @@ const eslintConfig = [
       "out/",
       "coverage/",
       "public/",
-      "components/ui/",
+      "components/ui/**/*",
     ],
   },
 
