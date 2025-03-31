@@ -23,6 +23,16 @@ const eslintConfig = [
       ...prettierConfig.rules, // Désactive les règles en conflit avec Prettier
       "prettier/prettier": "error", // Affiche une erreur si le formatage n'est pas respecté
     },
+    ignorePatterns: [
+      "node_modules/",
+      "dist/",
+      ".next/",
+      ".vercel/",
+      "out/",
+      "coverage/",
+      "public/",
+      "components/ui/",
+    ],
   },
 ]
 
