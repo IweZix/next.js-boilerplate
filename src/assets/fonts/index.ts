@@ -1,51 +1,160 @@
+import { Space_Grotesk, Alumni_Sans } from 'next/font/google';
+
 export interface Font {
-  fontFamily: string;
-  fontWeight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
-  fontSize: number;
-  letterSpacing?: number;
+  fontWeight?: string;
+  fontSize?: number;
   lineHeight?: number;
+  className?: string;
+  fontStyle?: string;
 }
 
-export const FONT_FAMILY = {
-  AlumniSansRegular: 'AlumniSans-Regular',
-  AlumniSansBold: 'AlumniSans-Bold',
-  AlumniSansLight: 'AlumniSans-Light',
-  AlumniSansSemiBold: 'AlumniSans-SemiBold',
-  SpaceGroteskRegular: 'SpaceGrotesk-Regular',
-  SpaceGroteskBold: 'SpaceGrotesk-Bold',
-  SpaceGroteskLight: 'SpaceGrotesk-Light',
-  SpaceGroteskSemiBold: 'SpaceGrotesk-SemiBold',
-};
+export const AlumniSans = Alumni_Sans({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+export const SpaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+});
 
 export interface Fonts {
-  T1: {
-    T10px: {
-      Regular: Font;
-      Bold: Font;
-      SemiBold: Font;
-      Light: Font;
+  alumniSans: {
+    '10px': {
+      normal?: Font;
+      light?: Font;
+      semiBold?: Font;
+      bold: Font;
+    };
+    '20px': {
+      normal?: Font;
+      light?: Font;
+      semiBold?: Font;
+      bold: Font;
+    };
+  };
+  spaceGrotesk: {
+    '10px': {
+      normal?: Font;
+      light?: Font;
+      semiBold?: Font;
+      bold: Font;
+    };
+    '20px': {
+      normal?: Font;
+      light?: Font;
+      semiBold?: Font;
+      bold: Font;
     };
   };
 }
 
 const FONTS: Fonts = {
-  T1: {
-    T10px: {
-      Regular: {
-        fontFamily: FONT_FAMILY.SpaceGroteskRegular,
+  alumniSans: {
+    '10px': {
+      normal: {
+        fontWeight: '400',
         fontSize: 10,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
       },
-      Bold: {
-        fontFamily: FONT_FAMILY.SpaceGroteskBold,
+      light: {
+        fontWeight: '200',
         fontSize: 10,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
       },
-      SemiBold: {
-        fontFamily: FONT_FAMILY.SpaceGroteskSemiBold,
+      semiBold: {
+        fontWeight: '600',
         fontSize: 10,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
       },
-      Light: {
-        fontFamily: FONT_FAMILY.SpaceGroteskLight,
+      bold: {
+        fontWeight: '700',
         fontSize: 10,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
+      },
+    },
+    '20px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
+      },
+      light: {
+        fontWeight: '200',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: AlumniSans.className,
+      },
+    },
+  },
+  spaceGrotesk: {
+    '10px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 10,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      light: {
+        fontWeight: '300',
+        fontSize: 10,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 10,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 10,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+    },
+    '20px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      light: {
+        fontWeight: '300',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 20,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
       },
     },
   },

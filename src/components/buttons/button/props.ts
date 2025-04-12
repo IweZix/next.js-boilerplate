@@ -1,3 +1,5 @@
+import { Font } from '@/assets/fonts';
+
 export interface ButtonProps {
   text: string;
   onClick?: () => void;
@@ -9,4 +11,5 @@ export interface ButtonProps {
   isDisabled?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  font?: Font;
 }

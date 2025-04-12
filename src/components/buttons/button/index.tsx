@@ -13,6 +13,7 @@ const Button = ({
   onClick,
   leftIcon,
   rightIcon,
+  font,
 }: ButtonProps) => {
   return (
     <ChakraButton
@@ -26,6 +27,7 @@ const Button = ({
       disabled={isDisabled}
       variant={'solid'}
       onClick={onClick}
+      {...font}
     >
       {leftIcon && <span>{leftIcon}</span>}
       {text}
