@@ -1,9 +1,11 @@
 import { Text, VStack } from '@chakra-ui/react';
+import { t } from 'i18next';
+import { tKeys } from '@/localization/tKeys';
 
 const homePage = () => {
   return (
     <VStack>
-      <Text>This is the home page</Text>
+      <Text>{t(tKeys.homepage.title)}</Text>
     </VStack>
   );
 };
