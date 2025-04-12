@@ -1,13 +1,13 @@
-import COLORS from '@/assets/colors';
 import { Button as ChakraButton } from '@chakra-ui/react';
-import { ButtonProps } from './props';
+import { ButtonProps, ButtonStyle, ButtonVariant } from './props';
 
 const Button = ({
   text,
-  fontColor = COLORS.default.white,
-  bgColor = COLORS.default.black,
-  fontColorHover = COLORS.default.white,
-  bgColorHover = COLORS.default.gray[800],
+  buttonVariant = ButtonVariant.PRIMARY,
+  fontColor,
+  bgColor,
+  fontColorHover,
+  bgColorHover,
   isLoading = false,
   isDisabled = false,
   onClick,
@@ -15,13 +15,15 @@ const Button = ({
   rightIcon,
   font,
 }: ButtonProps) => {
+  const buttonStyles = ButtonStyle[buttonVariant];
   return (
     <ChakraButton
-      color={fontColor}
-      backgroundColor={bgColor}
+      color={fontColor ? fontColor : buttonStyles.color}
+      backgroundColor={bgColor ? bgColor : buttonStyles.backgroundColor}
+      border={buttonStyles.border}
       _hover={{
-        backgroundColor: bgColorHover,
-        color: fontColorHover,
+        backgroundColor: bgColorHover ? bgColorHover : buttonStyles._hover.backgroundColor,
+        color: fontColorHover ? fontColorHover : buttonStyles._hover.color,
       }}
       loading={isLoading}
       disabled={isDisabled}
