@@ -11,7 +11,7 @@ const homePage = () => {
         isLoading={false}
         isDisabled={false}
         onClick={() => alert('Button Clicked!')}
-        buttonVariant={ButtonVariant.OUTLINED}
+        buttonVariant={ButtonVariant.SUCCESS}
       />
     </VStack>
   );
