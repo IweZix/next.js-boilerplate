@@ -22,8 +22,8 @@ const Button = ({
       backgroundColor={bgColor ? bgColor : buttonStyles.backgroundColor}
       border={buttonStyles.border}
       _hover={{
-        backgroundColor: bgColorHover ? bgColorHover : buttonStyles._hover.backgroundColor,
-        color: fontColorHover ? fontColorHover : buttonStyles._hover.color,
+        backgroundColor: bgColorHover ? bgColorHover : buttonStyles._hover?.backgroundColor,
+        color: fontColorHover ? fontColorHover : buttonStyles._hover?.color,
       }}
       loading={isLoading}
       disabled={isDisabled}
