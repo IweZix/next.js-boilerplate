@@ -29,7 +29,11 @@ export const Toaster = () => {
               {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
               {toast.description && <Toast.Description>{toast.description}</Toast.Description>}
             </Stack>
-            {toast.action && <Toast.ActionTrigger>{toast.action.label}</Toast.ActionTrigger>}
+            {toast.action && (
+              <Toast.ActionTrigger onClick={toast.action.onClick}>
+                {toast.action.label}
+              </Toast.ActionTrigger>
+            )}
             {toast.meta?.closable && <Toast.CloseTrigger />}
           </Toast.Root>
         )}

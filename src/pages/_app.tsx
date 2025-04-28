@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import i18n from '@/localization/i18n';
 import { I18nextProvider } from 'react-i18next';
 import { getBrowserLanguage } from '@/utils/language';
+import { Toaster } from '@/components/ui/toaster';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -19,13 +20,14 @@ export default function App({ Component, pageProps }: AppProps) {
     } catch (error) {
       console.error('Error changing language:', error);
     }
-  });
+  }, []);
 
   return (
     <>
       <Provider>
         <I18nextProvider i18n={i18n}>
           <Component {...pageProps} />
+          <Toaster />
         </I18nextProvider>
       </Provider>
     </>
