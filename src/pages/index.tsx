@@ -1,6 +1,9 @@
-import { Stack, Text } from '@chakra-ui/react';
+import COLORS from '@/assets/colors';
+import { VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Spiral } from 'ldrs/react';
+import 'ldrs/react/Spiral.css';
 
 export default function Home() {
   // Router
@@ -12,8 +15,14 @@ export default function Home() {
   }, [router]);
 
   return (
-    <Stack>
-      <Text>This is the index.tsx page</Text>
-    </Stack>
+    <VStack
+      backgroundColor={COLORS.website.background}
+      color={COLORS.default.white}
+      minHeight="100vh"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Spiral size="80" speed="0.9" color="white" />
+    </VStack>
   );
 }

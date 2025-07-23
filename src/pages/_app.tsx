@@ -7,6 +7,7 @@ import i18n from '@/localization/i18n';
 import { I18nextProvider } from 'react-i18next';
 import { getBrowserLanguage } from '@/utils/language';
 import { Toaster } from '@/components/ui/toaster';
+import { Header } from '@/layouts/header';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Provider>
         <I18nextProvider i18n={i18n}>
+          <Header />
           <Component {...pageProps} />
           <Toaster />
         </I18nextProvider>

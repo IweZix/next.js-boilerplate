@@ -8,4 +8,5 @@ next.config.mjs
 next.config.ts
 postcss.config.mjs
 components/ui/
+api/
 README.md

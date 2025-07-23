@@ -17,6 +17,17 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/localization/generateTKeys.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    "src/localization/generateTKeys.js",
+  ],
+  "exclude": [
+    "node_modules",
+    "src/api/**/*",
+    ".next",
+    "out",
+    "dist",
+  ]
 }
