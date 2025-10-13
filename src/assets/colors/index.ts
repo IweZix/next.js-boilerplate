@@ -55,7 +55,7 @@ export interface Colors {
 
 const COLORS: Colors = {
   website: {
-    background: '#18181B',
+    background: '#ffffffff',
     principal: '#1B263B',
   },
   default: {

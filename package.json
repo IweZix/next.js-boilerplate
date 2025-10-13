@@ -12,7 +12,7 @@
     "prettier:fix": "prettier --write .",
     "test": "echo \"No tests yet\" && exit 0",
     "generate-translation": "node src/localization/generateTKeys.js",
-    "generate-api": "orval --config orval.config.js",
+    "generate-api": "orval --config orval.config.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.15.0",

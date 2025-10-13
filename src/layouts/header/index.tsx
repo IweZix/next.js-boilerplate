@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { VStack, HStack, Text, Image } from '@chakra-ui/react';
 import COLORS from '@/assets/colors';
-import Button from '@/components/buttons/button';
+import Button from '@/components/core/buttons/button';
 import { useRouterPages } from '@/utils/router';
 
 enum PageTitle {

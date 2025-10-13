@@ -10,3 +10,5 @@ postcss.config.mjs
 components/ui/
 api/
 README.md
+tsconfig.json
+src/localization/locales/*
