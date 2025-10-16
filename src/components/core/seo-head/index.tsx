@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { JSX } from 'react';
-import { SeoHeadProps } from './props.ts';
+import { SeoHeadProps } from './props';
 
 export default function SeoHead({
   title,
