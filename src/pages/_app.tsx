@@ -9,8 +9,12 @@ import { Toaster } from '@/components/core/ui/toaster';
 import { Header } from '@/layouts/header';
 import SeoHead from '@/components/core/seo-head';
 import { Box } from '@chakra-ui/react';
+import { useRouterPages } from '@/utils/router';
 
 export default function App({ Component, pageProps }: AppProps) {
+  // Router
+  const router = useRouterPages();
+
   useEffect(() => {
     // Set the language based on browser settings
     const browserLanguage = getBrowserLanguage();
@@ -24,10 +28,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <SeoHead
-        title="Next.js - Boilerplate"
-        description="A Next.js boilerplate with all the best practices."
-        url="https://tonsite.be"
-        image="/preview.png"
+        title={
+          router.currentPage === 'home'
+            ? router.pagesTitles.home
+            : router.currentPage === 'about'
+              ? router.pagesTitles.about
+              : 'Next.js'
+        }
+        description="Description selon la page"
       />
       <Provider>
         <I18nextProvider i18n={i18n}>

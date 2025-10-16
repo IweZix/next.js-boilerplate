@@ -1,5 +1,9 @@
 {
+  "navbar": {
+    "home": "Home",
+    "about": "About"
+  },
   "homepage": {
-    "title": "This is the home page"
+    "title": "This is the homepage"
   }
 }
