@@ -2,10 +2,12 @@ import { useRouter } from 'next/router';
 
 export interface RouterPages {
   home: string;
+  about: string
 }
 
 const ROUTER_PAGES: RouterPages = {
   home: '/',
+  about: '/about',
 };
 
 export const useRouterPages = () => {

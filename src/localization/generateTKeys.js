@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const input = './locales/en.json'; // Chemin d'entrée du fichier en.json
+const input = './locales/fr.json'; // Chemin d'entrée du fichier en.json
 const output = './tKeys.ts'; // Chemin de sortie pour tKeys.ts
 
 // Fonction pour transformer l'objet JSON en format tKeys

@@ -1,17 +1,18 @@
-import React, { ReactElement, useState } from 'react';
-import { VStack, HStack, Text, Image } from '@chakra-ui/react';
+import React, { ReactElement, useState, useEffect } from 'react';
+import { VStack, HStack, Text, Image, Box, IconButton } from '@chakra-ui/react';
 import COLORS from '@/assets/colors';
 import Button from '@/components/core/buttons/button';
 import { useRouterPages } from '@/utils/router';
+import { t } from 'i18next';
+import { tKeys } from '@/localization/tKeys';
+import CloseIcon from '@/components/icons/CloseIcon';
+import BurgerIcon from '@/components/icons/BurgerIcon';
 
 enum PageTitle {
   HOME = 'Home',
+  ABOUT = 'About',
 }
 
-/**
- * Header component that renders the header section of the application.
- * @returns {ReactElement} - The rendered AnonymousHeader component.
- */
 export const Header = (): ReactElement => {
   return <AnonymousHeader />;
 };
@@ -19,68 +20,110 @@ export const Header = (): ReactElement => {
 const AnonymousHeader = (): ReactElement => {
   const router = useRouterPages();
   const [pageTitle, setPageTitle] = useState<string>(PageTitle.HOME);
+  const [isShrunk, setIsShrunk] = useState(false);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  const handleLogin = (): void => {
-    console.log('Login button clicked');
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsShrunk(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleHomeNavigation = (): void => {
     setPageTitle(PageTitle.HOME);
     router.navigateTo('home');
+    setDrawerOpen(false);
   };
 
-  const handleDashboard = (): void => {
-    console.log('Dashboard button clicked');
-    setPageTitle('');
-    router.navigateTo('home');
-  };
-
-  const handleStatistics = (): void => {
-    console.log('Statistics button clicked');
-    setPageTitle('');
-    router.navigateTo('home');
+  const handleAboutNavigation = (): void => {
+    setPageTitle(PageTitle.HOME);
+    router.navigateTo('about');
+    setDrawerOpen(false);
   };
 
   return (
     <VStack
       width="100%"
-      height="60px"
+      height={isShrunk ? '50px' : '80px'}
       backgroundColor={COLORS.website.background}
       justifyContent="center"
       alignItems="center"
       boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+      position="fixed"
+      top="0"
+      left="0"
+      zIndex="1000"
+      transition="all 0.3s ease"
     >
-      <HStack justifyContent={'space-between'} width="100%" padding="0 20px">
-        <HStack>
+      <HStack justifyContent="space-between" width="100%" padding="0 20px">
+        {/* Logo */}
+        <HStack gap={3}>
           <Image
-            src="/assets/chronos-text-logo.png"
-            alt="Chronos Text Logo"
-            height="40px"
+            // TODO: replace with your logo
+            src="/assets/monlogo.png"
+            // TODO: replace with your alt text
+            alt="Mon Logo"
+            height={isShrunk ? '30px' : '45px'}
             objectFit="contain"
+            transition="all 0.3s ease"
           />
-          <Text>IMG</Text>
+          <Text fontSize={isShrunk ? 'md' : 'lg'}>IMG</Text>
         </HStack>
-        <HStack>
+
+        {/* Desktop Buttons */}
+        <HStack gap={3} display={{ base: 'none', md: 'flex' }}>
           <Button
-            text="BTN1"
+            text={t(tKeys.navbar.home)}
             bgColor={pageTitle === PageTitle.HOME ? COLORS.website.principal : COLORS.default.white}
             bgColorHover={COLORS.website.principal}
             fontColor={pageTitle === PageTitle.HOME ? COLORS.default.white : COLORS.default.black}
-            onClick={handleDashboard}
+            onClick={handleHomeNavigation}
           />
           <Button
-            text="BTN2"
+            text={t(tKeys.navbar.about)}
             bgColor={pageTitle === PageTitle.HOME ? COLORS.website.principal : COLORS.default.white}
             bgColorHover={COLORS.website.principal}
             fontColor={pageTitle === PageTitle.HOME ? COLORS.default.white : COLORS.default.black}
-            onClick={handleStatistics}
-          />
-          <Button
-            text="BTN1"
-            bgColor={pageTitle === PageTitle.HOME ? COLORS.website.principal : COLORS.default.white}
-            bgColorHover={COLORS.website.principal}
-            fontColor={pageTitle === PageTitle.HOME ? COLORS.default.white : COLORS.default.black}
-            onClick={handleLogin}
+            onClick={handleAboutNavigation}
           />
         </HStack>
+
+        {/* Mobile Burger */}
+        <Box display={{ base: 'flex', md: 'none' }}>
+          <IconButton
+            aria-label="Toggle menu"
+            variant="ghost"
+            onClick={() => setDrawerOpen(!isDrawerOpen)}
+          >
+            {isDrawerOpen ? (
+              <CloseIcon size={24} color={COLORS.default.black} />
+            ) : (
+              <BurgerIcon size={24} color={COLORS.default.black} />
+            )}
+          </IconButton>
+        </Box>
       </HStack>
+
+      {/* Mobile Drawer (simulé sans sous-composants) */}
+      {isDrawerOpen && (
+        <VStack
+          position="absolute"
+          top={isShrunk ? '50px' : '80px'}
+          left="0"
+          width="100%"
+          backgroundColor={COLORS.website.background}
+          boxShadow="0 4px 8px rgba(0,0,0,0.1)"
+          paddingY={4}
+          gap={3}
+          display={{ base: 'flex', md: 'none' }}
+          transition="all 0.3s ease"
+        >
+          <Button text={t(tKeys.navbar.home)} onClick={handleHomeNavigation} />
+          <Button text={t(tKeys.navbar.about)} onClick={handleAboutNavigation} />
+        </VStack>
+      )}
     </VStack>
   );
 };

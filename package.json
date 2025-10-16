@@ -11,8 +11,9 @@
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "echo \"No tests yet\" && exit 0",
-    "generate-translation": "node src/localization/generateTKeys.js",
-    "generate-api": "orval --config orval.config.js"
+    "generate-translations": "node src/localization/generateTKeys.js",
+    "generate-api": "orval --config orval.config.js",
+    "generate-icons": "node src/tools/generateIcons.mjs"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.15.0",

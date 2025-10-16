@@ -1,7 +1,7 @@
 import { Text as ChakraText } from '@chakra-ui/react';
 import { TextProps } from './props';
 
-const Text = ({
+const CustomText = ({
   text,
   onClick,
   fontColor,
@@ -12,6 +12,8 @@ const Text = ({
   rightIcon,
   font,
 }: TextProps) => {
+  console.log(text);
+
   return (
     <ChakraText
       onClick={onClick}
@@ -30,4 +32,4 @@ const Text = ({
   );
 };
 
-export default Text;
+export default CustomText;

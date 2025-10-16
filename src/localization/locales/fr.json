@@ -1,4 +1,8 @@
 {
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos"
+  },
   "homepage": {
     "title": "C'est la page d'accueil"
   }

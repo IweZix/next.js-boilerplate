@@ -9,6 +9,7 @@ import { getBrowserLanguage } from '@/utils/language';
 import { Toaster } from '@/components/core/ui/toaster';
 import { Header } from '@/layouts/header';
 import SeoHead from '@/components/core/seo-head';
+import { Box } from '@chakra-ui/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -36,6 +37,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <I18nextProvider i18n={i18n}>
           <Header />
           <Component {...pageProps} />
+          <Box as="main" pt="80px">
+            <Component {...pageProps} />
+          </Box>
           <Toaster />
         </I18nextProvider>
       </Provider>
