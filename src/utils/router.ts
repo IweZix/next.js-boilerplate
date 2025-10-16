@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 export interface RouterPages {
   home: string;
-  about: string
+  about: string;
 }
 
 const ROUTER_PAGES: RouterPages = {

@@ -1,6 +1,5 @@
 import { Provider } from '@/components/core/ui/provider';
 import '@/styles/globals.css';
-import renderPageTitle from '@/utils/render';
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import i18n from '@/localization/i18n';
@@ -13,9 +12,6 @@ import { Box } from '@chakra-ui/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    // Render page title
-    renderPageTitle('Next.js - Boilerplate');
-
     // Set the language based on browser settings
     const browserLanguage = getBrowserLanguage();
     try {
