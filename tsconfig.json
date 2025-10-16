@@ -26,7 +26,7 @@
   "exclude": [
     "node_modules",
     "src/api/**/*",
-    "src/components/icons/**/*",
+    "src/components/icons/*",
     ".next",
     "out",
     "dist",
