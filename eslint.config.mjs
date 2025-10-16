@@ -25,6 +25,7 @@ const eslintConfig = [
       "public/",
       "components/ui/**/*",
       "api/**/*",
+      "src/components/icons/*",
     ],
   },
 
