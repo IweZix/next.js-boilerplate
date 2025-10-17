@@ -16,7 +16,7 @@ const ROUTER_PAGES: RouterPages = {
 export const ROUTER_PAGES_TITLES = {
   home: t(tKeys.navbar.home),
   about: t(tKeys.navbar.about),
-}
+};
 
 export const useRouterPages = () => {
   const router = useRouter();
