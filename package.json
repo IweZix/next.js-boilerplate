@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint:check": "next lint",
@@ -11,7 +11,7 @@
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "echo \"No tests yet\" && exit 0",
-    "generate-translations": "node src/localization/generateTKeys.js",
+    "generate-translation": "node src/localization/generateTKeys.js",
     "generate-api": "orval --config orval.config.js",
     "generate-icons": "node src/tools/generateIcons.mjs"
   },

@@ -1,7 +1,9 @@
 {
   "navbar": {
     "home": "Accueil",
-    "about": "À propos"
+    "about": "À propos",
+    "contact": "Contact",
+    "language": "Langue"
   },
   "homepage": {
     "title": "C'est la page d'accueil"

@@ -1,74 +1,48 @@
-import { readdir, readFile, writeFile } from 'fs';
-import { extname, join, parse } from 'path';
+import fs from 'fs';
+import path from 'path';
 
-// Convert a string to PascalCase
-function toPascalCase(string) {
-  return `${string}`
-    .toLowerCase()
-    .replace(/[-_]+/g, ' ')
-    .replace(/[^\w\s]/g, '')
-    .replace(/\s+(.)(\w*)/g, (_, $2, $3) => `${$2.toUpperCase() + $3}`)
-    .replace(/\w/, (s) => s.toUpperCase());
-}
+const inputDir = path.join(process.cwd(), 'svgIcons');
+const outputDir = path.join(process.cwd(), '/src/components/icons');
 
-const sourceFolderPath = './svgIcons';
-const destinationFolderPath = './src/components/icons';
+// Crée le dossier de sortie si nécessaire
+if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
 
-// Read all SVG files
-readdir(sourceFolderPath, (readFolderError, files) => {
-  if (readFolderError) {
-    console.error('❌ Erreur lecture dossier source:', readFolderError);
-    return;
-  }
+// Parcours tous les fichiers SVG du dossier
+const files = fs.readdirSync(inputDir).filter((file) => file.endsWith('.svg'));
 
-  files.forEach((file) => {
-    if (extname(file).toLowerCase() === '.svg') {
-      readFile(join(sourceFolderPath, file), 'utf8', (readError, data) => {
-        if (readError) {
-          console.error('❌ Erreur lecture fichier SVG:', readError);
-          return;
-        }
+files.forEach((file) => {
+  const filePath = path.join(inputDir, file);
+  const svgContent = fs.readFileSync(filePath, 'utf8');
 
-        const fileName = parse(file).name;
-        const componentName = toPascalCase(fileName) + 'Icon';
+  // Nettoyage du SVG : supprime width/height/fill/stroke
+  let cleanedSvg = svgContent
+    .replace(/width="[^"]*"/g, '')
+    .replace(/height="[^"]*"/g, '')
+    .replace(/fill="[^"]*"/g, 'fill={color}')
+    .replace(/stroke="[^"]*"/g, 'stroke={color}')
+    .replace(/<svg/, '<svg {...props} width={size} height={size}');
 
-        // Nettoyage de l’intérieur du SVG
-        const cleanedSvg = data
-          .replace(/<\?xml.*?\?>/g, '') // Supprime la déclaration XML
-          .replace(/<!DOCTYPE.*?>/g, '') // Supprime le DOCTYPE
-          .replace(/fill=".*?"/g, '') // Supprime les fills statiques
-          .replace(/stroke=".*?"/g, ''); // Supprime les strokes statiques
+  // Nom du composant React
+  const componentName = path.basename(file, '.svg').replace(/[^a-zA-Z0-9]/g, '');
+  const reactComponent = `
+import React from "react";
 
-        const componentCode = `import React from 'react';
-
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-  size?: number;
-  color?: string;
-}
-
-const ${componentName}: React.FC<IconProps> = ({ size = 24, color = 'currentColor', ...props }) => (
-  ${cleanedSvg
-    .replace('<svg', `<svg {...props} width={size} height={size} fill={color}`)
-    .replace(/\n+/g, '\n  ')
-    .trim()}
+const ${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}Icon = ({ size = 24, color = "currentColor", ...props }) => (
+  ${cleanedSvg}
 );
 
-export default ${componentName};
-`;
+export default ${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}Icon;
+  `;
 
-        const destinationFilePath = join(destinationFolderPath, `${componentName}.tsx`);
-        writeFile(destinationFilePath, componentCode, (writeError) => {
-          if (writeError) {
-            console.error('❌ Erreur écriture composant:', writeError);
-          } else {
-            console.log(`✅  Généré: ${destinationFilePath}`);
-          }
-        });
-      });
-    }
-  });
+  // Écriture du fichier JSX
+  const outputPath = path.join(
+    outputDir,
+    `${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}Icon.tsx`
+  );
+  fs.writeFileSync(outputPath, reactComponent.trim());
+  console.log(`✅  Generated: ${outputPath}`);
 });
 
 console.log(
-  '\n🎉 Tous les SVG du dossier ./svgIcons ont été convertis en composants React dans ./src/components/icons !'
+  `\n🎉 Tous les SVG du dossier ./svgIcons ont été convertis en composants React dans ./icons !`
 );

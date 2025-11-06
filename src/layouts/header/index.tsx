@@ -6,7 +6,6 @@ import { useRouterPages } from '@/utils/router';
 import { t } from 'i18next';
 import { tKeys } from '@/localization/tKeys';
 import CloseIcon from '@/components/icons/CloseIcon';
-import BurgerIcon from '@/components/icons/BurgerIcon';
 
 enum PageTitle {
   HOME = 'Home',
@@ -93,16 +92,17 @@ const AnonymousHeader = (): ReactElement => {
         {/* Mobile Burger */}
         <Box display={{ base: 'flex', md: 'none' }}>
           <IconButton
-            aria-label="Toggle menu"
+            aria-label="Open menu"
+            icon={
+              isDrawerOpen ? (
+                <CloseIcon size={24} color="#000" />
+              ) : (
+                <CloseIcon size={24} color="#000" />
+              )
+            }
             variant="ghost"
             onClick={() => setDrawerOpen(!isDrawerOpen)}
-          >
-            {isDrawerOpen ? (
-              <CloseIcon size={24} color={COLORS.default.black} />
-            ) : (
-              <BurgerIcon size={24} color={COLORS.default.black} />
-            )}
-          </IconButton>
+          />
         </Box>
       </HStack>
 
