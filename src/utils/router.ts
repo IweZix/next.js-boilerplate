@@ -2,11 +2,16 @@ import { useRouter } from 'next/router';
 
 export interface RouterPages {
   home: string;
-  about: string
+  about: string;
 }
 
 const ROUTER_PAGES: RouterPages = {
-  home: '/',
+  home: '/home',
+  about: '/about',
+};
+
+const ROUTER_NAVABAR_PAGES: RouterPages = {
+  home: '/home',
   about: '/about',
 };
 
@@ -30,6 +35,7 @@ export const useRouterPages = () => {
     replaceWith,
     navigateToCustom,
     pages: ROUTER_PAGES,
+    navbarPages: ROUTER_NAVABAR_PAGES,
     router,
   };
 };
