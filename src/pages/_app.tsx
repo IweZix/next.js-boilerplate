@@ -12,10 +12,9 @@ import SeoHead from '@/components/core/seo-head';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    // Render page title
+    // TODO: Update the title for your project
     renderPageTitle('Next.js - Boilerplate');
 
-    // Set the language based on browser settings
     const browserLanguage = getBrowserLanguage();
     try {
       i18n.changeLanguage(browserLanguage);
@@ -27,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <SeoHead
+        // TODO: Update these meta tags for your project
         title="Next.js - Boilerplate"
         description="A Next.js boilerplate with all the best practices."
         url="https://tonsite.be"

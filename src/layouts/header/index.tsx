@@ -1,6 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { VStack, HStack, Text, Image, Box, IconButton } from '@chakra-ui/react';
-import Button from '@/components/core/buttons/button';
+import { VStack, HStack, Text, Image, Box, IconButton, Stack } from '@chakra-ui/react';
 import { useRouterPages } from '@/utils/router';
 import { t } from 'i18next';
 import { tKeys } from '@/localization/tKeys';
@@ -43,119 +42,167 @@ const WhiteHeader = (): ReactElement => {
   };
 
   return (
-    <MotionVStack
-      width="100%"
-      height={isShrunk ? '60px' : '80px'}
-      bg="rgba(255, 255, 255, 0.8)"
-      backdropFilter="blur(10px)"
-      borderBottom="1px solid rgba(0,0,0,0.05)"
-      justify="center"
-      align="center"
-      position="fixed"
-      top="0"
-      left="0"
-      zIndex="1000"
-      boxShadow={isShrunk ? '0 2px 12px rgba(0,0,0,0.08)' : 'none'}
-      animate={{ height: isShrunk ? '60px' : '80px', opacity: 1 }}
-      initial={{ opacity: 0 }}
-    >
-      <HStack justify="space-between" width="100%" maxW="1200px" px={6} py={2}>
-        {/* --- LOGO --- */}
-        <HStack gap={3} cursor="pointer" onClick={() => navigate('home')}>
-          <Image
-            src="/header/ln.svg"
-            alt="Logo"
-            height={isShrunk ? '30px' : '40px'}
-            transition="all 0.3s ease"
-          />
-          <Text
-            fontSize={isShrunk ? 'lg' : 'xl'}
-            fontWeight="bold"
-            color="#1e293b"
-            letterSpacing="0.5px"
-          >
-            Luca Nicolas
-          </Text>
-        </HStack>
+    <Stack justify="center" align="center" paddingTop={'48px'}>
+      <MotionVStack
+        width="90%"
+        height={isShrunk ? '60px' : '80px'}
+        bg="rgba(255, 255, 255, 0.5)"
+        backdropFilter="blur(10px)"
+        border="1px solid rgba(0,0,0,0.05)"
+        borderRadius={'25px'}
+        justify="center"
+        align="center"
+        position="fixed"
+        zIndex="1000"
+        boxShadow={isShrunk ? '0 2px 12px rgba(0,0,0,0.08)' : 'none'}
+        animate={{ height: isShrunk ? '60px' : '80px', opacity: 1 }}
+        initial={{ opacity: 0 }}
+      >
+        <HStack justify="space-between" width="100%" maxW="1200px" px={6} py={2}>
+          {/* --- LOGO --- */}
+          <HStack gap={3} cursor="pointer" onClick={() => navigate('home')}>
+            <Image
+              src="/header/myLogo.svg"
+              alt="Logo"
+              height={isShrunk ? '30px' : '40px'}
+              transition="all 0.3s ease"
+            />
+            <Text
+              fontSize={isShrunk ? 'lg' : 'xl'}
+              fontWeight="bold"
+              color="#1e293b"
+              letterSpacing="0.5px"
+            >
+              Website name
+            </Text>
+          </HStack>
 
-        {/* --- DESKTOP MENU --- */}
-        <HStack gap={8} align="center" display={{ base: 'none', md: 'flex' }}>
-          {[
-            { title: t(tKeys.navbar.home), routeKey: 'home', path: router.pages.home },
-            { title: t(tKeys.navbar.about), routeKey: 'about', path: router.pages.about },
-          ].map((item) => {
-            const active = isActive(item.path);
+          {/* --- DESKTOP MENU --- */}
+          <HStack gap={8} align="center" display={{ base: 'none', md: 'flex' }}>
+            {[
+              { title: t(tKeys.navbar.home), routeKey: 'home', path: router.pages.home },
+              { title: t(tKeys.navbar.about), routeKey: 'about', path: router.pages.about },
+            ].map((item) => {
+              const active = isActive(item.path);
 
-            return (
-              <Box
-                key={item.routeKey}
-                position="relative"
-                cursor="pointer"
-                onClick={() => navigate(item.routeKey as keyof typeof router.pages)}
-              >
-                <Text
-                  fontSize="md"
-                  fontWeight={active ? '600' : '400'}
-                  color={active ? '#2563eb' : '#1e293b'}
-                  transition="color 0.3s ease"
-                  _hover={{ color: '#2563eb' }}
-                >
-                  {item.title}
-                </Text>
-
+              return (
                 <Box
-                  position="absolute"
-                  bottom="-4px"
-                  left="0"
-                  height="2px"
-                  width={active ? '100%' : '0%'}
-                  bg="#2563eb"
-                  borderRadius="full"
-                  transition="width 0.3s ease"
-                />
-              </Box>
-            );
-          })}
+                  key={item.routeKey}
+                  position="relative"
+                  cursor="pointer"
+                  onClick={() => navigate(item.routeKey as keyof typeof router.pages)}
+                >
+                  <Text
+                    fontSize="md"
+                    fontWeight={active ? '600' : '400'}
+                    color={active ? '#2563eb' : '#1e293b'}
+                    transition="color 0.3s ease"
+                    _hover={{ color: '#2563eb' }}
+                  >
+                    {item.title}
+                  </Text>
+
+                  <Box
+                    position="absolute"
+                    bottom="-4px"
+                    left="0"
+                    height="2px"
+                    width={active ? '100%' : '0%'}
+                    bg="#2563eb"
+                    borderRadius="full"
+                    transition="width 0.3s ease"
+                  />
+                </Box>
+              );
+            })}
+          </HStack>
+
+          {/* --- BURGER ICON --- */}
+          <Box display={{ base: 'flex', md: 'none' }}>
+            <IconButton
+              aria-label="Toggle menu"
+              variant="ghost"
+              onClick={() => setDrawerOpen(!isDrawerOpen)}
+            >
+              {isDrawerOpen ? (
+                <CloseIcon size={24} color="#1e293b" />
+              ) : (
+                <BurgerIcon size={24} color="#1e293b" />
+              )}
+            </IconButton>
+          </Box>
         </HStack>
 
-        {/* --- BURGER ICON --- */}
-        <Box display={{ base: 'flex', md: 'none' }}>
-          <IconButton
-            aria-label="Toggle menu"
-            variant="ghost"
-            onClick={() => setDrawerOpen(!isDrawerOpen)}
+        {/* --- MOBILE MENU --- */}
+        {isDrawerOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            style={{
+              position: 'absolute',
+              top: isShrunk ? '60px' : '80px',
+              left: 0,
+              width: '100%',
+            }}
           >
-            {isDrawerOpen ? (
-              <CloseIcon size={24} color="#1e293b" />
-            ) : (
-              <BurgerIcon size={24} color="#1e293b" />
-            )}
-          </IconButton>
-        </Box>
-      </HStack>
+            <MotionVStack
+              width="100%"
+              height={isShrunk ? '100px' : '130px'}
+              bg="rgba(255, 255, 255, 0.95)"
+              backdropFilter="blur(10px)"
+              border="1px solid rgba(0,0,0,0.05)"
+              borderRadius={'25px'}
+              justify="center"
+              align="center"
+              position="fixed"
+              zIndex="1000"
+              boxShadow={isShrunk ? '0 2px 12px rgba(0,0,0,0.08)' : 'none'}
+              gap={'24px'}
+              marginTop={'12px'}
+            >
+              {[
+                { title: t(tKeys.navbar.home), routeKey: 'home', path: router.pages.home },
+                { title: t(tKeys.navbar.about), routeKey: 'about', path: router.pages.about },
+              ].map((item) => {
+                const active = isActive(item.path);
 
-      {/* --- MOBILE MENU --- */}
-      {isDrawerOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 'auto', opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          style={{ width: '100%' }}
-        >
-          <VStack
-            bg="rgba(255, 255, 255, 0.95)"
-            backdropFilter="blur(12px)"
-            py={4}
-            borderTop="1px solid rgba(0,0,0,0.05)"
-            gap={3}
-          >
-            <Button text={t(tKeys.navbar.home)} onClick={() => navigate('home')} />
+                return (
+                  <Box
+                    key={item.routeKey}
+                    position="relative"
+                    cursor="pointer"
+                    onClick={() => navigate(item.routeKey as keyof typeof router.pages)}
+                  >
+                    <Text
+                      fontSize="lg"
+                      fontWeight={active ? '600' : '400'}
+                      color={active ? '#2563eb' : '#1e293b'}
+                      transition="color 0.3s ease"
+                      textAlign="center"
+                    >
+                      {item.title}
+                    </Text>
 
-            <Button text={t(tKeys.navbar.about)} onClick={() => navigate('about')} />
-          </VStack>
-        </motion.div>
-      )}
-    </MotionVStack>
+                    <Box
+                      position="absolute"
+                      bottom="-6px"
+                      left="50%"
+                      transform="translateX(-50%)"
+                      height="2px"
+                      width={active ? '100%' : '0%'}
+                      bg="#2563eb"
+                      borderRadius="full"
+                      transition="width 0.3s ease"
+                    />
+                  </Box>
+                );
+              })}
+            </MotionVStack>
+          </motion.div>
+        )}
+      </MotionVStack>
+    </Stack>
   );
 };
