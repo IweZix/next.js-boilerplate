@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.monsite.xyz
+
+# Sitemaps
+Sitemap: https://www.monsite.xyz/sitemap.xml
