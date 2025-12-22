@@ -21,29 +21,29 @@ export const SpaceGrotesk = Space_Grotesk({
 export interface Fonts {
   alumniSans: {
     '10px': {
-      normal?: Font;
-      light?: Font;
-      semiBold?: Font;
+      normal: Font;
+      light: Font;
+      semiBold: Font;
       bold: Font;
     };
     '20px': {
-      normal?: Font;
-      light?: Font;
-      semiBold?: Font;
+      normal: Font;
+      light: Font;
+      semiBold: Font;
       bold: Font;
     };
   };
   spaceGrotesk: {
     '10px': {
-      normal?: Font;
-      light?: Font;
-      semiBold?: Font;
+      normal: Font;
+      light: Font;
+      semiBold: Font;
       bold: Font;
     };
     '20px': {
-      normal?: Font;
-      light?: Font;
-      semiBold?: Font;
+      normal: Font;
+      light: Font;
+      semiBold: Font;
       bold: Font;
     };
   };
