@@ -1,7 +1,7 @@
 import React from 'react';
 import { AccordionProps } from './props';
 import { Accordion, Heading, Stack } from '@chakra-ui/react';
-import CustomText from '../../texts/text';
+import CustomText from '../../core/texts/text';
 import COLORS from '@/assets/colors';
 
 const BaseAccordion = ({ items, titleFont, contentFont, maxWidth = '800px' }: AccordionProps) => {

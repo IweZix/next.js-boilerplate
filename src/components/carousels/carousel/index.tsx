@@ -16,9 +16,7 @@ const BaseSpacingCarousel = ({ items }: BaseCarouselProps) => {
       <Carousel.ItemGroup>
         {items.map((_, index) => (
           <Carousel.Item key={index} index={index}>
-            <Box w="100%" h="300px" rounded="lg" fontSize="2.5rem">
-              {items[index].item}
-            </Box>
+            <Box w="100%">{items[index].item}</Box>
           </Carousel.Item>
         ))}
       </Carousel.ItemGroup>
