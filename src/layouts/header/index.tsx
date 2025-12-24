@@ -42,7 +42,7 @@ const WhiteHeader = (): ReactElement => {
   };
 
   return (
-    <Stack justify="center" align="center" paddingTop={'48px'}>
+    <Stack justify="center" align="center">
       <MotionVStack
         width="90%"
         height={isShrunk ? '60px' : '80px'}
@@ -57,6 +57,7 @@ const WhiteHeader = (): ReactElement => {
         boxShadow={isShrunk ? '0 2px 12px rgba(0,0,0,0.08)' : 'none'}
         animate={{ height: isShrunk ? '60px' : '80px', opacity: 1 }}
         initial={{ opacity: 0 }}
+        marginTop={24}
       >
         <HStack justify="space-between" width="100%" maxW="1200px" px={6} py={2}>
           {/* --- LOGO --- */}

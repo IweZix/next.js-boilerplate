@@ -22,7 +22,7 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
     >
-      <Spiral size="80" speed="0.9" color="white" />
+      <Spiral size="80" speed="0.9" color="black" />
     </VStack>
   );
 }

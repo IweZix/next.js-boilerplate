@@ -46,6 +46,24 @@ export interface Fonts {
       semiBold: Font;
       bold: Font;
     };
+    '30px': {
+      normal: Font;
+      light: Font;
+      semiBold: Font;
+      bold: Font;
+    };
+    '40px': {
+      normal: Font;
+      light: Font;
+      semiBold: Font;
+      bold: Font;
+    };
+    '50px': {
+      normal: Font;
+      light: Font;
+      semiBold: Font;
+      bold: Font;
+    };
   };
 }
 
@@ -153,6 +171,84 @@ const FONTS: Fonts = {
       bold: {
         fontWeight: '700',
         fontSize: 20,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+    },
+    '30px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 30,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      light: {
+        fontWeight: '300',
+        fontSize: 30,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 30,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 30,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+    },
+    '40px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 40,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      light: {
+        fontWeight: '300',
+        fontSize: 40,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 40,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 40,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+    },
+    '50px': {
+      normal: {
+        fontWeight: '400',
+        fontSize: 50,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      light: {
+        fontWeight: '300',
+        fontSize: 50,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      semiBold: {
+        fontWeight: '600',
+        fontSize: 50,
+        lineHeight: 1.5,
+        className: SpaceGrotesk.className,
+      },
+      bold: {
+        fontWeight: '700',
+        fontSize: 50,
         lineHeight: 1.5,
         className: SpaceGrotesk.className,
       },
