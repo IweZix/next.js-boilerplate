@@ -10,6 +10,7 @@ import { Toaster } from '@/components/core/ui/toaster';
 import { Header } from '@/layouts/header';
 import SeoHead from '@/components/core/seo-head';
 import { Analytics } from '@vercel/analytics/next';
+import EnvBanner from '@/components/core/banners/env-banner';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
       />
       <Provider>
         <I18nextProvider i18n={i18n}>
+          <EnvBanner />
           <Header />
           <Component {...pageProps} />
           <Toaster />
