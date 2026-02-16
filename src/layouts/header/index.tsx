@@ -46,7 +46,7 @@ const WhiteHeader = (): ReactElement => {
         justify="center"
         align="center"
         position="fixed"
-        zIndex="1000"
+        zIndex="10"
         boxShadow={isShrunk ? '0 2px 12px rgba(0,0,0,0.08)' : 'none'}
         animate={{ height: isShrunk ? '60px' : '80px', opacity: 1 }}
         initial={{ opacity: 0 }}
