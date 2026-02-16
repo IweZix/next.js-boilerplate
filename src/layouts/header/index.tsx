@@ -1,11 +1,11 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import { VStack, HStack, Text, Image, Box, IconButton, Stack } from '@chakra-ui/react';
-import { useRouterPages } from '@/utils/router';
 import { t } from 'i18next';
 import { tKeys } from '@/localization/tKeys';
 import CloseIcon from '@/components/icons/CloseIcon';
 import BurgerIcon from '@/components/icons/BurgerIcon';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 const MotionVStack = motion(VStack);
 
@@ -14,17 +14,10 @@ export const Header = (): ReactElement => {
 };
 
 const WhiteHeader = (): ReactElement => {
-  const router = useRouterPages();
+  const router = useRouter();
 
-  const isActive = (route: string) => {
-    switch (route) {
-      case router.navbarPages.home:
-        return router.router.pathname === router.pages.home;
-      case router.navbarPages.about:
-        return router.router.pathname === router.pages.about;
-      default:
-        return false;
-    }
+  const isActive = (path: string) => {
+    return router.pathname === path;
   };
 
   const [isShrunk, setIsShrunk] = useState(false);
@@ -36,8 +29,8 @@ const WhiteHeader = (): ReactElement => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigate = (route: keyof typeof router.pages) => {
-    router.navigateTo(route);
+  const navigate = (path: string) => {
+    router.push(path);
     setDrawerOpen(false);
   };
 
@@ -81,8 +74,8 @@ const WhiteHeader = (): ReactElement => {
           {/* --- DESKTOP MENU --- */}
           <HStack gap={8} align="center" display={{ base: 'none', md: 'flex' }}>
             {[
-              { title: t(tKeys.navbar.home), routeKey: 'home', path: router.pages.home },
-              { title: t(tKeys.navbar.about), routeKey: 'about', path: router.pages.about },
+              { title: t(tKeys.navbar.home), routeKey: 'home', path: '/home' },
+              { title: t(tKeys.navbar.about), routeKey: 'about', path: '/about' },
             ].map((item) => {
               const active = isActive(item.path);
 
@@ -91,7 +84,7 @@ const WhiteHeader = (): ReactElement => {
                   key={item.routeKey}
                   position="relative"
                   cursor="pointer"
-                  onClick={() => navigate(item.routeKey as keyof typeof router.pages)}
+                  onClick={() => navigate(item.path)}
                 >
                   <Text
                     fontSize="md"
@@ -164,17 +157,17 @@ const WhiteHeader = (): ReactElement => {
               marginTop={'12px'}
             >
               {[
-                { title: t(tKeys.navbar.home), routeKey: 'home', path: router.pages.home },
-                { title: t(tKeys.navbar.about), routeKey: 'about', path: router.pages.about },
+                { title: t(tKeys.navbar.home), path: '/home' },
+                { title: t(tKeys.navbar.about), path: '/about' },
               ].map((item) => {
                 const active = isActive(item.path);
 
                 return (
                   <Box
-                    key={item.routeKey}
+                    key={item.path}
                     position="relative"
                     cursor="pointer"
-                    onClick={() => navigate(item.routeKey as keyof typeof router.pages)}
+                    onClick={() => navigate(item.path)}
                   >
                     <Text
                       fontSize="lg"
