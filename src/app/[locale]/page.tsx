@@ -1,5 +1,5 @@
 'use client';
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 import { tKeys } from '@/localization/tKeys';
 
 export default function Home() {
