@@ -54,7 +54,7 @@ const generateTKeys = () => {
   const tsFilePath = path.resolve(__dirname, output);
   fs.writeFileSync(tsFilePath, tsContent, 'utf-8');
 
-  console.log('tKeys.ts généré avec succès !');
+  console.log('tKeys.ts generated with success !');
 };
 
 // Exécuter la génération

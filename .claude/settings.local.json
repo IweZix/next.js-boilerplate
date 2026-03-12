@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/luca/Desktop/next.js-boilerplate/src/app/[locales]/)"
+    ]
+  }
+}
