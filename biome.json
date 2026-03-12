@@ -24,6 +24,11 @@
       "react": "recommended"
     }
   },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
   "assist": {
     "actions": {
       "source": {

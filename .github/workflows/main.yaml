@@ -27,10 +27,7 @@ jobs:
         run: npm run lint:check
 
       - name: Formatting Lint
-        run: npm run lint:fix
-
-      - name: Formatting Prettier
-        run: npm run prettier:fix
+        run: npm run format
 
       - name: Test
         run: npm test

@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
-import { StorageKeys, useLocalStorage } from '@/hooks/useLocalStorage';
-import axios, { AxiosRequestConfig, Method } from 'axios';
+
+import axios, { type AxiosRequestConfig, type Method } from 'axios';
+import { StorageKeys } from '@/hooks/useLocalStorage';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 /**
  * Interface for the options to create a custom instance.
  */
-export interface CustomInstanceOptions<TData, TVariables> extends AxiosRequestConfig {
+export interface CustomInstanceOptions<_TData, TVariables>
+  extends AxiosRequestConfig {
   url: string;
   method: Method;
   data?: TVariables;
