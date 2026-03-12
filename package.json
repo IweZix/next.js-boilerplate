@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint:check": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.1",
