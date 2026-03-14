@@ -2,7 +2,6 @@
 import { useTranslations } from 'next-intl';
 import { tKeys } from '@/localization/tKeys';
 
-
 export default function Home() {
   const t = useTranslations();
 
