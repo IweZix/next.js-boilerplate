@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(ls /Users/luca/Desktop/next.js-boilerplate/src/app/[locales]/)",
-      "Bash(find /Users/luca/Desktop/next.js-boilerplate -maxdepth 2 -type f -name *.config.* -o -name tsconfig.json -o -name .eslintrc*)"
+      "Bash(find /Users/luca/Desktop/next.js-boilerplate -maxdepth 2 -type f -name *.config.* -o -name tsconfig.json -o -name .eslintrc*)",
+      "Bash(npm install:*)"
     ]
   }
 }

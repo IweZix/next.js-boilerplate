@@ -1,4 +1,9 @@
 export const tKeys = {
+  common: {
+    errors: {
+      required: 'common.errors.required',
+    },
+  },
   navbar: {
     home: 'navbar.home',
   },

@@ -1,4 +1,9 @@
 {
+  "common": {
+    "errors": {
+      "required": "This field is required"
+    }
+  },
   "navbar": {
     "home": "Home"
   },
