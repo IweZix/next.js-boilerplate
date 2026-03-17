@@ -1,11 +1,8 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactStrictMode: true,
-  experimental: {
-    optimizePackageImports: ['@chakra-ui/react'],
-  },
-}
+const withNextIntl = createNextIntlPlugin('./src/localization/request.ts');
 
-export default nextConfig
+const nextConfig: NextConfig = {};
+
+export default withNextIntl(nextConfig);

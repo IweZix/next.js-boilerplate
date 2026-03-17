@@ -7,7 +7,7 @@ const output = './tKeys.ts'; // Chemin de sortie pour tKeys.ts
 
 // Fonction pour transformer l'objet JSON en format tKeys
 const transformToTKeys = (obj, parentKey = '') => {
-  let result = {};
+  const result = {};
 
   for (const [key, value] of Object.entries(obj)) {
     const currentKey = parentKey ? `${parentKey}.${key}` : key;
@@ -54,7 +54,7 @@ const generateTKeys = () => {
   const tsFilePath = path.resolve(__dirname, output);
   fs.writeFileSync(tsFilePath, tsContent, 'utf-8');
 
-  console.log('tKeys.ts généré avec succès !');
+  console.log('tKeys.ts generated with success !');
 };
 
 // Exécuter la génération

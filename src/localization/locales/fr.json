@@ -1,9 +1,11 @@
 {
+  "common": {
+    "errors": {
+      "required": "Ce champ est requis"
+    }
+  },
   "navbar": {
-    "home": "Accueil",
-    "about": "À propos",
-    "contact": "Contact",
-    "language": "Langue"
+    "home": "Accueil"
   },
   "homepage": {
     "title": "C'est la page d'accueil"

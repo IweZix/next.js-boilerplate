@@ -1,33 +1,35 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "module": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
-    "**/*.tsx", 
-    "src/localization/generateTKeys.js", "src/tools/generateIcons.mjs",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    "src/localization/generateTKeys.js"
   ],
-  "exclude": [
-    "node_modules",
-    "src/api/**/*",
-    ".next",
-    "out",
-    "dist",
-  ]
+  "exclude": ["node_modules"]
 }

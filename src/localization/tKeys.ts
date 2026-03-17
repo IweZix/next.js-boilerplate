@@ -1,9 +1,11 @@
 export const tKeys = {
+  common: {
+    errors: {
+      required: 'common.errors.required',
+    },
+  },
   navbar: {
     home: 'navbar.home',
-    about: 'navbar.about',
-    contact: 'navbar.contact',
-    language: 'navbar.language',
   },
   homepage: {
     title: 'homepage.title',
