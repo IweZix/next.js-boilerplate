@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import EnvBanner from '@/components/core/banners/env-banner';
+import { Provider } from '@/components/ui/provider';
 import { routing } from '@/localization/routing';
 import type { Locale } from '@/types/Locale';
 
@@ -43,12 +44,14 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang="fr">
-      <body>
-        <NextIntlClientProvider messages={messages}>
+    <html lang={locale} suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <Provider>
+          <NextIntlClientProvider messages={messages}>
           <EnvBanner />
           {children}
         </NextIntlClientProvider>
+        </Provider>
       </body>
     </html>
   );
