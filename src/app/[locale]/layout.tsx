@@ -1,14 +1,12 @@
-import './globals.css';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import ReactQueryProvider from '@/components/core/providers/react-query-provider';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import EnvBanner from '@/components/core/banners/env-banner';
+import ReactQueryProvider from '@/components/core/providers/react-query-provider';
 import { Provider } from '@/components/ui/provider';
 import { routing } from '@/localization/routing';
 import type { Locale } from '@/types/Locale';
-
 
 /**
  * Metadata for each page, can be overridden by page-specific metadata (e.g., in page.tsx)
@@ -51,9 +49,7 @@ export default async function RootLayout({
         <Provider>
           <NextIntlClientProvider messages={messages}>
             <EnvBanner />
-            <ReactQueryProvider>
-              {children}
-            </ReactQueryProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
           </NextIntlClientProvider>
         </Provider>
       </body>
