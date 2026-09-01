@@ -10,4 +10,19 @@ export const tKeys = {
   homepage: {
     title: 'homepage.title',
   },
+  login: {
+    title: 'login.title',
+    emailLabel: 'login.emailLabel',
+    passwordLabel: 'login.passwordLabel',
+    submit: 'login.submit',
+    emailInvalid: 'login.emailInvalid',
+    invalidCredentials: 'login.invalidCredentials',
+  },
+  dashboard: {
+    title: 'dashboard.title',
+    welcome: 'dashboard.welcome',
+    role: 'dashboard.role',
+    noRole: 'dashboard.noRole',
+    logout: 'dashboard.logout',
+  },
 } as const;

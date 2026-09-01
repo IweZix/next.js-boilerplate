@@ -9,5 +9,20 @@
   },
   "homepage": {
     "title": "C'est la page d'accueil"
+  },
+  "login": {
+    "title": "Connexion",
+    "emailLabel": "Email",
+    "passwordLabel": "Mot de passe",
+    "submit": "Se connecter",
+    "emailInvalid": "Email invalide",
+    "invalidCredentials": "Email ou mot de passe incorrect"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue, {email}",
+    "role": "Rôle : {role}",
+    "noRole": "Aucun rôle assigné",
+    "logout": "Se déconnecter"
   }
 }

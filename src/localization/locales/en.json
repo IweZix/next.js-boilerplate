@@ -9,5 +9,20 @@
   },
   "homepage": {
     "title": "This is the homepage"
+  },
+  "login": {
+    "title": "Log in",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submit": "Log in",
+    "emailInvalid": "Invalid email",
+    "invalidCredentials": "Incorrect email or password"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {email}",
+    "role": "Role: {role}",
+    "noRole": "No role assigned",
+    "logout": "Log out"
   }
 }
