@@ -24,5 +24,14 @@
     "role": "Rôle : {role}",
     "noRole": "Aucun rôle assigné",
     "logout": "Se déconnecter"
+  },
+  "sidebar": {
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "users": "Utilisateurs",
+      "settings": "Paramètres"
+    },
+    "comingSoon": "Bientôt disponible",
+    "menu": "Menu"
   }
 }

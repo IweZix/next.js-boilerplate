@@ -25,4 +25,13 @@ export const tKeys = {
     noRole: 'dashboard.noRole',
     logout: 'dashboard.logout',
   },
+  sidebar: {
+    nav: {
+      dashboard: 'sidebar.nav.dashboard',
+      users: 'sidebar.nav.users',
+      settings: 'sidebar.nav.settings',
+    },
+    comingSoon: 'sidebar.comingSoon',
+    menu: 'sidebar.menu',
+  },
 } as const;

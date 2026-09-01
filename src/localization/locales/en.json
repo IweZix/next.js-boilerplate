@@ -24,5 +24,14 @@
     "role": "Role: {role}",
     "noRole": "No role assigned",
     "logout": "Log out"
+  },
+  "sidebar": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "settings": "Settings"
+    },
+    "comingSoon": "Coming soon",
+    "menu": "Menu"
   }
 }
