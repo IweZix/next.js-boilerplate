@@ -34,4 +34,18 @@ export const tKeys = {
     comingSoon: 'sidebar.comingSoon',
     menu: 'sidebar.menu',
   },
+  users: {
+    title: 'users.title',
+    accessDenied: 'users.accessDenied',
+    columns: {
+      email: 'users.columns.email',
+      name: 'users.columns.name',
+      role: 'users.columns.role',
+    },
+  },
+  pagination: {
+    previous: 'pagination.previous',
+    next: 'pagination.next',
+    pageOf: 'pagination.pageOf',
+  },
 } as const;

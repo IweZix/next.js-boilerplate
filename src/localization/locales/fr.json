@@ -33,5 +33,19 @@
     },
     "comingSoon": "Bientôt disponible",
     "menu": "Menu"
+  },
+  "users": {
+    "title": "Utilisateurs",
+    "accessDenied": "Accès réservé aux administrateurs",
+    "columns": {
+      "email": "Email",
+      "name": "Nom",
+      "role": "Rôle"
+    }
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "pageOf": "Page {page} sur {lastPage}"
   }
 }
