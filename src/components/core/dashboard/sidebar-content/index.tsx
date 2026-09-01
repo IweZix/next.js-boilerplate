@@ -37,7 +37,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     key: 'settings',
-    href: '/settings',
+    href: '/dashboard/settings',
     icon: LuSettings,
     implemented: false,
     allowedRoles: [Role.ADMIN],
