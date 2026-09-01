@@ -9,5 +9,43 @@
   },
   "homepage": {
     "title": "C'est la page d'accueil"
+  },
+  "login": {
+    "title": "Connexion",
+    "emailLabel": "Email",
+    "passwordLabel": "Mot de passe",
+    "submit": "Se connecter",
+    "emailInvalid": "Email invalide",
+    "invalidCredentials": "Email ou mot de passe incorrect"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue, {email}",
+    "role": "Rôle : {role}",
+    "noRole": "Aucun rôle assigné",
+    "logout": "Se déconnecter"
+  },
+  "sidebar": {
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "users": "Utilisateurs",
+      "settings": "Paramètres"
+    },
+    "comingSoon": "Bientôt disponible",
+    "menu": "Menu"
+  },
+  "users": {
+    "title": "Utilisateurs",
+    "accessDenied": "Accès réservé aux administrateurs",
+    "columns": {
+      "email": "Email",
+      "name": "Nom",
+      "role": "Rôle"
+    }
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "pageOf": "Page {page} sur {lastPage}"
   }
 }

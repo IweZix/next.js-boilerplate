@@ -9,5 +9,43 @@
   },
   "homepage": {
     "title": "This is the homepage"
+  },
+  "login": {
+    "title": "Log in",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submit": "Log in",
+    "emailInvalid": "Invalid email",
+    "invalidCredentials": "Incorrect email or password"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {email}",
+    "role": "Role: {role}",
+    "noRole": "No role assigned",
+    "logout": "Log out"
+  },
+  "sidebar": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "settings": "Settings"
+    },
+    "comingSoon": "Coming soon",
+    "menu": "Menu"
+  },
+  "users": {
+    "title": "Users",
+    "accessDenied": "Access restricted to administrators",
+    "columns": {
+      "email": "Email",
+      "name": "Name",
+      "role": "Role"
+    }
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {lastPage}"
   }
 }

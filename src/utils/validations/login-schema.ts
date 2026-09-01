@@ -6,6 +6,9 @@ type Translator = ReturnType<typeof useTranslations>;
 
 export const loginSchema = (t: Translator) =>
   yup.object().shape({
-    email: yup.string().email().required(),
+    email: yup
+      .string()
+      .email(t(tKeys.login.emailInvalid))
+      .required(t(tKeys.common.errors.required)),
     password: yup.string().required(t(tKeys.common.errors.required)),
   });
