@@ -44,6 +44,9 @@ export const tKeys = {
       email: 'users.columns.email',
       name: 'users.columns.name',
       role: 'users.columns.role',
+      status: 'users.columns.status',
+      active: 'users.columns.active',
+      inactive: 'users.columns.inactive',
     },
     create: {
       title: 'users.create.title',

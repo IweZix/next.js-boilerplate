@@ -43,7 +43,10 @@
     "columns": {
       "email": "Email",
       "name": "Nom",
-      "role": "Rôle"
+      "role": "Rôle",
+      "status": "Statut",
+      "active": "Actif",
+      "inactive": "Inactif"
     },
     "create": {
       "title": "Ajouter un utilisateur",

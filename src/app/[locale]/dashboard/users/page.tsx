@@ -1,6 +1,14 @@
 'use client';
 
-import { Button, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -55,11 +63,29 @@ export default function Users() {
           t(tKeys.users.columns.email),
           t(tKeys.users.columns.name),
           t(tKeys.users.columns.role),
+          t(tKeys.users.columns.status),
         ]}
         rows={data.users.map((user) => ({
           id: user.id,
           href: `/${locale}/dashboard/users/${user.id}`,
-          cells: [user.email, user.fullName ?? 'N/A', user.role ?? 'N/A'],
+          cells: [
+            user.email,
+            user.fullName ?? 'N/A',
+            user.role ?? 'N/A',
+            <Flex key="status" align="center" gap={2}>
+              <Box
+                w="8px"
+                h="8px"
+                rounded="full"
+                bg={user.isActive ? 'green.500' : 'gray.400'}
+              />
+              <Text>
+                {user.isActive
+                  ? t(tKeys.users.columns.active)
+                  : t(tKeys.users.columns.inactive)}
+              </Text>
+            </Flex>,
+          ],
         }))}
       />
       <Pagination
