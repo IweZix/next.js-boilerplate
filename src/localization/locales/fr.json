@@ -38,10 +38,21 @@
   "users": {
     "title": "Utilisateurs",
     "accessDenied": "Accès réservé aux administrateurs",
+    "addButton": "Ajouter un utilisateur",
     "columns": {
       "email": "Email",
       "name": "Nom",
       "role": "Rôle"
+    },
+    "create": {
+      "title": "Ajouter un utilisateur",
+      "submit": "Créer l'utilisateur",
+      "successTitle": "Utilisateur créé",
+      "temporaryPasswordLabel": "Mot de passe temporaire",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "viewUser": "Voir la fiche",
+      "createError": "Impossible de créer cet utilisateur (email déjà utilisé ?)"
     },
     "detail": {
       "header": "Utilisateur — {email}",
@@ -69,8 +80,38 @@
           "label": "Utilisateur",
           "description": "Aucun accès aux sections d'administration."
         }
-      }
+      },
+      "save": "Enregistrer les modifications",
+      "saveSuccess": "Modifications enregistrées",
+      "saveError": "Une erreur est survenue, réessaie",
+      "cannotChangeOwnRole": "Tu ne peux pas modifier ton propre rôle",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "resetPasswordSuccess": "Email de réinitialisation envoyé",
+      "resetPasswordError": "Impossible d'envoyer l'email de réinitialisation",
+      "deactivate": "Désactiver le compte",
+      "reactivate": "Réactiver le compte",
+      "deactivateConfirm": "Désactiver ce compte ? Il ne pourra plus se connecter tant qu'il n'est pas réactivé.",
+      "statusSuccess": "Statut du compte mis à jour",
+      "statusError": "Impossible de mettre à jour le statut du compte",
+      "cannotDeactivateOwnAccount": "Tu ne peux pas désactiver ton propre compte",
+      "delete": "Supprimer le compte",
+      "deleteConfirmTitle": "Supprimer ce compte ?",
+      "deleteConfirmDescription": "Cette action est définitive et irréversible. Pour confirmer, retape l'adresse email du compte :",
+      "deleteConfirmPlaceholder": "Adresse email",
+      "deleteConfirmButton": "Supprimer définitivement",
+      "deleteCancel": "Annuler",
+      "deleteSuccess": "Compte supprimé",
+      "deleteError": "Impossible de supprimer ce compte",
+      "cannotDeleteOwnAccount": "Tu ne peux pas supprimer ton propre compte"
     }
+  },
+  "resetPassword": {
+    "title": "Réinitialiser le mot de passe",
+    "newPasswordLabel": "Nouveau mot de passe",
+    "submit": "Valider",
+    "invalidLink": "Ce lien est invalide ou a expiré",
+    "success": "Mot de passe mis à jour, tu peux te reconnecter",
+    "error": "Une erreur est survenue, réessaie"
   },
   "pagination": {
     "previous": "Précédent",

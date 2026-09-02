@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import EnvBanner from '@/components/core/banners/env-banner';
 import ReactQueryProvider from '@/components/core/providers/react-query-provider';
 import { Provider } from '@/components/ui/provider';
+import { Toaster } from '@/components/ui/toaster';
 import { routing } from '@/localization/routing';
 import type { Locale } from '@/types/Locale';
 
@@ -49,6 +50,7 @@ export default async function RootLayout({
         <Provider>
           <NextIntlClientProvider messages={messages}>
             <EnvBanner />
+            <Toaster />
             <ReactQueryProvider>{children}</ReactQueryProvider>
           </NextIntlClientProvider>
         </Provider>

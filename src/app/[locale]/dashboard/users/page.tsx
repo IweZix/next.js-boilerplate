@@ -1,4 +1,5 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { getLocale, getTranslations } from 'next-intl/server';
 import DataTable from '@/components/core/data-table';
 import Pagination from '@/components/core/pagination';
@@ -22,7 +23,20 @@ export default async function Users({ searchParams }: UsersProps) {
 
     return (
       <Stack gap={4}>
-        <Heading size="lg">{t(tKeys.users.title)}</Heading>
+        <Flex justify="space-between" align="center">
+          <Heading size="lg">{t(tKeys.users.title)}</Heading>
+          <Button
+            asChild
+            colorPalette="gray"
+            bg="black"
+            color="white"
+            _hover={{ bg: 'gray.800' }}
+          >
+            <Link href={`/${locale}/dashboard/users/new`}>
+              {t(tKeys.users.addButton)}
+            </Link>
+          </Button>
+        </Flex>
         <DataTable
           headers={[
             t(tKeys.users.columns.email),

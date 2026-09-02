@@ -56,9 +56,11 @@ if (!user) {
 - `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`: the only keys to use in an app route (already wired into `createClient()`). The `NEXT_PUBLIC_` prefix isn't an issue here since these keys are never used client-side in this project.
 - `SUPABASE_SERVICE_ROLE_KEY`: **forbidden in any app route**. It bypasses RLS policies and auth rules. Reserved for one-off admin scripts, run locally by hand, never committed.
 
-## Hard rule: no account creation
+## Hard rule: no public self-signup
 
-No route in the app should ever call `supabase.auth.signUp` or `supabase.auth.admin.createUser`. That's what guarantees it's structurally impossible to create a user from the application. If a need for account creation ever comes up, that's a separate product decision — don't add it incidentally while building another route.
+No route should ever call `supabase.auth.signUp` — that's the client-facing signup flow, and this app has none: nobody creates their own account. There's no public, unauthenticated way to create a user.
+
+Account creation *is* allowed, but only admin-gated, through `POST /api/admin/users` → `createUserForAdmin()` in `src/lib/supabase/list-users.ts`, which calls `supabase.auth.admin.createUser` behind the exact same `assertCurrentUserIsAdmin()` check as every other `admin/*` route (see `listUsersForAdmin`, `getUserForAdmin`, `updateUserForAdmin` in the same file for the pattern). Don't call `admin.createUser` from anywhere else, and never from a route that isn't behind that check.
 
 ## Calling the route from the front end
 
