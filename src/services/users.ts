@@ -1,4 +1,45 @@
+import type { AdminUser } from '@/lib/supabase/list-users';
 import type { Role } from '@/types/Role';
+
+export interface GetUsersResult {
+  users: AdminUser[];
+  page: number;
+  perPage: number;
+  total: number;
+  lastPage: number;
+}
+
+export async function getUsers(
+  page: number,
+  perPage: number,
+): Promise<GetUsersResult> {
+  const response = await fetch(
+    `/api/admin/users?page=${page}&perPage=${perPage}`,
+  );
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    throw new Error(body?.error ?? 'users_unavailable');
+  }
+
+  return response.json();
+}
+
+export interface GetUserResult {
+  user: AdminUser;
+  isOwnAccount: boolean;
+}
+
+export async function getUser(userId: string): Promise<GetUserResult> {
+  const response = await fetch(`/api/admin/users/${userId}`);
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    throw new Error(body?.error ?? 'user_unavailable');
+  }
+
+  return response.json();
+}
 
 export interface UpdateUserPayload {
   firstName?: string;

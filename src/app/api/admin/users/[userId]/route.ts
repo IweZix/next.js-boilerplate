@@ -1,12 +1,42 @@
 import { NextResponse } from 'next/server';
+import { getCurrentUser } from '@/lib/supabase/current-user';
 import {
   CannotChangeOwnRoleError,
   CannotDeleteOwnAccountError,
   deleteUserForAdmin,
   ForbiddenError,
+  getUserForAdmin,
   updateUserForAdmin,
 } from '@/lib/supabase/list-users';
 import { Role } from '@/types/Role';
+
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ userId: string }> },
+) {
+  const { userId } = await params;
+
+  try {
+    const [user, currentUser] = await Promise.all([
+      getUserForAdmin(userId),
+      getCurrentUser(),
+    ]);
+
+    if (!user) {
+      return NextResponse.json({ error: 'not_found' }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      user,
+      isOwnAccount: currentUser?.id === user.id,
+    });
+  } catch (error) {
+    if (error instanceof ForbiddenError) {
+      return NextResponse.json({ error: 'forbidden' }, { status: 403 });
+    }
+    return NextResponse.json({ error: 'user_unavailable' }, { status: 503 });
+  }
+}
 
 export async function PATCH(
   request: Request,

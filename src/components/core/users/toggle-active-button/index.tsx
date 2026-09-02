@@ -1,8 +1,7 @@
 'use client';
 
 import { Button } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { toaster } from '@/components/ui/toaster';
 import { tKeys } from '@/localization/tKeys';
@@ -20,7 +19,7 @@ export default function ToggleActiveButton({
   disabled,
 }: ToggleActiveButtonProps) {
   const t = useTranslations();
-  const router = useRouter();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: () => setUserActive(userId, !isActive),
@@ -29,7 +28,7 @@ export default function ToggleActiveButton({
         title: t(tKeys.users.detail.statusSuccess),
         type: 'success',
       });
-      router.refresh();
+      queryClient.invalidateQueries({ queryKey: ['user', userId] });
     },
     onError: () => {
       toaster.create({

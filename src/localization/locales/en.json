@@ -39,6 +39,7 @@
     "title": "Users",
     "accessDenied": "Access restricted to administrators",
     "addButton": "Add a user",
+    "loadError": "Couldn't load users",
     "columns": {
       "email": "Email",
       "name": "Name",
@@ -67,6 +68,7 @@
       "neverSignedIn": "Never signed in",
       "active": "Active account",
       "inactive": "Deactivated account",
+      "loadError": "Couldn't load this user",
       "roles": {
         "admin": {
           "label": "Admin",

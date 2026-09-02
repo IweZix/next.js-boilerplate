@@ -1,5 +1,7 @@
+'use client';
+
 import { Box, Flex, Stack, Text } from '@chakra-ui/react';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { useLocale, useTranslations } from 'next-intl';
 import type { AdminUser } from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
 
@@ -13,9 +15,9 @@ function getInitials(user: AdminUser): string {
   return user.email?.[0]?.toUpperCase() ?? '?';
 }
 
-export default async function ProfileCard({ user }: { user: AdminUser }) {
-  const t = await getTranslations();
-  const locale = await getLocale();
+export default function ProfileCard({ user }: { user: AdminUser }) {
+  const t = useTranslations();
+  const locale = useLocale();
 
   const displayName = user.fullName ?? user.email ?? '';
   const createdAt = user.createdAt

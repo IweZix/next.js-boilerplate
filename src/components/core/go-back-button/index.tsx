@@ -1,6 +1,8 @@
+'use client';
+
 import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { LuArrowLeft } from 'react-icons/lu';
 import { tKeys } from '@/localization/tKeys';
 
@@ -8,8 +10,8 @@ interface GoBackButtonProps {
   href: string;
 }
 
-export default async function GoBackButton({ href }: GoBackButtonProps) {
-  const t = await getTranslations();
+export default function GoBackButton({ href }: GoBackButtonProps) {
+  const t = useTranslations();
 
   return (
     <Link href={href}>

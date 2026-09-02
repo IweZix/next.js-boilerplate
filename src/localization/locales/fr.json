@@ -39,6 +39,7 @@
     "title": "Utilisateurs",
     "accessDenied": "Accès réservé aux administrateurs",
     "addButton": "Ajouter un utilisateur",
+    "loadError": "Impossible de charger les utilisateurs",
     "columns": {
       "email": "Email",
       "name": "Nom",
@@ -67,6 +68,7 @@
       "neverSignedIn": "Jamais connecté",
       "active": "Compte actif",
       "inactive": "Compte désactivé",
+      "loadError": "Impossible de charger cet utilisateur",
       "roles": {
         "admin": {
           "label": "Admin",

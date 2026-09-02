@@ -1,58 +1,60 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
-import { notFound } from 'next/navigation';
-import { getLocale, getTranslations } from 'next-intl/server';
+'use client';
+
+import { Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
+import { notFound, useParams } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import GoBackButton from '@/components/core/go-back-button';
 import ProfileCard from '@/components/core/users/profile-card';
 import UserEditForm from '@/components/core/users/user-edit-form';
-import { getCurrentUser } from '@/lib/supabase/current-user';
-import { ForbiddenError, getUserForAdmin } from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
+import { getUser } from '@/services/users';
 
-export default async function UserDetail({
-  params,
-}: {
-  params: Promise<{ userId: string }>;
-}) {
-  const t = await getTranslations();
-  const locale = await getLocale();
-  const { userId } = await params;
+export default function UserDetailPage() {
+  const t = useTranslations();
+  const locale = useLocale();
+  const { userId } = useParams<{ userId: string }>();
 
-  try {
-    const [user, currentUser] = await Promise.all([
-      getUserForAdmin(userId),
-      getCurrentUser(),
-    ]);
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ['user', userId],
+    queryFn: () => getUser(userId),
+  });
 
-    if (!user) {
+  if (isPending) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    if (error instanceof Error && error.message === 'not_found') {
       notFound();
     }
-
-    const displayName = user.fullName ?? user.email ?? '';
-
-    return (
-      <Stack gap={6}>
-        <GoBackButton href={`/${locale}/dashboard/users`} />
-
-        <Stack gap={1}>
-          <Heading size="2xl">{displayName}</Heading>
-        </Stack>
-
-        <UserEditForm
-          userId={user.id}
-          email={user.email}
-          initialFirstName={user.firstName}
-          initialLastName={user.lastName}
-          initialRole={user.role}
-          isOwnAccount={currentUser?.id === user.id}
-          isActive={user.isActive}
-          profileCard={<ProfileCard user={user} />}
-        />
-      </Stack>
-    );
-  } catch (error) {
-    if (error instanceof ForbiddenError) {
+    if (error instanceof Error && error.message === 'forbidden') {
       return <Text>{t(tKeys.users.accessDenied)}</Text>;
     }
-    throw error;
+    return <Text>{t(tKeys.users.detail.loadError)}</Text>;
   }
+
+  const { user, isOwnAccount } = data;
+  const displayName = user.fullName ?? user.email ?? '';
+
+  return (
+    <Stack gap={6}>
+      <GoBackButton href={`/${locale}/dashboard/users`} />
+
+      <Stack gap={1}>
+        <Heading size="2xl">{displayName}</Heading>
+      </Stack>
+
+      <UserEditForm
+        userId={user.id}
+        email={user.email}
+        initialFirstName={user.firstName}
+        initialLastName={user.lastName}
+        initialRole={user.role}
+        isOwnAccount={isOwnAccount}
+        isActive={user.isActive}
+        profileCard={<ProfileCard user={user} />}
+      />
+    </Stack>
+  );
 }

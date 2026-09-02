@@ -1,6 +1,8 @@
+'use client';
+
 import { HStack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { tKeys } from '@/localization/tKeys';
 
 interface PaginationProps {
@@ -9,12 +11,12 @@ interface PaginationProps {
   hrefForPage: (page: number) => string;
 }
 
-export default async function Pagination({
+export default function Pagination({
   page,
   lastPage,
   hrefForPage,
 }: PaginationProps) {
-  const t = await getTranslations();
+  const t = useTranslations();
 
   return (
     <HStack justify="space-between">

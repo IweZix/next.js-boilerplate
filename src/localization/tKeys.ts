@@ -39,6 +39,7 @@ export const tKeys = {
     title: 'users.title',
     accessDenied: 'users.accessDenied',
     addButton: 'users.addButton',
+    loadError: 'users.loadError',
     columns: {
       email: 'users.columns.email',
       name: 'users.columns.name',
@@ -67,6 +68,7 @@ export const tKeys = {
       neverSignedIn: 'users.detail.neverSignedIn',
       active: 'users.detail.active',
       inactive: 'users.detail.inactive',
+      loadError: 'users.detail.loadError',
       roles: {
         admin: {
           label: 'users.detail.roles.admin.label',

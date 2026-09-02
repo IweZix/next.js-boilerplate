@@ -9,8 +9,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
@@ -63,7 +62,7 @@ export default function UserEditForm({
   profileCard,
 }: UserEditFormProps) {
   const t = useTranslations();
-  const router = useRouter();
+  const queryClient = useQueryClient();
   const [firstName, setFirstName] = useState(initialFirstName ?? '');
   const [lastName, setLastName] = useState(initialLastName ?? '');
   const [role, setRole] = useState<Role>(initialRole ?? Role.USER);
@@ -75,7 +74,7 @@ export default function UserEditForm({
         title: t(tKeys.users.detail.saveSuccess),
         type: 'success',
       });
-      router.refresh();
+      queryClient.invalidateQueries({ queryKey: ['user', userId] });
     },
     onError: () => {
       toaster.create({ title: t(tKeys.users.detail.saveError), type: 'error' });
