@@ -2,7 +2,8 @@
   "common": {
     "errors": {
       "required": "This field is required"
-    }
+    },
+    "back": "Back"
   },
   "navbar": {
     "home": "Home"
@@ -37,11 +38,85 @@
   "users": {
     "title": "Users",
     "accessDenied": "Access restricted to administrators",
+    "addButton": "Add a user",
+    "loadError": "Couldn't load users",
     "columns": {
       "email": "Email",
       "name": "Name",
-      "role": "Role"
+      "role": "Role",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "create": {
+      "title": "Add a user",
+      "submit": "Create user",
+      "successTitle": "User created",
+      "temporaryPasswordLabel": "Temporary password",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "viewUser": "View profile",
+      "createError": "Couldn't create this user (email already in use?)"
+    },
+    "detail": {
+      "header": "User — {email}",
+      "identityTitle": "Identity",
+      "roleTitle": "Role & permissions",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "emailLabel": "Email",
+      "notProvided": "Not provided",
+      "createdAt": "Account created on {date}",
+      "lastSignIn": "Last signed in on {date}",
+      "neverSignedIn": "Never signed in",
+      "active": "Active account",
+      "inactive": "Deactivated account",
+      "loadError": "Couldn't load this user",
+      "roles": {
+        "admin": {
+          "label": "Admin",
+          "description": "Full access: dashboard and user management."
+        },
+        "manager": {
+          "label": "Manager",
+          "description": "Dashboard access only."
+        },
+        "user": {
+          "label": "User",
+          "description": "No access to admin sections."
+        }
+      },
+      "save": "Save changes",
+      "saveSuccess": "Changes saved",
+      "saveError": "Something went wrong, try again",
+      "cannotChangeOwnRole": "You can't change your own role",
+      "resetPassword": "Reset password",
+      "resetPasswordSuccess": "Reset email sent",
+      "resetPasswordError": "Couldn't send the reset email",
+      "deactivate": "Deactivate account",
+      "reactivate": "Reactivate account",
+      "deactivateConfirm": "Deactivate this account? It won't be able to log in until reactivated.",
+      "statusSuccess": "Account status updated",
+      "statusError": "Couldn't update the account status",
+      "cannotDeactivateOwnAccount": "You can't deactivate your own account",
+      "delete": "Delete account",
+      "deleteConfirmTitle": "Delete this account?",
+      "deleteConfirmDescription": "This is permanent and cannot be undone. To confirm, retype the account's email address:",
+      "deleteConfirmPlaceholder": "Email address",
+      "deleteConfirmButton": "Delete permanently",
+      "deleteCancel": "Cancel",
+      "deleteSuccess": "Account deleted",
+      "deleteError": "Couldn't delete this account",
+      "cannotDeleteOwnAccount": "You can't delete your own account"
     }
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "newPasswordLabel": "New password",
+    "submit": "Submit",
+    "invalidLink": "This link is invalid or has expired",
+    "success": "Password updated, you can log back in",
+    "error": "Something went wrong, try again"
   },
   "pagination": {
     "previous": "Previous",
