@@ -2,11 +2,11 @@ import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import GoBackButton from '@/components/core/go-back-button';
+import UserEditForm from '@/components/core/users/user-edit-form';
 import { getCurrentUser } from '@/lib/supabase/current-user';
 import type { AdminUser } from '@/lib/supabase/list-users';
 import { ForbiddenError, getUserForAdmin } from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
-import UserEditForm from './user-edit-form';
 
 function getInitials(user: AdminUser): string {
   if (user.firstName || user.lastName) {

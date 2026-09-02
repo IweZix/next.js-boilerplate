@@ -1,12 +1,12 @@
 import { Heading, Stack, Text } from '@chakra-ui/react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import GoBackButton from '@/components/core/go-back-button';
+import UserCreateForm from '@/components/core/users/user-create-form';
 import {
   assertCurrentUserIsAdmin,
   ForbiddenError,
 } from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
-import UserCreateForm from './user-create-form';
 
 export default async function NewUser() {
   const t = await getTranslations();
