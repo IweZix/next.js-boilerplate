@@ -2,7 +2,8 @@
   "common": {
     "errors": {
       "required": "This field is required"
-    }
+    },
+    "back": "Back"
   },
   "navbar": {
     "home": "Home"
@@ -41,6 +42,34 @@
       "email": "Email",
       "name": "Name",
       "role": "Role"
+    },
+    "detail": {
+      "header": "User — {email}",
+      "identityTitle": "Identity",
+      "roleTitle": "Role & permissions",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "emailLabel": "Email",
+      "notProvided": "Not provided",
+      "createdAt": "Account created on {date}",
+      "lastSignIn": "Last signed in on {date}",
+      "neverSignedIn": "Never signed in",
+      "active": "Active account",
+      "inactive": "Deactivated account",
+      "roles": {
+        "admin": {
+          "label": "Admin",
+          "description": "Full access: dashboard and user management."
+        },
+        "manager": {
+          "label": "Manager",
+          "description": "Dashboard access only."
+        },
+        "user": {
+          "label": "User",
+          "description": "No access to admin sections."
+        }
+      }
     }
   },
   "pagination": {

@@ -3,6 +3,7 @@ export const tKeys = {
     errors: {
       required: 'common.errors.required',
     },
+    back: 'common.back',
   },
   navbar: {
     home: 'navbar.home',
@@ -41,6 +42,34 @@ export const tKeys = {
       email: 'users.columns.email',
       name: 'users.columns.name',
       role: 'users.columns.role',
+    },
+    detail: {
+      header: 'users.detail.header',
+      identityTitle: 'users.detail.identityTitle',
+      roleTitle: 'users.detail.roleTitle',
+      firstNameLabel: 'users.detail.firstNameLabel',
+      lastNameLabel: 'users.detail.lastNameLabel',
+      emailLabel: 'users.detail.emailLabel',
+      notProvided: 'users.detail.notProvided',
+      createdAt: 'users.detail.createdAt',
+      lastSignIn: 'users.detail.lastSignIn',
+      neverSignedIn: 'users.detail.neverSignedIn',
+      active: 'users.detail.active',
+      inactive: 'users.detail.inactive',
+      roles: {
+        admin: {
+          label: 'users.detail.roles.admin.label',
+          description: 'users.detail.roles.admin.description',
+        },
+        manager: {
+          label: 'users.detail.roles.manager.label',
+          description: 'users.detail.roles.manager.description',
+        },
+        user: {
+          label: 'users.detail.roles.user.label',
+          description: 'users.detail.roles.user.description',
+        },
+      },
     },
   },
   pagination: {

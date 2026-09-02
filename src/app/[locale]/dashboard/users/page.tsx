@@ -31,6 +31,7 @@ export default async function Users({ searchParams }: UsersProps) {
           ]}
           rows={users.map((user) => ({
             id: user.id,
+            href: `/${locale}/dashboard/users/${user.id}`,
             cells: [user.email, user.fullName ?? 'N/A', user.role ?? 'N/A'],
           }))}
         />

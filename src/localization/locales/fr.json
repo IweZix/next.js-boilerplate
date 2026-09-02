@@ -2,7 +2,8 @@
   "common": {
     "errors": {
       "required": "Ce champ est requis"
-    }
+    },
+    "back": "Retour"
   },
   "navbar": {
     "home": "Accueil"
@@ -41,6 +42,34 @@
       "email": "Email",
       "name": "Nom",
       "role": "Rôle"
+    },
+    "detail": {
+      "header": "Utilisateur — {email}",
+      "identityTitle": "Identité",
+      "roleTitle": "Rôle & permissions",
+      "firstNameLabel": "Prénom",
+      "lastNameLabel": "Nom",
+      "emailLabel": "E-mail",
+      "notProvided": "Non renseigné",
+      "createdAt": "Compte créé le {date}",
+      "lastSignIn": "Dernière connexion le {date}",
+      "neverSignedIn": "Jamais connecté",
+      "active": "Compte actif",
+      "inactive": "Compte désactivé",
+      "roles": {
+        "admin": {
+          "label": "Admin",
+          "description": "Accès complet : tableau de bord et gestion des utilisateurs."
+        },
+        "manager": {
+          "label": "Manager",
+          "description": "Accès au tableau de bord uniquement."
+        },
+        "user": {
+          "label": "Utilisateur",
+          "description": "Aucun accès aux sections d'administration."
+        }
+      }
     }
   },
   "pagination": {
