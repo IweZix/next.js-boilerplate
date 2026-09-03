@@ -2,6 +2,18 @@
 
 This project uses Supabase (Auth for now) **server-side only**. The browser never talks to Supabase directly: everything goes through Next.js route handlers under `src/app/api/`. This document explains what to do when adding a new route that uses Supabase.
 
+## Initializing Supabase for a new project
+
+Steps to bootstrap Supabase when spinning up a new site from this boilerplate (assumes the Vercel Marketplace Supabase integration):
+
+1. **Provision**: in the new site's Vercel project → Storage → Create Database → Supabase. This creates the Supabase project and injects the env vars (`POSTGRES_*`, `SUPABASE_*`, `NEXT_PUBLIC_SUPABASE_*`) into the Vercel project automatically.
+2. **Pull the env vars locally**: `vercel link` then `vercel env pull .env`. Only four are actually read by the code: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` (`src/lib/supabase/server.ts`, `src/lib/supabase/middleware.ts`), `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (`src/lib/supabase/admin.ts`). The service role key never leaves `.env`/the server.
+3. **Link the local CLI**: `npx supabase login` (once per machine), then `npx supabase link --project-ref <ref>` (ref shown in Vercel → Storage, or `npx supabase projects list`).
+4. **Push the hardened config**: `npx supabase config push`. This pushes `supabase/config.toml` — including `enable_signup = false` — to the new project, closing off the Supabase-hosted `/auth/v1/signup` endpoint so it can't be hit directly with the public anon key, bypassing this app entirely. Verify in Dashboard → Authentication → Sign In / Providers → Email that "Allow new users to sign up" is off.
+5. **Bootstrap the first admin**: account creation is admin-gated only (`assertCurrentUserIsAdmin()`), so there's no user yet to create the first one. Run a one-off local script using `createAdminClient()` (`src/lib/supabase/admin.ts`) to call `supabase.auth.admin.createUser({ ..., app_metadata: { role: Role.ADMIN } })` by hand, with the service role key — never as an app route.
+6. **RLS on any new table**: this app currently has no custom tables in `public` (all user data lives in Supabase-managed `auth.users`). The moment a table is added, enable RLS and write its policies before exposing it — don't rely on default Supabase privileges (`anon`/`authenticated` get full CRUD by default on new tables).
+7. **Verify**: `npm run dev`, log in as the bootstrap admin, create a user via `/api/admin/users`, and confirm a direct `curl` to `<project>.supabase.co/auth/v1/signup` is rejected.
+
 ## Architecture rule
 
 - No Supabase client in a `'use client'` component, no `fetch` from the browser to `*.supabase.co`.
