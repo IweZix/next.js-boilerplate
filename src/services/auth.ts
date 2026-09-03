@@ -1,7 +1,4 @@
-export interface LoginPayload {
-  email: string;
-  password: string;
-}
+import type { LoginPayload } from '@/services/types/auth';
 
 export async function login({ email, password }: LoginPayload): Promise<void> {
   const response = await fetch('/api/auth/login', {

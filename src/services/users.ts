@@ -1,14 +1,17 @@
-import type { AdminUser } from '@/lib/supabase/list-users';
-import type { Role } from '@/types/Role';
+import type {
+  CreateUserPayload,
+  CreateUserResult,
+  GetUserResult,
+  GetUsersResult,
+  UpdateUserPayload,
+} from '@/services/types/users';
 
-export interface GetUsersResult {
-  users: AdminUser[];
-  page: number;
-  perPage: number;
-  total: number;
-  lastPage: number;
-}
-
+/**
+ * Fetches a list of users from the API.
+ * @param page The page number to fetch.
+ * @param perPage The number of users to fetch per page.
+ * @returns A promise resolving to the list of users and pagination information.
+ */
 export async function getUsers(
   page: number,
   perPage: number,
@@ -25,11 +28,11 @@ export async function getUsers(
   return response.json();
 }
 
-export interface GetUserResult {
-  user: AdminUser;
-  isOwnAccount: boolean;
-}
-
+/**
+ * Fetches a single user from the API.
+ * @param userId The ID of the user to fetch.
+ * @returns A promise resolving to the user and a flag indicating if it's their own account.
+ */
 export async function getUser(userId: string): Promise<GetUserResult> {
   const response = await fetch(`/api/admin/users/${userId}`);
 
@@ -41,24 +44,11 @@ export async function getUser(userId: string): Promise<GetUserResult> {
   return response.json();
 }
 
-export interface UpdateUserPayload {
-  firstName?: string;
-  lastName?: string;
-  role: Role;
-}
-
-export interface CreateUserPayload {
-  email: string;
-  firstName?: string;
-  lastName?: string;
-  role: Role;
-}
-
-export interface CreateUserResult {
-  user: { id: string };
-  temporaryPassword: string;
-}
-
+/**
+ * Creates a new user via the API.
+ * @param {CreateUserPayload} payload The data for the new user.
+ * @returns {Promise<CreateUserResult>} A promise resolving to the created user and a temporary password.
+ */
 export async function createUser(
   payload: CreateUserPayload,
 ): Promise<CreateUserResult> {
@@ -76,6 +66,12 @@ export async function createUser(
   return response.json();
 }
 
+/**
+ * Updates an existing user via the API.
+ * @param {string} userId The ID of the user to update.
+ * @param {UpdateUserPayload} payload The data to update the user with.
+ * @returns {Promise<void>} A promise resolving when the update is complete.
+ */
 export async function updateUser(
   userId: string,
   payload: UpdateUserPayload,
@@ -92,6 +88,13 @@ export async function updateUser(
   }
 }
 
+/**
+ * Sends a password reset request for a user via the API.
+ * @param {string} userId The ID of the user to reset the password for.
+ * @param {string} email The email of the user to reset the password for.
+ * @param {string} locale The locale to use for the password reset email.
+ * @returns {Promise<void>} A promise resolving when the password reset request is complete.
+ */
 export async function sendPasswordReset(
   userId: string,
   email: string,
@@ -109,6 +112,12 @@ export async function sendPasswordReset(
   }
 }
 
+/**
+ * Sets the active status of a user via the API.
+ * @param {string} userId The ID of the user to update.
+ * @param {boolean} isActive The new active status of the user.
+ * @returns {Promise<void>} A promise resolving when the status update is complete.
+ */
 export async function setUserActive(
   userId: string,
   isActive: boolean,
@@ -125,6 +134,11 @@ export async function setUserActive(
   }
 }
 
+/**
+ * Deletes a user via the API.
+ * @param {string} userId The ID of the user to delete.
+ * @returns {Promise<void>} A promise resolving when the deletion is complete.
+ */
 export async function deleteUser(userId: string): Promise<void> {
   const response = await fetch(`/api/admin/users/${userId}`, {
     method: 'DELETE',

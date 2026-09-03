@@ -1,17 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import type { News } from '@/services/types/news';
 import { PaginationParams, StrapiResponse } from '@/types/strapi';
 import { customInstance } from '@/utils/custom-instance';
-
-// News object
-export interface News {
-  id: number;
-  documentId: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
 
 /**
  * Fetches news from the API with optional pagination parameters.
