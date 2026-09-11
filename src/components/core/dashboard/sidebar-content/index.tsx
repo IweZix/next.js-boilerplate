@@ -1,12 +1,19 @@
 'use client';
 
-import { Badge, Flex, Stack, Text } from '@chakra-ui/react';
+import { Badge, Flex, IconButton, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import type { IconType } from 'react-icons';
-import { LuLayoutDashboard, LuSettings, LuUsers } from 'react-icons/lu';
+import {
+  LuLayoutDashboard,
+  LuPanelLeftClose,
+  LuPanelLeftOpen,
+  LuSettings,
+  LuUsers,
+} from 'react-icons/lu';
 import LogoutButton from '@/components/core/auth/logout-button';
+import { Tooltip } from '@/components/ui/tooltip';
 import { tKeys } from '@/localization/tKeys';
 import { Role } from '@/types/Role';
 
@@ -48,6 +55,8 @@ interface SidebarContentProps {
   email?: string | null;
   fullName?: string;
   role: Role | null;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
   onNavigate?: () => void;
 }
 
@@ -55,6 +64,8 @@ export default function SidebarContent({
   email,
   fullName,
   role,
+  isCollapsed = false,
+  onToggleCollapse,
   onNavigate,
 }: SidebarContentProps) {
   const t = useTranslations();
@@ -64,34 +75,61 @@ export default function SidebarContent({
   return (
     <Flex direction="column" h="full" justify="space-between">
       <Stack gap={1} p={4}>
-        <Text fontWeight="bold" mb={2}>
-          {t(tKeys.sidebar.menu)}
-        </Text>
+        <Flex align="center" justify="space-between" mb={2}>
+          {!isCollapsed && (
+            <Text fontWeight="bold">{t(tKeys.sidebar.menu)}</Text>
+          )}
+          {onToggleCollapse && (
+            <IconButton
+              aria-label={t(
+                isCollapsed ? tKeys.sidebar.expand : tKeys.sidebar.collapse,
+              )}
+              variant="ghost"
+              size="sm"
+              onClick={onToggleCollapse}
+              mx={isCollapsed ? 'auto' : undefined}
+            >
+              {isCollapsed ? <LuPanelLeftOpen /> : <LuPanelLeftClose />}
+            </IconButton>
+          )}
+        </Flex>
 
         {NAV_ITEMS.filter(
           (item) => role !== null && item.allowedRoles.includes(role),
         ).map((item) => {
           const Icon = item.icon;
+          const label = t(tKeys.sidebar.nav[item.key]);
 
           if (!item.implemented) {
             return (
-              <Flex
+              <Tooltip
                 key={item.key}
-                align="center"
-                gap={2}
-                px={3}
-                py={2}
-                rounded="md"
-                color="fg.muted"
-                cursor="not-allowed"
-                opacity={0.5}
+                content={label}
+                disabled={!isCollapsed}
+                positioning={{ placement: 'right' }}
               >
-                <Icon />
-                <Text flex="1">{t(tKeys.sidebar.nav[item.key])}</Text>
-                <Badge size="sm" colorPalette="gray">
-                  {t(tKeys.sidebar.comingSoon)}
-                </Badge>
-              </Flex>
+                <Flex
+                  align="center"
+                  justify={isCollapsed ? 'center' : 'flex-start'}
+                  gap={2}
+                  px={3}
+                  py={2}
+                  rounded="md"
+                  color="fg.muted"
+                  cursor="not-allowed"
+                  opacity={0.5}
+                >
+                  <Icon />
+                  {!isCollapsed && (
+                    <>
+                      <Text flex="1">{label}</Text>
+                      <Badge size="sm" colorPalette="gray">
+                        {t(tKeys.sidebar.comingSoon)}
+                      </Badge>
+                    </>
+                  )}
+                </Flex>
+              </Tooltip>
             );
           }
 
@@ -99,36 +137,46 @@ export default function SidebarContent({
           const isActive = pathname === href;
 
           return (
-            <Link key={item.key} href={href} onClick={onNavigate}>
-              <Flex
-                align="center"
-                gap={2}
-                px={3}
-                py={2}
-                rounded="md"
-                bg={isActive ? 'bg.emphasized' : 'transparent'}
-                fontWeight={isActive ? 'semibold' : 'normal'}
-                _hover={{ bg: 'bg.muted' }}
-              >
-                <Icon />
-                <Text>{t(tKeys.sidebar.nav[item.key])}</Text>
-              </Flex>
-            </Link>
+            <Tooltip
+              key={item.key}
+              content={label}
+              disabled={!isCollapsed}
+              positioning={{ placement: 'right' }}
+            >
+              <Link href={href} onClick={onNavigate}>
+                <Flex
+                  align="center"
+                  justify={isCollapsed ? 'center' : 'flex-start'}
+                  gap={2}
+                  px={3}
+                  py={2}
+                  rounded="md"
+                  bg={isActive ? 'bg.emphasized' : 'transparent'}
+                  fontWeight={isActive ? 'semibold' : 'normal'}
+                  _hover={{ bg: 'bg.muted' }}
+                >
+                  <Icon />
+                  {!isCollapsed && <Text>{label}</Text>}
+                </Flex>
+              </Link>
+            </Tooltip>
           );
         })}
       </Stack>
 
-      <Stack gap={2} p={4} borderTopWidth="1px">
-        <Text fontSize="sm" color="fg.muted" truncate>
-          {fullName ?? email}
-        </Text>
-        {role && (
-          <Badge alignSelf="flex-start" colorPalette="blue">
-            {t(tKeys.dashboard.role, { role })}
-          </Badge>
-        )}
-        <LogoutButton />
-      </Stack>
+      {!isCollapsed && (
+        <Stack gap={2} p={4} borderTopWidth="1px">
+          <Text fontSize="sm" color="fg.muted" truncate>
+            {fullName ?? email}
+          </Text>
+          {role && (
+            <Badge alignSelf="flex-start" colorPalette="blue">
+              {t(tKeys.dashboard.role, { role })}
+            </Badge>
+          )}
+          <LogoutButton />
+        </Stack>
+      )}
     </Flex>
   );
 }

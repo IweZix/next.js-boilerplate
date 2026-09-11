@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export enum StorageKeys {
   TOKEN = 'token',
+  SIDEBAR_COLLAPSED = 'sidebar-collapsed',
 }
 
 export function useLocalStorage<T>(key: string, initialValue: T) {

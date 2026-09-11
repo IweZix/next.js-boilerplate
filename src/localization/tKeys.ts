@@ -34,6 +34,8 @@ export const tKeys = {
     },
     comingSoon: 'sidebar.comingSoon',
     menu: 'sidebar.menu',
+    collapse: 'sidebar.collapse',
+    expand: 'sidebar.expand',
   },
   users: {
     title: 'users.title',

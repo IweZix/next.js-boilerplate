@@ -33,7 +33,9 @@
       "settings": "Paramètres"
     },
     "comingSoon": "Bientôt disponible",
-    "menu": "Menu"
+    "menu": "Menu",
+    "collapse": "Réduire le menu",
+    "expand": "Agrandir le menu"
   },
   "users": {
     "title": "Utilisateurs",

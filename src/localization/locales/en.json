@@ -33,7 +33,9 @@
       "settings": "Settings"
     },
     "comingSoon": "Coming soon",
-    "menu": "Menu"
+    "menu": "Menu",
+    "collapse": "Collapse menu",
+    "expand": "Expand menu"
   },
   "users": {
     "title": "Users",
