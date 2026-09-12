@@ -1,19 +1,12 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Spinner,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import DataTable from '@/components/core/data-table';
+import PageHeader from '@/components/core/page-header';
 import Pagination from '@/components/core/pagination';
 import { tKeys } from '@/localization/tKeys';
 import { getUsers } from '@/services/users';
@@ -44,20 +37,22 @@ export default function Users() {
 
   return (
     <Stack gap={4}>
-      <Flex justify="space-between" align="center">
-        <Heading size="lg">{t(tKeys.users.title)}</Heading>
-        <Button
-          asChild
-          colorPalette="gray"
-          bg="black"
-          color="white"
-          _hover={{ bg: 'gray.800' }}
-        >
-          <Link href={`/${locale}/dashboard/users/new`}>
-            {t(tKeys.users.addButton)}
-          </Link>
-        </Button>
-      </Flex>
+      <PageHeader
+        title={t(tKeys.users.title)}
+        action={
+          <Button
+            asChild
+            colorPalette="gray"
+            bg="black"
+            color="white"
+            _hover={{ bg: 'gray.800' }}
+          >
+            <Link href={`/${locale}/dashboard/users/new`}>
+              {t(tKeys.users.addButton)}
+            </Link>
+          </Button>
+        }
+      />
       <DataTable
         headers={[
           t(tKeys.users.columns.email),

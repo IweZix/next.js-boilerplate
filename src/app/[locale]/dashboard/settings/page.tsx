@@ -1,17 +1,10 @@
 'use client';
 
-import {
-  Button,
-  Card,
-  Flex,
-  Heading,
-  NativeSelect,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Card, NativeSelect, Stack, Text } from '@chakra-ui/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import PageHeader from '@/components/core/page-header';
 import { tKeys } from '@/localization/tKeys';
 import { Locale } from '@/types/Locale';
 
@@ -30,19 +23,21 @@ export default function Settings() {
 
   return (
     <Stack gap={4}>
-      <Flex justify="space-between" align="center">
-        <Heading size="lg">{t(tKeys.settings.title)}</Heading>
-        <Button
-          onClick={handleSave}
-          disabled={selectedLocale === locale}
-          colorPalette="gray"
-          bg="black"
-          color="white"
-          _hover={{ bg: 'gray.800' }}
-        >
-          {t(tKeys.settings.save)}
-        </Button>
-      </Flex>
+      <PageHeader
+        title={t(tKeys.settings.title)}
+        action={
+          <Button
+            onClick={handleSave}
+            disabled={selectedLocale === locale}
+            colorPalette="gray"
+            bg="black"
+            color="white"
+            _hover={{ bg: 'gray.800' }}
+          >
+            {t(tKeys.settings.save)}
+          </Button>
+        }
+      />
 
       <Card.Root>
         <Card.Body>
