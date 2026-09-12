@@ -164,19 +164,32 @@ export default function SidebarContent({
         })}
       </Stack>
 
-      {!isCollapsed && (
-        <Stack gap={2} p={4} borderTopWidth="1px">
-          <Text fontSize="sm" color="fg.muted" truncate>
-            {fullName ?? email}
-          </Text>
-          {role && (
-            <Badge alignSelf="flex-start" colorPalette="blue">
-              {t(tKeys.dashboard.role, { role })}
-            </Badge>
-          )}
-          <LogoutButton />
-        </Stack>
-      )}
+      <Stack
+        gap={2}
+        p={4}
+        borderTopWidth="1px"
+        align={isCollapsed ? 'center' : 'stretch'}
+      >
+        {!isCollapsed && (
+          <>
+            <Text fontSize="sm" color="fg.muted" truncate>
+              {fullName ?? email}
+            </Text>
+            {role && (
+              <Badge alignSelf="flex-start" colorPalette="blue">
+                {t(tKeys.dashboard.role, { role })}
+              </Badge>
+            )}
+          </>
+        )}
+        <Tooltip
+          content={t(tKeys.dashboard.logout)}
+          disabled={!isCollapsed}
+          positioning={{ placement: 'right' }}
+        >
+          <LogoutButton isCollapsed={isCollapsed} />
+        </Tooltip>
+      </Stack>
     </Flex>
   );
 }

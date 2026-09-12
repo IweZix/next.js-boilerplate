@@ -1,13 +1,18 @@
 'use client';
 
-import { Button } from '@chakra-ui/react';
+import { Button, IconButton } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { LuLogOut } from 'react-icons/lu';
 import { tKeys } from '@/localization/tKeys';
 import { logout } from '@/services/auth';
 
-export default function LogoutButton() {
+interface LogoutButtonProps {
+  isCollapsed?: boolean;
+}
+
+export default function LogoutButton({ isCollapsed }: LogoutButtonProps) {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
@@ -19,6 +24,19 @@ export default function LogoutButton() {
     router.push(`/${locale}/login`);
     router.refresh();
   };
+
+  if (isCollapsed) {
+    return (
+      <IconButton
+        aria-label={t(tKeys.dashboard.logout)}
+        onClick={handleLogout}
+        loading={isLoading}
+        variant="outline"
+      >
+        <LuLogOut />
+      </IconButton>
+    );
+  }
 
   return (
     <Button onClick={handleLogout} loading={isLoading} variant="outline">
