@@ -125,4 +125,16 @@ export const tKeys = {
     next: 'pagination.next',
     pageOf: 'pagination.pageOf',
   },
+  settings: {
+    title: 'settings.title',
+    language: {
+      label: 'settings.language.label',
+      description: 'settings.language.description',
+      options: {
+        fr: 'settings.language.options.fr',
+        en: 'settings.language.options.en',
+      },
+    },
+    save: 'settings.save',
+  },
 } as const;

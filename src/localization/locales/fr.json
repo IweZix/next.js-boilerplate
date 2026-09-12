@@ -124,5 +124,17 @@
     "previous": "Précédent",
     "next": "Suivant",
     "pageOf": "Page {page} sur {lastPage}"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": {
+      "label": "Langue de l'interface",
+      "description": "Choisissez la langue utilisée dans le back-office.",
+      "options": {
+        "fr": "Français",
+        "en": "English"
+      }
+    },
+    "save": "Enregistrer"
   }
 }
