@@ -136,5 +136,62 @@
       }
     },
     "save": "Enregistrer"
+  },
+  "mentions": {
+    "title": "Mentions légales",
+    "editor": {
+      "heading": "1. Éditeur du site",
+      "intro": "Le présent site, accessible à l'adresse {siteUrl}, est édité par :",
+      "identity": "{companyName}, {legalForm}",
+      "registeredOffice": "Siège social : {street}, {postalCode} {city}, {country}",
+      "bceNumber": "Numéro d'entreprise (BCE) : {bceNumber}",
+      "vatNumber": "Numéro de TVA : {vatNumber}",
+      "court": "RPM / Tribunal de l'entreprise : {district}",
+      "email": "Courriel : {email}",
+      "phone": "Téléphone : {phone}",
+      "publisher": "Responsable de la publication : {publisherName}, {publisherRole}",
+      "soleTraderNote": "(Variante indépendant / personne physique : remplacer la dénomination par « {publisherName}, entrepreneur indépendant », conserver adresse professionnelle, BCE et TVA.)"
+    },
+    "hosting": {
+      "heading": "2. Hébergement",
+      "intro": "Le site est hébergé par :",
+      "details": "{hostingName} — {hostingAddress} — {hostingWebsite} — {hostingContact}"
+    },
+    "intellectualProperty": {
+      "heading": "3. Propriété intellectuelle",
+      "paragraph1": "L'ensemble des éléments composant le site — structure, textes, images, illustrations, photographies, vidéos, logos, marques, chartes graphiques, bases de données et code source — est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de {companyName} ou de ses partenaires et concédants de licence.",
+      "paragraph2": "Toute reproduction, représentation, adaptation, modification, traduction, diffusion ou exploitation, totale ou partielle, sur quelque support que ce soit, est interdite sans autorisation écrite préalable de {companyName}, sous réserve des exceptions légales.",
+      "paragraph3": "La création d'un lien hypertexte vers la page d'accueil du site est libre, à condition qu'elle ne porte pas atteinte à l'image de {companyName} et qu'elle ne laisse pas supposer un lien d'affiliation ou d'approbation."
+    },
+    "content": {
+      "heading": "4. Contenu du site et responsabilité",
+      "paragraph1": "{companyName} met tout en œuvre pour fournir des informations exactes et tenues à jour, sans pouvoir en garantir l'exhaustivité ni l'absence d'erreur. Les informations publiées ont une portée générale et à titre informatif : elles ne constituent ni un conseil personnalisé, ni une offre contractuelle, ni un engagement.",
+      "paragraph2": "{companyName} se réserve le droit de modifier, corriger ou supprimer à tout moment le contenu du site, sans préavis.",
+      "paragraph3": "Dans les limites autorisées par la loi, {companyName} ne peut être tenue responsable des dommages indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder, notamment en cas d'interruption, de maintenance, de bug ou d'intrusion informatique."
+    },
+    "thirdPartyLinks": {
+      "heading": "5. Liens vers des sites tiers",
+      "paragraph": "Le site peut contenir des liens vers des sites édités par des tiers. Ces liens sont proposés à titre de commodité. {companyName} n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur disponibilité ou leurs pratiques en matière de données personnelles."
+    },
+    "personalData": {
+      "heading": "6. Données à caractère personnel",
+      "intro": "Le traitement des données personnelles effectué dans le cadre du site est décrit dans la Politique de confidentialité.",
+      "controller": "Responsable du traitement : {companyName}, {address}",
+      "contact": "Contact : {dpoEmail}",
+      "authority": "Autorité de contrôle : Autorité de protection des données, Rue de la Presse 35, 1000 Bruxelles — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "cookies": {
+      "heading": "7. Cookies",
+      "paragraph": "L'utilisation des cookies et traceurs est détaillée dans la Politique cookies. Vous pouvez modifier vos préférences à tout moment via {consentWithdrawalMethod}."
+    },
+    "governingLaw": {
+      "heading": "8. Droit applicable et juridiction compétente",
+      "paragraph": "Le site et les présentes mentions légales sont régis par le droit {governingLawCountry}. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux de {judicialDistrict}, sans préjudice des règles impératives de protection des consommateurs."
+    },
+    "contact": {
+      "heading": "9. Contact",
+      "paragraph": "Pour toute question relative au site ou aux présentes mentions, écrivez à {email} ou à l'adresse postale mentionnée au point 1.",
+      "lastUpdated": "Dernière mise à jour : {date}"
+    }
   }
 }

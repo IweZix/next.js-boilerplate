@@ -137,4 +137,61 @@ export const tKeys = {
     },
     save: 'settings.save',
   },
+  mentions: {
+    title: 'mentions.title',
+    editor: {
+      heading: 'mentions.editor.heading',
+      intro: 'mentions.editor.intro',
+      identity: 'mentions.editor.identity',
+      registeredOffice: 'mentions.editor.registeredOffice',
+      bceNumber: 'mentions.editor.bceNumber',
+      vatNumber: 'mentions.editor.vatNumber',
+      court: 'mentions.editor.court',
+      email: 'mentions.editor.email',
+      phone: 'mentions.editor.phone',
+      publisher: 'mentions.editor.publisher',
+      soleTraderNote: 'mentions.editor.soleTraderNote',
+    },
+    hosting: {
+      heading: 'mentions.hosting.heading',
+      intro: 'mentions.hosting.intro',
+      details: 'mentions.hosting.details',
+    },
+    intellectualProperty: {
+      heading: 'mentions.intellectualProperty.heading',
+      paragraph1: 'mentions.intellectualProperty.paragraph1',
+      paragraph2: 'mentions.intellectualProperty.paragraph2',
+      paragraph3: 'mentions.intellectualProperty.paragraph3',
+    },
+    content: {
+      heading: 'mentions.content.heading',
+      paragraph1: 'mentions.content.paragraph1',
+      paragraph2: 'mentions.content.paragraph2',
+      paragraph3: 'mentions.content.paragraph3',
+    },
+    thirdPartyLinks: {
+      heading: 'mentions.thirdPartyLinks.heading',
+      paragraph: 'mentions.thirdPartyLinks.paragraph',
+    },
+    personalData: {
+      heading: 'mentions.personalData.heading',
+      intro: 'mentions.personalData.intro',
+      controller: 'mentions.personalData.controller',
+      contact: 'mentions.personalData.contact',
+      authority: 'mentions.personalData.authority',
+    },
+    cookies: {
+      heading: 'mentions.cookies.heading',
+      paragraph: 'mentions.cookies.paragraph',
+    },
+    governingLaw: {
+      heading: 'mentions.governingLaw.heading',
+      paragraph: 'mentions.governingLaw.paragraph',
+    },
+    contact: {
+      heading: 'mentions.contact.heading',
+      paragraph: 'mentions.contact.paragraph',
+      lastUpdated: 'mentions.contact.lastUpdated',
+    },
+  },
 } as const;

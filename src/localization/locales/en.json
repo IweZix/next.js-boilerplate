@@ -136,5 +136,62 @@
       }
     },
     "save": "Save"
+  },
+  "mentions": {
+    "title": "Legal notice",
+    "editor": {
+      "heading": "1. Site publisher",
+      "intro": "This site, accessible at {siteUrl}, is published by:",
+      "identity": "{companyName}, {legalForm}",
+      "registeredOffice": "Registered office: {street}, {postalCode} {city}, {country}",
+      "bceNumber": "Company registration number (BCE): {bceNumber}",
+      "vatNumber": "VAT number: {vatNumber}",
+      "court": "RPM / Enterprise court: {district}",
+      "email": "Email: {email}",
+      "phone": "Phone: {phone}",
+      "publisher": "Publication manager: {publisherName}, {publisherRole}",
+      "soleTraderNote": "(Sole trader / individual variant: replace the company name with \"{publisherName}, sole trader\", keeping the business address, BCE and VAT numbers.)"
+    },
+    "hosting": {
+      "heading": "2. Hosting",
+      "intro": "The site is hosted by:",
+      "details": "{hostingName} — {hostingAddress} — {hostingWebsite} — {hostingContact}"
+    },
+    "intellectualProperty": {
+      "heading": "3. Intellectual property",
+      "paragraph1": "All elements making up the site — structure, text, images, illustrations, photographs, videos, logos, trademarks, graphic charters, databases and source code — are protected by intellectual property law and remain the exclusive property of {companyName} or its partners and licensors.",
+      "paragraph2": "Any reproduction, representation, adaptation, modification, translation, distribution or exploitation, in whole or in part, on any medium whatsoever, is prohibited without the prior written authorization of {companyName}, subject to legal exceptions.",
+      "paragraph3": "Creating a hyperlink to the site's homepage is free, provided it does not harm the image of {companyName} and does not suggest any affiliation or endorsement."
+    },
+    "content": {
+      "heading": "4. Site content and liability",
+      "paragraph1": "{companyName} makes every effort to provide accurate and up-to-date information, without being able to guarantee its completeness or the absence of errors. The information published is general in nature and provided for information purposes only: it does not constitute personalized advice, a contractual offer, or a commitment.",
+      "paragraph2": "{companyName} reserves the right to modify, correct or remove the site's content at any time, without notice.",
+      "paragraph3": "To the extent permitted by law, {companyName} cannot be held liable for indirect damages resulting from the use of the site or the inability to access it, in particular in the event of interruption, maintenance, bugs or computer intrusion."
+    },
+    "thirdPartyLinks": {
+      "heading": "5. Links to third-party sites",
+      "paragraph": "The site may contain links to sites published by third parties. These links are provided for convenience. {companyName} exercises no control over these sites and disclaims all liability regarding their content, availability or personal data practices."
+    },
+    "personalData": {
+      "heading": "6. Personal data",
+      "intro": "The processing of personal data carried out as part of the site is described in the Privacy Policy.",
+      "controller": "Data controller: {companyName}, {address}",
+      "contact": "Contact: {dpoEmail}",
+      "authority": "Supervisory authority: Belgian Data Protection Authority, Rue de la Presse 35, 1000 Brussels — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "cookies": {
+      "heading": "7. Cookies",
+      "paragraph": "The use of cookies and trackers is detailed in the Cookie Policy. You can change your preferences at any time via {consentWithdrawalMethod}."
+    },
+    "governingLaw": {
+      "heading": "8. Governing law and jurisdiction",
+      "paragraph": "The site and this legal notice are governed by {governingLawCountry} law. Any dispute relating to their interpretation or performance falls under the exclusive jurisdiction of the courts of {judicialDistrict}, without prejudice to mandatory consumer protection rules."
+    },
+    "contact": {
+      "heading": "9. Contact",
+      "paragraph": "For any question relating to the site or this legal notice, write to {email} or to the postal address mentioned in point 1.",
+      "lastUpdated": "Last updated: {date}"
+    }
   }
 }
