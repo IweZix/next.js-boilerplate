@@ -99,6 +99,7 @@ export default async function AnalyticsPage({
           days: periodDays,
         })}
         errorLabel={errorLabel}
+        emptyLabel={emptyLabel}
         locale={locale}
       />
 

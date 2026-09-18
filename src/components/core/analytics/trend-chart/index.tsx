@@ -11,6 +11,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import AnalyticsEmptyState from '@/components/core/analytics/empty-state';
 import { ANALYTICS_COLORS } from '@/components/core/analytics/palette';
 import AnalyticsPanelCard from '@/components/core/analytics/panel-card';
 import { useColorModeValue } from '@/components/ui/color-mode';
@@ -64,7 +65,7 @@ export default function AnalyticsTrendChart({
   if (result.data.length === 0) {
     return (
       <AnalyticsPanelCard title={title}>
-        <Text color="fg.muted">{emptyLabel}</Text>
+        <AnalyticsEmptyState label={emptyLabel} />
       </AnalyticsPanelCard>
     );
   }
