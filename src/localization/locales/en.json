@@ -141,57 +141,295 @@
     "title": "Legal notice",
     "editor": {
       "heading": "1. Site publisher",
-      "intro": "This site, accessible at {siteUrl}, is published by:",
-      "identity": "{companyName}, {legalForm}",
-      "registeredOffice": "Registered office: {street}, {postalCode} {city}, {country}",
-      "bceNumber": "Company registration number (BCE): {bceNumber}",
-      "vatNumber": "VAT number: {vatNumber}",
-      "court": "RPM / Enterprise court: {district}",
-      "email": "Email: {email}",
-      "phone": "Phone: {phone}",
-      "publisher": "Publication manager: {publisherName}, {publisherRole}",
-      "soleTraderNote": "(Sole trader / individual variant: replace the company name with \"{publisherName}, sole trader\", keeping the business address, BCE and VAT numbers.)"
+      "intro": "This site, accessible at [URL_DU_SITE], is published by:",
+      "identity": "[DÉNOMINATION_SOCIALE], [FORME_JURIDIQUE]",
+      "registeredOffice": "Registered office: [RUE_ET_NUMÉRO], [CODE_POSTAL] [VILLE], [PAYS]",
+      "bceNumber": "Company registration number (BCE): [NUMÉRO_BCE]",
+      "vatNumber": "VAT number: [NUMÉRO_TVA]",
+      "court": "RPM / Enterprise court: [ARRONDISSEMENT]",
+      "email": "Email: [EMAIL_CONTACT]",
+      "phone": "Phone: [TÉLÉPHONE]",
+      "publisher": "Publication manager: [PRÉNOM_NOM], [FONCTION]",
+      "soleTraderNote": "(Sole trader / individual variant: replace the company name with \"[PRÉNOM_NOM], sole trader\", keeping the business address, BCE and VAT numbers.)"
     },
     "hosting": {
       "heading": "2. Hosting",
       "intro": "The site is hosted by:",
-      "details": "{hostingName} — {hostingAddress} — {hostingWebsite} — {hostingContact}"
+      "details": "Vercel Inc — 440 N Barranca Ave #4133, Covina, CA 91723, United States — www.vercel.com — support@vercel.com"
     },
     "intellectualProperty": {
       "heading": "3. Intellectual property",
-      "paragraph1": "All elements making up the site — structure, text, images, illustrations, photographs, videos, logos, trademarks, graphic charters, databases and source code — are protected by intellectual property law and remain the exclusive property of {companyName} or its partners and licensors.",
-      "paragraph2": "Any reproduction, representation, adaptation, modification, translation, distribution or exploitation, in whole or in part, on any medium whatsoever, is prohibited without the prior written authorization of {companyName}, subject to legal exceptions.",
-      "paragraph3": "Creating a hyperlink to the site's homepage is free, provided it does not harm the image of {companyName} and does not suggest any affiliation or endorsement."
+      "paragraph1": "All elements making up the site — structure, text, images, illustrations, photographs, videos, logos, trademarks, graphic charters, databases and source code — are protected by intellectual property law and remain the exclusive property of [DÉNOMINATION_SOCIALE] or its partners and licensors.",
+      "paragraph2": "Any reproduction, representation, adaptation, modification, translation, distribution or exploitation, in whole or in part, on any medium whatsoever, is prohibited without the prior written authorization of [DÉNOMINATION_SOCIALE], subject to legal exceptions.",
+      "paragraph3": "Creating a hyperlink to the site's homepage is free, provided it does not harm the image of [DÉNOMINATION_SOCIALE] and does not suggest any affiliation or endorsement."
     },
     "content": {
       "heading": "4. Site content and liability",
-      "paragraph1": "{companyName} makes every effort to provide accurate and up-to-date information, without being able to guarantee its completeness or the absence of errors. The information published is general in nature and provided for information purposes only: it does not constitute personalized advice, a contractual offer, or a commitment.",
-      "paragraph2": "{companyName} reserves the right to modify, correct or remove the site's content at any time, without notice.",
-      "paragraph3": "To the extent permitted by law, {companyName} cannot be held liable for indirect damages resulting from the use of the site or the inability to access it, in particular in the event of interruption, maintenance, bugs or computer intrusion."
+      "paragraph1": "[DÉNOMINATION_SOCIALE] makes every effort to provide accurate and up-to-date information, without being able to guarantee its completeness or the absence of errors. The information published is general in nature and provided for information purposes only: it does not constitute personalized advice, a contractual offer, or a commitment.",
+      "paragraph2": "[DÉNOMINATION_SOCIALE] reserves the right to modify, correct or remove the site's content at any time, without notice.",
+      "paragraph3": "To the extent permitted by law, [DÉNOMINATION_SOCIALE] cannot be held liable for indirect damages resulting from the use of the site or the inability to access it, in particular in the event of interruption, maintenance, bugs or computer intrusion."
     },
     "thirdPartyLinks": {
       "heading": "5. Links to third-party sites",
-      "paragraph": "The site may contain links to sites published by third parties. These links are provided for convenience. {companyName} exercises no control over these sites and disclaims all liability regarding their content, availability or personal data practices."
+      "paragraph": "The site may contain links to sites published by third parties. These links are provided for convenience. [DÉNOMINATION_SOCIALE] exercises no control over these sites and disclaims all liability regarding their content, availability or personal data practices."
     },
     "personalData": {
       "heading": "6. Personal data",
-      "intro": "The processing of personal data carried out as part of the site is described in the Privacy Policy.",
-      "controller": "Data controller: {companyName}, {address}",
-      "contact": "Contact: {dpoEmail}",
+      "intro": "The processing of personal data carried out as part of the site is described in the <link>Privacy Policy</link>.",
+      "controller": "Data controller: [DÉNOMINATION_SOCIALE], [ADRESSE]",
+      "contact": "Contact: [EMAIL_DPO_OU_CONTACT]",
       "authority": "Supervisory authority: Belgian Data Protection Authority, Rue de la Presse 35, 1000 Brussels — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
     },
     "cookies": {
       "heading": "7. Cookies",
-      "paragraph": "The use of cookies and trackers is detailed in the Cookie Policy. You can change your preferences at any time via {consentWithdrawalMethod}."
+      "paragraph": "The use of cookies and trackers is detailed in the <link>Cookie Policy</link>. You can change your preferences at any time via [MOYEN_DE_RETRAIT_DU_CONSENTEMENT]."
     },
     "governingLaw": {
       "heading": "8. Governing law and jurisdiction",
-      "paragraph": "The site and this legal notice are governed by {governingLawCountry} law. Any dispute relating to their interpretation or performance falls under the exclusive jurisdiction of the courts of {judicialDistrict}, without prejudice to mandatory consumer protection rules."
+      "paragraph": "The site and this legal notice are governed by [PAYS_DROIT_APPLICABLE] law. Any dispute relating to their interpretation or performance falls under the exclusive jurisdiction of the courts of [ARRONDISSEMENT_JUDICIAIRE], without prejudice to mandatory consumer protection rules."
     },
     "contact": {
       "heading": "9. Contact",
-      "paragraph": "For any question relating to the site or this legal notice, write to {email} or to the postal address mentioned in point 1.",
-      "lastUpdated": "Last updated: {date}"
+      "paragraph": "For any question relating to the site or this legal notice, write to [EMAIL_CONTACT] or to the postal address mentioned in point 1.",
+      "lastUpdated": "Last updated: [DATE]"
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "controller": {
+      "heading": "1. Who is responsible for your data?",
+      "email": "Email: [EMAIL_PRIVACY]",
+      "intro": "We care about protecting your privacy. This policy explains what data we collect via [URL_DU_SITE], why, for how long, and what rights you can exercise."
+    },
+    "scope": {
+      "heading": "2. Scope",
+      "paragraph": "This policy covers the processing carried out as part of the [URL_DU_SITE] site and the services offered there. It does not apply to third-party sites we may link to, which have their own rules."
+    },
+    "dataCollected": {
+      "heading": "3. What data do we collect?",
+      "directIntro": "Data you provide us directly:",
+      "contactForm": "Via the contact form: [CHAMPS_DU_FORMULAIRE — e.g. name, surname, email address, phone number, message content]",
+      "autoIntro": "Data collected automatically:",
+      "technicalLogs": "Connection data and technical logs: IP address, date and time of the request, pages viewed, browser and operating system type, referring site",
+      "cookiesNote": "Data from cookies and trackers, according to your consent preferences (see point 10)",
+      "noSensitiveData": "We do not collect sensitive data (health, political opinions, religious beliefs, sexual orientation, biometric data) and invite you not to share any via our forms.",
+      "sensitiveDataNote": "(To be adapted if the activity necessarily involves it — e.g. medical or non-profit sector.)"
+    },
+    "legalBasis": {
+      "heading": "4. Why and on what legal basis?",
+      "headers": {
+        "purpose": "Purpose",
+        "data": "Data concerned",
+        "basis": "Legal basis (GDPR)",
+        "retention": "Retention period"
+      },
+      "rows": {
+        "contactForm": {
+          "purpose": "Responding to your requests via the contact form",
+          "data": "Identity, contact details, message content",
+          "basis": "Legitimate interest (art. 6.1.f) — responding to requests received",
+          "retention": "[e.g. 1 year after the last exchange]"
+        },
+        "contract": {
+          "purpose": "Managing the pre-contractual and contractual relationship",
+          "data": "Identity, contact details, file details",
+          "basis": "Performance of a contract or pre-contractual measures (art. 6.1.b)",
+          "retention": "Duration of the relationship + [e.g. 5 years]"
+        },
+        "security": {
+          "purpose": "Ensuring the security and proper functioning of the site",
+          "data": "Technical logs, IP address",
+          "basis": "Legitimate interest (art. 6.1.f) — information system security",
+          "retention": "[e.g. 12 months]"
+        },
+        "analytics": {
+          "purpose": "Measuring audience and improving the site",
+          "data": "Browsing data, cookie identifiers",
+          "basis": "Consent (art. 6.1.a)",
+          "retention": "[e.g. 13 months] maximum"
+        },
+        "legalObligation": {
+          "purpose": "Complying with our legal obligations (accounting, tax)",
+          "data": "Billing data",
+          "basis": "Legal obligation (art. 6.1.c)",
+          "retention": "[e.g. 7 years]"
+        }
+      },
+      "consentNote": "Where processing is based on your consent, you may withdraw it at any time, without affecting the lawfulness of processing already carried out.",
+      "legitimateInterestNote": "Where it is based on our legitimate interest, we have weighed that interest against your rights; you may object to it at any time on grounds relating to your particular situation."
+    },
+    "processors": {
+      "heading": "5. Who has access to your data?",
+      "intro": "Your data is processed by authorized staff of [DÉNOMINATION_SOCIALE] and, where applicable, by providers acting as processors on our behalf, bound by a contract compliant with Article 28 of the GDPR:",
+      "headers": {
+        "provider": "Provider",
+        "role": "Role",
+        "location": "Location"
+      },
+      "rows": {
+        "hosting": {
+          "provider": "Vercel Inc",
+          "role": "Site hosting",
+          "location": "United States"
+        },
+        "database": {
+          "provider": "Supabase",
+          "role": "Database hosting",
+          "location": "Switzerland"
+        },
+        "emailing": {
+          "provider": "[OUTIL_EMAILING]",
+          "role": "Sending emails",
+          "location": "[PAYS_OUTIL_EMAILING]"
+        },
+        "analytics": {
+          "provider": "[OUTIL_ANALYTICS]",
+          "role": "Audience measurement",
+          "location": "[PAYS_OUTIL_ANALYTICS]"
+        },
+        "crm": {
+          "provider": "[OUTIL_CRM_OU_FORMULAIRE]",
+          "role": "Managing requests",
+          "location": "[PAYS_OUTIL_CRM]"
+        }
+      },
+      "outro": "We do not sell your data and do not share it with third parties for direct marketing purposes. It may be disclosed to the competent authorities where required by law."
+    },
+    "transfers": {
+      "heading": "6. Does your data leave the European Union?",
+      "paragraph": "Some of our providers are established or store data outside the European Economic Area (United States (hosting), Switzerland (database)). These transfers are governed by [MÉCANISME — European Commission adequacy decision / standard contractual clauses], supplemented where appropriate by additional measures. You can obtain a copy by writing to [EMAIL_PRIVACY]."
+    },
+    "retention": {
+      "heading": "7. How long do we keep your data?",
+      "paragraph": "Retention periods are listed in the table in point 4. Beyond that, data is deleted or irreversibly anonymized. Some data may be kept longer in archived form where a legal obligation or the defense of a legal claim justifies it."
+    },
+    "security": {
+      "heading": "8. How do we protect your data?",
+      "paragraph": "We implement appropriate technical and organizational measures: encryption of communications (HTTPS/TLS), access restricted to authorized personnel, strong passwords, regular updates, backups[AUTRES_MESURES]. As no system is infallible, we cannot guarantee absolute security, but we commit to notifying any data breach under the conditions set out by the GDPR."
+    },
+    "rights": {
+      "heading": "9. What are your rights?",
+      "intro": "In accordance with Articles 15 to 22 of the GDPR, you have the following rights:",
+      "access": "Access — obtain confirmation that your data is being processed and receive a copy of it",
+      "rectification": "Rectification — have inaccurate or incomplete data corrected",
+      "erasure": "Erasure — request the deletion of your data, in the cases provided for by law",
+      "restriction": "Restriction — request the temporary freezing of a disputed processing operation",
+      "objection": "Objection — object to processing based on our legitimate interest, and at any time and without justification to direct marketing",
+      "portability": "Portability — receive, in a structured format, the data you provided us, for processing based on consent or a contract",
+      "withdrawConsent": "Withdrawal of consent — at any time, for processing that depends on it",
+      "automatedDecision": "Automated decision-making — not be subject to a decision based solely on automated processing producing legal effects (we do not practice this — to be adapted if that is not the case)",
+      "exercise": "To exercise these rights, write to [EMAIL_PRIVACY] or to the postal address indicated in point 1. We may request proof of identity in case of reasonable doubt. We respond within one month, extendable by two months for complex requests.",
+      "complaintAuthority": "Complaint: if you believe your rights are not being respected, you may lodge a complaint with the Belgian Data Protection Authority: Rue de la Presse 35, 1000 Brussels — +32 (0)2 274 48 00 — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "cookies": {
+      "heading": "10. Cookies",
+      "paragraph": "The use of cookies and trackers is detailed in our <link>Cookie Policy</link>. You can change or withdraw your preferences at any time via [MOYEN_DE_RETRAIT_DU_CONSENTEMENT]."
+    },
+    "minors": {
+      "heading": "11. Minors",
+      "paragraph": "The site is not intended for persons under [ÂGE — 13 in Belgium for consent to information society services] years of age and we do not knowingly collect their data. If you hold parental authority and become aware of such collection, contact us to have it removed."
+    },
+    "changes": {
+      "heading": "12. Changes to this policy",
+      "paragraph": "We may adapt this policy to reflect legal or technical developments. The applicable version is the one published on this page. In the event of a substantial change, we will inform you by [MOYEN — banner on the site / email to subscribers].",
+      "lastUpdated": "Last updated: [DATE]"
+    }
+  },
+  "cookies": {
+    "title": "Cookie policy",
+    "whatIsACookie": {
+      "heading": "1. What is a cookie?",
+      "paragraph1": "A cookie is a small text file placed on your device (computer, tablet, smartphone) when you visit a website. It allows the site to recognize your browser, remember certain information, or measure your browsing activity.",
+      "paragraph2": "This policy also covers equivalent technologies: invisible pixels, web beacons, local storage (localStorage, sessionStorage), device identifiers and digital fingerprints. For simplicity, we refer to all of them as \"cookies\"."
+    },
+    "whoSets": {
+      "heading": "2. Who sets these cookies?",
+      "intro": "The site [URL_DU_SITE] is published by [DÉNOMINATION_SOCIALE], [ADRESSE], company number [NUMÉRO_BCE].",
+      "firstParty": "first-party cookies, set by us;",
+      "thirdParty": "third-party cookies, set by providers we integrate into the site and who process data according to their own rules, which we link to in the table below."
+    },
+    "consent": {
+      "heading": "3. Your consent",
+      "necessary": "Cookies strictly necessary for the site to function are set without your consent: they are essential to provide you with the service you request.",
+      "optional": "All other cookies — audience measurement, comfort features, advertising, social media — are only set after your prior, free, specific and informed consent, collected via the banner shown on your first visit.",
+      "noChoiceYet": "Until you have made a choice, no non-essential cookie is set. Refusing is as easy as accepting, and refusing does not degrade your access to the site's content in any way.",
+      "withdraw": "Change or withdraw your choice at any time: [MOYEN_DE_RETRAIT — e.g. a \"Manage my cookies\" link in the footer / button below]. Withdrawal applies going forward and does not affect the lawfulness of prior consent-based processing.",
+      "duration": "Your choice is kept for [DURÉE — 6 months recommended, 13 months maximum], after which the banner reappears."
+    },
+    "tables": {
+      "heading": "4. Cookies used on this site",
+      "necessary": {
+        "heading": "4.1 Strictly necessary cookies (no consent required)",
+        "headers": {
+          "name": "Name",
+          "setBy": "Set by",
+          "purpose": "Purpose",
+          "duration": "Duration"
+        },
+        "rows": {
+          "session": {
+            "name": "[NOM_COOKIE_SESSION]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Maintaining the browsing session",
+            "duration": "Session"
+          },
+          "consent": {
+            "name": "[NOM_COOKIE_CONSENT]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Remembering your cookie preferences",
+            "duration": "[e.g. 6 months]"
+          },
+          "csrf": {
+            "name": "[NOM_COOKIE_CSRF]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Form security (anti-CSRF protection)",
+            "duration": "Session"
+          }
+        }
+      },
+      "analytics": {
+        "heading": "4.2 Audience measurement cookies (consent required)",
+        "headers": {
+          "name": "Name",
+          "setBy": "Set by",
+          "purpose": "Purpose",
+          "duration": "Duration",
+          "thirdPartyPolicy": "Third-party policy"
+        },
+        "rows": {
+          "main": {
+            "name": "[NOM_COOKIE]",
+            "setBy": "[OUTIL_ANALYTICS]",
+            "purpose": "Traffic measurement, aggregated statistics",
+            "duration": "[e.g. 13 months]",
+            "thirdPartyPolicy": "[URL_POLITIQUE_TIERS]"
+          }
+        }
+      }
+    },
+    "legalBasis": {
+      "heading": "5. Legal basis and data processed",
+      "paragraph1": "The setting and reading of non-essential cookies is based on your consent (article 6.1.a of the GDPR and article 129 of the Belgian law of 13 June 2005 on electronic communications). The setting of strictly necessary cookies is based on our legitimate interest in providing a functional and secure site.",
+      "paragraph2": "The data processed via cookies (identifiers, IP address, pages viewed, browsing data) is described in more detail in our <link>Privacy Policy</link>, which also details your rights of access, rectification, erasure and objection.",
+      "transfersNote": "Some of the providers listed above are established outside the European Economic Area. These transfers are governed by [MÉCANISME — adequacy decision / standard contractual clauses]."
+    },
+    "browserSettings": {
+      "heading": "6. Managing cookies from your browser",
+      "intro": "Independently of our banner, you can configure your browser to block or delete cookies. Warning: blocking all cookies, including strictly necessary ones, may degrade the site's functionality.",
+      "chrome": "Chrome: Settings → Privacy and security → Cookies and other site data",
+      "firefox": "Firefox: Settings → Privacy & Security → Cookies and Site Data",
+      "safari": "Safari: Settings → Safari → Privacy and security",
+      "edge": "Edge: Settings → Cookies and site permissions",
+      "deletionNote": "Deleting cookies in your browser also erases the cookie that remembers your refusal: the banner will reappear on your next visit."
+    },
+    "complaint": {
+      "heading": "7. Complaint",
+      "paragraph": "If you believe your rights are not being respected, you may lodge a complaint with the Belgian Data Protection Authority: Rue de la Presse 35, 1000 Brussels — +32 (0)2 274 48 00 — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "changes": {
+      "heading": "8. Changes",
+      "paragraph": "This policy evolves along with the tools integrated into the site. The applicable version is the one published on this page.",
+      "lastUpdated": "Last updated: [DATE]"
     }
   }
 }

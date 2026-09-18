@@ -141,57 +141,295 @@
     "title": "Mentions légales",
     "editor": {
       "heading": "1. Éditeur du site",
-      "intro": "Le présent site, accessible à l'adresse {siteUrl}, est édité par :",
-      "identity": "{companyName}, {legalForm}",
-      "registeredOffice": "Siège social : {street}, {postalCode} {city}, {country}",
-      "bceNumber": "Numéro d'entreprise (BCE) : {bceNumber}",
-      "vatNumber": "Numéro de TVA : {vatNumber}",
-      "court": "RPM / Tribunal de l'entreprise : {district}",
-      "email": "Courriel : {email}",
-      "phone": "Téléphone : {phone}",
-      "publisher": "Responsable de la publication : {publisherName}, {publisherRole}",
-      "soleTraderNote": "(Variante indépendant / personne physique : remplacer la dénomination par « {publisherName}, entrepreneur indépendant », conserver adresse professionnelle, BCE et TVA.)"
+      "intro": "Le présent site, accessible à l'adresse [URL_DU_SITE], est édité par :",
+      "identity": "[DÉNOMINATION_SOCIALE], [FORME_JURIDIQUE]",
+      "registeredOffice": "Siège social : [RUE_ET_NUMÉRO], [CODE_POSTAL] [VILLE], [PAYS]",
+      "bceNumber": "Numéro d'entreprise (BCE) : [NUMÉRO_BCE]",
+      "vatNumber": "Numéro de TVA : [NUMÉRO_TVA]",
+      "court": "RPM / Tribunal de l'entreprise : [ARRONDISSEMENT]",
+      "email": "Courriel : [EMAIL_CONTACT]",
+      "phone": "Téléphone : [TÉLÉPHONE]",
+      "publisher": "Responsable de la publication : [PRÉNOM_NOM], [FONCTION]",
+      "soleTraderNote": "(Variante indépendant / personne physique : remplacer la dénomination par « [PRÉNOM_NOM], entrepreneur indépendant », conserver adresse professionnelle, BCE et TVA.)"
     },
     "hosting": {
       "heading": "2. Hébergement",
       "intro": "Le site est hébergé par :",
-      "details": "{hostingName} — {hostingAddress} — {hostingWebsite} — {hostingContact}"
+      "details": "Vercel Inc — 440 N Barranca Ave #4133, Covina, CA 91723, United States — www.vercel.com — support@vercel.com"
     },
     "intellectualProperty": {
       "heading": "3. Propriété intellectuelle",
-      "paragraph1": "L'ensemble des éléments composant le site — structure, textes, images, illustrations, photographies, vidéos, logos, marques, chartes graphiques, bases de données et code source — est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de {companyName} ou de ses partenaires et concédants de licence.",
-      "paragraph2": "Toute reproduction, représentation, adaptation, modification, traduction, diffusion ou exploitation, totale ou partielle, sur quelque support que ce soit, est interdite sans autorisation écrite préalable de {companyName}, sous réserve des exceptions légales.",
-      "paragraph3": "La création d'un lien hypertexte vers la page d'accueil du site est libre, à condition qu'elle ne porte pas atteinte à l'image de {companyName} et qu'elle ne laisse pas supposer un lien d'affiliation ou d'approbation."
+      "paragraph1": "L'ensemble des éléments composant le site — structure, textes, images, illustrations, photographies, vidéos, logos, marques, chartes graphiques, bases de données et code source — est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de [DÉNOMINATION_SOCIALE] ou de ses partenaires et concédants de licence.",
+      "paragraph2": "Toute reproduction, représentation, adaptation, modification, traduction, diffusion ou exploitation, totale ou partielle, sur quelque support que ce soit, est interdite sans autorisation écrite préalable de [DÉNOMINATION_SOCIALE], sous réserve des exceptions légales.",
+      "paragraph3": "La création d'un lien hypertexte vers la page d'accueil du site est libre, à condition qu'elle ne porte pas atteinte à l'image de [DÉNOMINATION_SOCIALE] et qu'elle ne laisse pas supposer un lien d'affiliation ou d'approbation."
     },
     "content": {
       "heading": "4. Contenu du site et responsabilité",
-      "paragraph1": "{companyName} met tout en œuvre pour fournir des informations exactes et tenues à jour, sans pouvoir en garantir l'exhaustivité ni l'absence d'erreur. Les informations publiées ont une portée générale et à titre informatif : elles ne constituent ni un conseil personnalisé, ni une offre contractuelle, ni un engagement.",
-      "paragraph2": "{companyName} se réserve le droit de modifier, corriger ou supprimer à tout moment le contenu du site, sans préavis.",
-      "paragraph3": "Dans les limites autorisées par la loi, {companyName} ne peut être tenue responsable des dommages indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder, notamment en cas d'interruption, de maintenance, de bug ou d'intrusion informatique."
+      "paragraph1": "[DÉNOMINATION_SOCIALE] met tout en œuvre pour fournir des informations exactes et tenues à jour, sans pouvoir en garantir l'exhaustivité ni l'absence d'erreur. Les informations publiées ont une portée générale et à titre informatif : elles ne constituent ni un conseil personnalisé, ni une offre contractuelle, ni un engagement.",
+      "paragraph2": "[DÉNOMINATION_SOCIALE] se réserve le droit de modifier, corriger ou supprimer à tout moment le contenu du site, sans préavis.",
+      "paragraph3": "Dans les limites autorisées par la loi, [DÉNOMINATION_SOCIALE] ne peut être tenue responsable des dommages indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder, notamment en cas d'interruption, de maintenance, de bug ou d'intrusion informatique."
     },
     "thirdPartyLinks": {
       "heading": "5. Liens vers des sites tiers",
-      "paragraph": "Le site peut contenir des liens vers des sites édités par des tiers. Ces liens sont proposés à titre de commodité. {companyName} n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur disponibilité ou leurs pratiques en matière de données personnelles."
+      "paragraph": "Le site peut contenir des liens vers des sites édités par des tiers. Ces liens sont proposés à titre de commodité. [DÉNOMINATION_SOCIALE] n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur disponibilité ou leurs pratiques en matière de données personnelles."
     },
     "personalData": {
       "heading": "6. Données à caractère personnel",
-      "intro": "Le traitement des données personnelles effectué dans le cadre du site est décrit dans la Politique de confidentialité.",
-      "controller": "Responsable du traitement : {companyName}, {address}",
-      "contact": "Contact : {dpoEmail}",
+      "intro": "Le traitement des données personnelles effectué dans le cadre du site est décrit dans la <link>Politique de confidentialité</link>.",
+      "controller": "Responsable du traitement : [DÉNOMINATION_SOCIALE], [ADRESSE]",
+      "contact": "Contact : [EMAIL_DPO_OU_CONTACT]",
       "authority": "Autorité de contrôle : Autorité de protection des données, Rue de la Presse 35, 1000 Bruxelles — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
     },
     "cookies": {
       "heading": "7. Cookies",
-      "paragraph": "L'utilisation des cookies et traceurs est détaillée dans la Politique cookies. Vous pouvez modifier vos préférences à tout moment via {consentWithdrawalMethod}."
+      "paragraph": "L'utilisation des cookies et traceurs est détaillée dans la <link>Politique cookies</link>. Vous pouvez modifier vos préférences à tout moment via [MOYEN_DE_RETRAIT_DU_CONSENTEMENT]."
     },
     "governingLaw": {
       "heading": "8. Droit applicable et juridiction compétente",
-      "paragraph": "Le site et les présentes mentions légales sont régis par le droit {governingLawCountry}. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux de {judicialDistrict}, sans préjudice des règles impératives de protection des consommateurs."
+      "paragraph": "Le site et les présentes mentions légales sont régis par le droit [PAYS_DROIT_APPLICABLE]. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux de [ARRONDISSEMENT_JUDICIAIRE], sans préjudice des règles impératives de protection des consommateurs."
     },
     "contact": {
       "heading": "9. Contact",
-      "paragraph": "Pour toute question relative au site ou aux présentes mentions, écrivez à {email} ou à l'adresse postale mentionnée au point 1.",
-      "lastUpdated": "Dernière mise à jour : {date}"
+      "paragraph": "Pour toute question relative au site ou aux présentes mentions, écrivez à [EMAIL_CONTACT] ou à l'adresse postale mentionnée au point 1.",
+      "lastUpdated": "Dernière mise à jour : [DATE]"
+    }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "controller": {
+      "heading": "1. Qui est responsable de vos données ?",
+      "email": "Courriel : [EMAIL_PRIVACY]",
+      "intro": "Nous attachons de l'importance à la protection de votre vie privée. La présente politique explique quelles données nous collectons via [URL_DU_SITE], pourquoi, pendant combien de temps, et quels droits vous pouvez exercer."
+    },
+    "scope": {
+      "heading": "2. Champ d'application",
+      "paragraph": "Cette politique couvre les traitements réalisés dans le cadre du site [URL_DU_SITE] et des services qui y sont proposés. Elle ne s'applique pas aux sites tiers vers lesquels nous pourrions renvoyer, qui disposent de leurs propres règles."
+    },
+    "dataCollected": {
+      "heading": "3. Quelles données collectons-nous ?",
+      "directIntro": "Données que vous nous fournissez directement :",
+      "contactForm": "Via le formulaire de contact : [CHAMPS_DU_FORMULAIRE — ex. nom, prénom, adresse e-mail, téléphone, contenu du message]",
+      "autoIntro": "Données collectées automatiquement :",
+      "technicalLogs": "Données de connexion et journaux techniques : adresse IP, date et heure de la requête, pages consultées, type de navigateur et de système d'exploitation, site référent",
+      "cookiesNote": "Données issues des cookies et traceurs, selon vos préférences de consentement (voir point 10)",
+      "noSensitiveData": "Nous ne collectons pas de données sensibles (santé, opinions politiques, convictions religieuses, orientation sexuelle, données biométriques) et vous invitons à ne pas en communiquer via nos formulaires.",
+      "sensitiveDataNote": "(À adapter si l'activité en implique nécessairement — p. ex. secteur médical ou associatif.)"
+    },
+    "legalBasis": {
+      "heading": "4. Pourquoi et sur quelle base légale ?",
+      "headers": {
+        "purpose": "Finalité",
+        "data": "Données concernées",
+        "basis": "Base légale (RGPD)",
+        "retention": "Durée de conservation"
+      },
+      "rows": {
+        "contactForm": {
+          "purpose": "Répondre à vos demandes via le formulaire de contact",
+          "data": "Identité, coordonnées, contenu du message",
+          "basis": "Intérêt légitime (art. 6.1.f) — répondre aux sollicitations reçues",
+          "retention": "[ex. 1 an après le dernier échange]"
+        },
+        "contract": {
+          "purpose": "Gérer la relation précontractuelle et contractuelle",
+          "data": "Identité, coordonnées, éléments du dossier",
+          "basis": "Exécution d'un contrat ou mesures précontractuelles (art. 6.1.b)",
+          "retention": "Durée de la relation + [ex. 5 ans]"
+        },
+        "security": {
+          "purpose": "Assurer la sécurité et le bon fonctionnement du site",
+          "data": "Journaux techniques, adresse IP",
+          "basis": "Intérêt légitime (art. 6.1.f) — sécurité du système d'information",
+          "retention": "[ex. 12 mois]"
+        },
+        "analytics": {
+          "purpose": "Mesurer l'audience et améliorer le site",
+          "data": "Données de navigation, identifiants cookies",
+          "basis": "Consentement (art. 6.1.a)",
+          "retention": "[ex. 13 mois] maximum"
+        },
+        "legalObligation": {
+          "purpose": "Respecter nos obligations légales (comptables, fiscales)",
+          "data": "Données de facturation",
+          "basis": "Obligation légale (art. 6.1.c)",
+          "retention": "[ex. 7 ans]"
+        }
+      },
+      "consentNote": "Lorsque le traitement repose sur votre consentement, vous pouvez le retirer à tout moment, sans que cela remette en cause la licéité des traitements déjà effectués.",
+      "legitimateInterestNote": "Lorsqu'il repose sur notre intérêt légitime, nous avons mis en balance cet intérêt et vos droits ; vous pouvez vous y opposer à tout moment pour des raisons tenant à votre situation particulière."
+    },
+    "processors": {
+      "heading": "5. Qui a accès à vos données ?",
+      "intro": "Vos données sont traitées par le personnel habilité de [DÉNOMINATION_SOCIALE] et, le cas échéant, par des prestataires agissant comme sous-traitants pour notre compte, liés par un contrat conforme à l'article 28 du RGPD :",
+      "headers": {
+        "provider": "Prestataire",
+        "role": "Rôle",
+        "location": "Localisation"
+      },
+      "rows": {
+        "hosting": {
+          "provider": "Vercel Inc",
+          "role": "Hébergement du site",
+          "location": "États-Unis"
+        },
+        "database": {
+          "provider": "Supabase",
+          "role": "Hébergement de la base de données",
+          "location": "Suisse"
+        },
+        "emailing": {
+          "provider": "[OUTIL_EMAILING]",
+          "role": "Envoi d'emails",
+          "location": "[PAYS_OUTIL_EMAILING]"
+        },
+        "analytics": {
+          "provider": "[OUTIL_ANALYTICS]",
+          "role": "Mesure d'audience",
+          "location": "[PAYS_OUTIL_ANALYTICS]"
+        },
+        "crm": {
+          "provider": "[OUTIL_CRM_OU_FORMULAIRE]",
+          "role": "Gestion des demandes",
+          "location": "[PAYS_OUTIL_CRM]"
+        }
+      },
+      "outro": "Nous ne vendons pas vos données et ne les communiquons pas à des tiers à des fins de prospection commerciale. Elles peuvent être transmises aux autorités compétentes lorsque la loi l'exige."
+    },
+    "transfers": {
+      "heading": "6. Vos données quittent-elles l'Union européenne ?",
+      "paragraph": "Certains de nos prestataires sont établis ou stockent des données en dehors de l'Espace économique européen (États-Unis (hébergement), Suisse (base de données)). Ces transferts sont encadrés par [MÉCANISME — décision d'adéquation de la Commission européenne / clauses contractuelles types], complété le cas échéant par des mesures supplémentaires. Vous pouvez en obtenir une copie en écrivant à [EMAIL_PRIVACY]."
+    },
+    "retention": {
+      "heading": "7. Combien de temps conservons-nous vos données ?",
+      "paragraph": "Les durées figurent dans le tableau du point 4. Au-delà, les données sont supprimées ou anonymisées de manière irréversible. Certaines peuvent être conservées plus longtemps sous forme archivée lorsqu'une obligation légale ou la défense d'un droit en justice le justifie."
+    },
+    "security": {
+      "heading": "8. Comment protégeons-nous vos données ?",
+      "paragraph": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées : chiffrement des communications (HTTPS/TLS), restriction des accès aux personnes habilitées, mots de passe robustes, mises à jour régulières, sauvegardes[AUTRES_MESURES]. Aucun système n'étant infaillible, nous ne pouvons garantir une sécurité absolue, mais nous nous engageons à notifier toute violation de données dans les conditions prévues par le RGPD."
+    },
+    "rights": {
+      "heading": "9. Quels sont vos droits ?",
+      "intro": "Conformément aux articles 15 à 22 du RGPD, vous disposez des droits suivants :",
+      "access": "Accès — obtenir confirmation que vos données sont traitées et en recevoir une copie",
+      "rectification": "Rectification — faire corriger des données inexactes ou incomplètes",
+      "erasure": "Effacement — demander la suppression de vos données, dans les cas prévus par la loi",
+      "restriction": "Limitation — demander le gel temporaire d'un traitement contesté",
+      "objection": "Opposition — vous opposer à un traitement fondé sur notre intérêt légitime, et à tout moment et sans motif à la prospection directe",
+      "portability": "Portabilité — recevoir dans un format structuré les données que vous nous avez fournies, pour les traitements fondés sur le consentement ou un contrat",
+      "withdrawConsent": "Retrait du consentement — à tout moment, pour les traitements qui en dépendent",
+      "automatedDecision": "Décision automatisée — ne pas faire l'objet d'une décision fondée exclusivement sur un traitement automatisé produisant des effets juridiques (nous n'en pratiquons pas — à adapter si ce n'est pas le cas)",
+      "exercise": "Pour exercer ces droits, écrivez à [EMAIL_PRIVACY] ou à l'adresse postale indiquée au point 1. Nous pouvons demander un justificatif d'identité en cas de doute raisonnable. Nous répondons dans un délai d'un mois, prolongeable de deux mois pour les demandes complexes.",
+      "complaintAuthority": "Réclamation : si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de l'Autorité de protection des données : Rue de la Presse 35, 1000 Bruxelles — +32 (0)2 274 48 00 — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "cookies": {
+      "heading": "10. Cookies",
+      "paragraph": "L'utilisation des cookies et traceurs est détaillée dans notre <link>Politique cookies</link>. Vous pouvez modifier ou retirer vos préférences à tout moment via [MOYEN_DE_RETRAIT_DU_CONSENTEMENT]."
+    },
+    "minors": {
+      "heading": "11. Mineurs",
+      "paragraph": "Le site ne s'adresse pas aux personnes de moins de [ÂGE — 13 ans en Belgique pour le consentement aux services de la société de l'information] ans et nous ne collectons pas sciemment leurs données. Si vous êtes titulaire de l'autorité parentale et constatez une telle collecte, contactez-nous pour en obtenir la suppression."
+    },
+    "changes": {
+      "heading": "12. Modifications de cette politique",
+      "paragraph": "Nous pouvons adapter cette politique pour refléter des évolutions légales ou techniques. La version applicable est celle publiée sur cette page. En cas de modification substantielle, nous vous en informerons par [MOYEN — bandeau sur le site / e-mail aux abonnés].",
+      "lastUpdated": "Dernière mise à jour : [DATE]"
+    }
+  },
+  "cookies": {
+    "title": "Politique cookies",
+    "whatIsACookie": {
+      "heading": "1. Qu'est-ce qu'un cookie ?",
+      "paragraph1": "Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la consultation d'un site. Il permet au site de reconnaître votre navigateur, de mémoriser certaines informations ou de mesurer votre navigation.",
+      "paragraph2": "La présente politique couvre également les technologies équivalentes : pixels invisibles, balises web, stockage local (localStorage, sessionStorage), identifiants de terminal et empreintes numériques. Par simplicité, nous les désignons toutes par le terme « cookies »."
+    },
+    "whoSets": {
+      "heading": "2. Qui dépose ces cookies ?",
+      "intro": "Le site [URL_DU_SITE] est édité par [DÉNOMINATION_SOCIALE], [ADRESSE], numéro d'entreprise [NUMÉRO_BCE].",
+      "firstParty": "les cookies internes (first-party), déposés par nous-mêmes ;",
+      "thirdParty": "les cookies tiers (third-party), déposés par des prestataires que nous intégrons au site et qui traitent les données selon leurs propres règles, auxquelles nous renvoyons dans le tableau ci-dessous."
+    },
+    "consent": {
+      "heading": "3. Votre consentement",
+      "necessary": "Les cookies strictement nécessaires au fonctionnement du site sont déposés sans votre consentement : ils sont indispensables pour vous fournir le service que vous demandez.",
+      "optional": "Tous les autres cookies — mesure d'audience, fonctionnalités de confort, publicité, réseaux sociaux — ne sont déposés qu'après votre consentement préalable, libre, spécifique et éclairé, recueilli via le bandeau affiché lors de votre première visite.",
+      "noChoiceYet": "Tant que vous n'avez pas fait de choix, aucun cookie non essentiel n'est déposé. Refuser est aussi simple qu'accepter, et refuser n'entraîne aucune dégradation de l'accès au contenu du site.",
+      "withdraw": "Modifier ou retirer votre choix à tout moment : [MOYEN_DE_RETRAIT — ex. lien « Gérer mes cookies » dans le pied de page / bouton ci-dessous]. Le retrait vaut pour l'avenir et ne remet pas en cause la licéité des dépôts antérieurs.",
+      "duration": "Votre choix est conservé pendant [DURÉE — 6 mois recommandés, 13 mois maximum], après quoi le bandeau réapparaît."
+    },
+    "tables": {
+      "heading": "4. Cookies utilisés sur ce site",
+      "necessary": {
+        "heading": "4.1 Cookies strictement nécessaires (pas de consentement requis)",
+        "headers": {
+          "name": "Nom",
+          "setBy": "Déposé par",
+          "purpose": "Finalité",
+          "duration": "Durée"
+        },
+        "rows": {
+          "session": {
+            "name": "[NOM_COOKIE_SESSION]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Maintien de la session de navigation",
+            "duration": "Session"
+          },
+          "consent": {
+            "name": "[NOM_COOKIE_CONSENT]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Mémorisation de vos préférences cookies",
+            "duration": "[ex. 6 mois]"
+          },
+          "csrf": {
+            "name": "[NOM_COOKIE_CSRF]",
+            "setBy": "[URL_DU_SITE]",
+            "purpose": "Sécurité des formulaires (protection anti-CSRF)",
+            "duration": "Session"
+          }
+        }
+      },
+      "analytics": {
+        "heading": "4.2 Cookies de mesure d'audience (consentement requis)",
+        "headers": {
+          "name": "Nom",
+          "setBy": "Déposé par",
+          "purpose": "Finalité",
+          "duration": "Durée",
+          "thirdPartyPolicy": "Politique du tiers"
+        },
+        "rows": {
+          "main": {
+            "name": "[NOM_COOKIE]",
+            "setBy": "[OUTIL_ANALYTICS]",
+            "purpose": "Mesure de fréquentation, statistiques agrégées",
+            "duration": "[ex. 13 mois]",
+            "thirdPartyPolicy": "[URL_POLITIQUE_TIERS]"
+          }
+        }
+      }
+    },
+    "legalBasis": {
+      "heading": "5. Base légale et données traitées",
+      "paragraph1": "Le dépôt et la lecture de cookies non essentiels reposent sur votre consentement (article 6.1.a du RGPD et article 129 de la loi du 13 juin 2005 relative aux communications électroniques). Le dépôt des cookies strictement nécessaires repose sur notre intérêt légitime à fournir un site fonctionnel et sécurisé.",
+      "paragraph2": "Les données traitées via les cookies (identifiants, adresse IP, pages consultées, données de navigation) sont décrites plus largement dans notre <link>Politique de confidentialité</link>, qui détaille également vos droits d'accès, de rectification, d'effacement et d'opposition.",
+      "transfersNote": "Certains prestataires listés ci-dessus sont établis hors de l'Espace économique européen. Ces transferts sont encadrés par [MÉCANISME — décision d'adéquation / clauses contractuelles types]."
+    },
+    "browserSettings": {
+      "heading": "6. Gérer les cookies depuis votre navigateur",
+      "intro": "Indépendamment de notre bandeau, vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Attention : bloquer l'ensemble des cookies, y compris ceux strictement nécessaires, peut dégrader le fonctionnement du site.",
+      "chrome": "Chrome : Paramètres → Confidentialité et sécurité → Cookies et autres données des sites",
+      "firefox": "Firefox : Paramètres → Vie privée et sécurité → Cookies et données de sites",
+      "safari": "Safari : Réglages → Safari → Confidentialité et sécurité",
+      "edge": "Edge : Paramètres → Cookies et autorisations de site",
+      "deletionNote": "La suppression des cookies dans votre navigateur efface aussi le cookie qui mémorise votre refus : le bandeau réapparaîtra à votre prochaine visite."
+    },
+    "complaint": {
+      "heading": "7. Réclamation",
+      "paragraph": "Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de l'Autorité de protection des données : Rue de la Presse 35, 1000 Bruxelles — +32 (0)2 274 48 00 — contact@apd-gba.be — www.autoriteprotectiondonnees.be"
+    },
+    "changes": {
+      "heading": "8. Modifications",
+      "paragraph": "Cette politique évolue avec les outils intégrés au site. La version applicable est celle publiée sur cette page.",
+      "lastUpdated": "Dernière mise à jour : [DATE]"
     }
   }
 }

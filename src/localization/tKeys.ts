@@ -194,4 +194,243 @@ export const tKeys = {
       lastUpdated: 'mentions.contact.lastUpdated',
     },
   },
+  privacy: {
+    title: 'privacy.title',
+    controller: {
+      heading: 'privacy.controller.heading',
+      email: 'privacy.controller.email',
+      intro: 'privacy.controller.intro',
+    },
+    scope: {
+      heading: 'privacy.scope.heading',
+      paragraph: 'privacy.scope.paragraph',
+    },
+    dataCollected: {
+      heading: 'privacy.dataCollected.heading',
+      directIntro: 'privacy.dataCollected.directIntro',
+      contactForm: 'privacy.dataCollected.contactForm',
+      autoIntro: 'privacy.dataCollected.autoIntro',
+      technicalLogs: 'privacy.dataCollected.technicalLogs',
+      cookiesNote: 'privacy.dataCollected.cookiesNote',
+      noSensitiveData: 'privacy.dataCollected.noSensitiveData',
+      sensitiveDataNote: 'privacy.dataCollected.sensitiveDataNote',
+    },
+    legalBasis: {
+      heading: 'privacy.legalBasis.heading',
+      headers: {
+        purpose: 'privacy.legalBasis.headers.purpose',
+        data: 'privacy.legalBasis.headers.data',
+        basis: 'privacy.legalBasis.headers.basis',
+        retention: 'privacy.legalBasis.headers.retention',
+      },
+      rows: {
+        contactForm: {
+          purpose: 'privacy.legalBasis.rows.contactForm.purpose',
+          data: 'privacy.legalBasis.rows.contactForm.data',
+          basis: 'privacy.legalBasis.rows.contactForm.basis',
+          retention: 'privacy.legalBasis.rows.contactForm.retention',
+        },
+        contract: {
+          purpose: 'privacy.legalBasis.rows.contract.purpose',
+          data: 'privacy.legalBasis.rows.contract.data',
+          basis: 'privacy.legalBasis.rows.contract.basis',
+          retention: 'privacy.legalBasis.rows.contract.retention',
+        },
+        security: {
+          purpose: 'privacy.legalBasis.rows.security.purpose',
+          data: 'privacy.legalBasis.rows.security.data',
+          basis: 'privacy.legalBasis.rows.security.basis',
+          retention: 'privacy.legalBasis.rows.security.retention',
+        },
+        analytics: {
+          purpose: 'privacy.legalBasis.rows.analytics.purpose',
+          data: 'privacy.legalBasis.rows.analytics.data',
+          basis: 'privacy.legalBasis.rows.analytics.basis',
+          retention: 'privacy.legalBasis.rows.analytics.retention',
+        },
+        legalObligation: {
+          purpose: 'privacy.legalBasis.rows.legalObligation.purpose',
+          data: 'privacy.legalBasis.rows.legalObligation.data',
+          basis: 'privacy.legalBasis.rows.legalObligation.basis',
+          retention: 'privacy.legalBasis.rows.legalObligation.retention',
+        },
+      },
+      consentNote: 'privacy.legalBasis.consentNote',
+      legitimateInterestNote: 'privacy.legalBasis.legitimateInterestNote',
+    },
+    processors: {
+      heading: 'privacy.processors.heading',
+      intro: 'privacy.processors.intro',
+      headers: {
+        provider: 'privacy.processors.headers.provider',
+        role: 'privacy.processors.headers.role',
+        location: 'privacy.processors.headers.location',
+      },
+      rows: {
+        hosting: {
+          provider: 'privacy.processors.rows.hosting.provider',
+          role: 'privacy.processors.rows.hosting.role',
+          location: 'privacy.processors.rows.hosting.location',
+        },
+        database: {
+          provider: 'privacy.processors.rows.database.provider',
+          role: 'privacy.processors.rows.database.role',
+          location: 'privacy.processors.rows.database.location',
+        },
+        emailing: {
+          provider: 'privacy.processors.rows.emailing.provider',
+          role: 'privacy.processors.rows.emailing.role',
+          location: 'privacy.processors.rows.emailing.location',
+        },
+        analytics: {
+          provider: 'privacy.processors.rows.analytics.provider',
+          role: 'privacy.processors.rows.analytics.role',
+          location: 'privacy.processors.rows.analytics.location',
+        },
+        crm: {
+          provider: 'privacy.processors.rows.crm.provider',
+          role: 'privacy.processors.rows.crm.role',
+          location: 'privacy.processors.rows.crm.location',
+        },
+      },
+      outro: 'privacy.processors.outro',
+    },
+    transfers: {
+      heading: 'privacy.transfers.heading',
+      paragraph: 'privacy.transfers.paragraph',
+    },
+    retention: {
+      heading: 'privacy.retention.heading',
+      paragraph: 'privacy.retention.paragraph',
+    },
+    security: {
+      heading: 'privacy.security.heading',
+      paragraph: 'privacy.security.paragraph',
+    },
+    rights: {
+      heading: 'privacy.rights.heading',
+      intro: 'privacy.rights.intro',
+      access: 'privacy.rights.access',
+      rectification: 'privacy.rights.rectification',
+      erasure: 'privacy.rights.erasure',
+      restriction: 'privacy.rights.restriction',
+      objection: 'privacy.rights.objection',
+      portability: 'privacy.rights.portability',
+      withdrawConsent: 'privacy.rights.withdrawConsent',
+      automatedDecision: 'privacy.rights.automatedDecision',
+      exercise: 'privacy.rights.exercise',
+      complaintAuthority: 'privacy.rights.complaintAuthority',
+    },
+    cookies: {
+      heading: 'privacy.cookies.heading',
+      paragraph: 'privacy.cookies.paragraph',
+    },
+    minors: {
+      heading: 'privacy.minors.heading',
+      paragraph: 'privacy.minors.paragraph',
+    },
+    changes: {
+      heading: 'privacy.changes.heading',
+      paragraph: 'privacy.changes.paragraph',
+      lastUpdated: 'privacy.changes.lastUpdated',
+    },
+  },
+  cookies: {
+    title: 'cookies.title',
+    whatIsACookie: {
+      heading: 'cookies.whatIsACookie.heading',
+      paragraph1: 'cookies.whatIsACookie.paragraph1',
+      paragraph2: 'cookies.whatIsACookie.paragraph2',
+    },
+    whoSets: {
+      heading: 'cookies.whoSets.heading',
+      intro: 'cookies.whoSets.intro',
+      firstParty: 'cookies.whoSets.firstParty',
+      thirdParty: 'cookies.whoSets.thirdParty',
+    },
+    consent: {
+      heading: 'cookies.consent.heading',
+      necessary: 'cookies.consent.necessary',
+      optional: 'cookies.consent.optional',
+      noChoiceYet: 'cookies.consent.noChoiceYet',
+      withdraw: 'cookies.consent.withdraw',
+      duration: 'cookies.consent.duration',
+    },
+    tables: {
+      heading: 'cookies.tables.heading',
+      necessary: {
+        heading: 'cookies.tables.necessary.heading',
+        headers: {
+          name: 'cookies.tables.necessary.headers.name',
+          setBy: 'cookies.tables.necessary.headers.setBy',
+          purpose: 'cookies.tables.necessary.headers.purpose',
+          duration: 'cookies.tables.necessary.headers.duration',
+        },
+        rows: {
+          session: {
+            name: 'cookies.tables.necessary.rows.session.name',
+            setBy: 'cookies.tables.necessary.rows.session.setBy',
+            purpose: 'cookies.tables.necessary.rows.session.purpose',
+            duration: 'cookies.tables.necessary.rows.session.duration',
+          },
+          consent: {
+            name: 'cookies.tables.necessary.rows.consent.name',
+            setBy: 'cookies.tables.necessary.rows.consent.setBy',
+            purpose: 'cookies.tables.necessary.rows.consent.purpose',
+            duration: 'cookies.tables.necessary.rows.consent.duration',
+          },
+          csrf: {
+            name: 'cookies.tables.necessary.rows.csrf.name',
+            setBy: 'cookies.tables.necessary.rows.csrf.setBy',
+            purpose: 'cookies.tables.necessary.rows.csrf.purpose',
+            duration: 'cookies.tables.necessary.rows.csrf.duration',
+          },
+        },
+      },
+      analytics: {
+        heading: 'cookies.tables.analytics.heading',
+        headers: {
+          name: 'cookies.tables.analytics.headers.name',
+          setBy: 'cookies.tables.analytics.headers.setBy',
+          purpose: 'cookies.tables.analytics.headers.purpose',
+          duration: 'cookies.tables.analytics.headers.duration',
+          thirdPartyPolicy: 'cookies.tables.analytics.headers.thirdPartyPolicy',
+        },
+        rows: {
+          main: {
+            name: 'cookies.tables.analytics.rows.main.name',
+            setBy: 'cookies.tables.analytics.rows.main.setBy',
+            purpose: 'cookies.tables.analytics.rows.main.purpose',
+            duration: 'cookies.tables.analytics.rows.main.duration',
+            thirdPartyPolicy:
+              'cookies.tables.analytics.rows.main.thirdPartyPolicy',
+          },
+        },
+      },
+    },
+    legalBasis: {
+      heading: 'cookies.legalBasis.heading',
+      paragraph1: 'cookies.legalBasis.paragraph1',
+      paragraph2: 'cookies.legalBasis.paragraph2',
+      transfersNote: 'cookies.legalBasis.transfersNote',
+    },
+    browserSettings: {
+      heading: 'cookies.browserSettings.heading',
+      intro: 'cookies.browserSettings.intro',
+      chrome: 'cookies.browserSettings.chrome',
+      firefox: 'cookies.browserSettings.firefox',
+      safari: 'cookies.browserSettings.safari',
+      edge: 'cookies.browserSettings.edge',
+      deletionNote: 'cookies.browserSettings.deletionNote',
+    },
+    complaint: {
+      heading: 'cookies.complaint.heading',
+      paragraph: 'cookies.complaint.paragraph',
+    },
+    changes: {
+      heading: 'cookies.changes.heading',
+      paragraph: 'cookies.changes.paragraph',
+      lastUpdated: 'cookies.changes.lastUpdated',
+    },
+  },
 } as const;

@@ -1,12 +1,22 @@
 import { Heading, Stack, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { tKeys } from '@/localization/tKeys';
 
-export default async function Mentions() {
+interface MentionsProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function Mentions({ params }: MentionsProps) {
+  const { locale } = await params;
   const t = await getTranslations();
 
   return (
-    <Stack gap={6} px={{ base: 4, md: 8, lg: 16 }} py={{ base: 6, md: 12, lg: 16 }}>
+    <Stack
+      gap={6}
+      px={{ base: 4, md: 8, lg: 16 }}
+      py={{ base: 6, md: 12, lg: 16 }}
+    >
       <Heading as="h1" size="xl">
         {t(tKeys.mentions.title)}
       </Heading>
@@ -15,61 +25,16 @@ export default async function Mentions() {
         <Heading as="h2" size="md">
           {t(tKeys.mentions.editor.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.editor.intro, {
-            siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.identity, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-            legalForm: process.env.NEXT_PUBLIC_COMPANY_LEGAL_FORM ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.registeredOffice, {
-            street: process.env.NEXT_PUBLIC_COMPANY_STREET ?? '',
-            postalCode: process.env.NEXT_PUBLIC_COMPANY_POSTAL_CODE ?? '',
-            city: process.env.NEXT_PUBLIC_COMPANY_CITY ?? '',
-            country: process.env.NEXT_PUBLIC_COMPANY_COUNTRY ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.bceNumber, {
-            bceNumber: process.env.NEXT_PUBLIC_COMPANY_BCE_NUMBER ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.vatNumber, {
-            vatNumber: process.env.NEXT_PUBLIC_COMPANY_VAT_NUMBER ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.court, {
-            district: process.env.NEXT_PUBLIC_COMPANY_DISTRICT ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.email, {
-            email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.phone, {
-            phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.editor.publisher, {
-            publisherName: process.env.NEXT_PUBLIC_PUBLISHER_NAME ?? '',
-            publisherRole: process.env.NEXT_PUBLIC_PUBLISHER_ROLE ?? '',
-          })}
-        </Text>
-        <Text fontSize="sm">
-          {t(tKeys.mentions.editor.soleTraderNote, {
-            publisherName: process.env.NEXT_PUBLIC_PUBLISHER_NAME ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.editor.intro)}</Text>
+        <Text>{t(tKeys.mentions.editor.identity)}</Text>
+        <Text>{t(tKeys.mentions.editor.registeredOffice)}</Text>
+        <Text>{t(tKeys.mentions.editor.bceNumber)}</Text>
+        <Text>{t(tKeys.mentions.editor.vatNumber)}</Text>
+        <Text>{t(tKeys.mentions.editor.court)}</Text>
+        <Text>{t(tKeys.mentions.editor.email)}</Text>
+        <Text>{t(tKeys.mentions.editor.phone)}</Text>
+        <Text>{t(tKeys.mentions.editor.publisher)}</Text>
+        <Text fontSize="sm">{t(tKeys.mentions.editor.soleTraderNote)}</Text>
       </Stack>
 
       <Stack gap={2}>
@@ -77,85 +42,47 @@ export default async function Mentions() {
           {t(tKeys.mentions.hosting.heading)}
         </Heading>
         <Text>{t(tKeys.mentions.hosting.intro)}</Text>
-        <Text>
-          {t(tKeys.mentions.hosting.details, {
-            hostingName: process.env.NEXT_PUBLIC_HOSTING_NAME ?? '',
-            hostingAddress: process.env.NEXT_PUBLIC_HOSTING_ADDRESS ?? '',
-            hostingWebsite: process.env.NEXT_PUBLIC_HOSTING_WEBSITE ?? '',
-            hostingContact: process.env.NEXT_PUBLIC_HOSTING_CONTACT ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.hosting.details)}</Text>
       </Stack>
 
       <Stack gap={2}>
         <Heading as="h2" size="md">
           {t(tKeys.mentions.intellectualProperty.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.intellectualProperty.paragraph1, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.intellectualProperty.paragraph2, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.intellectualProperty.paragraph3, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.intellectualProperty.paragraph1)}</Text>
+        <Text>{t(tKeys.mentions.intellectualProperty.paragraph2)}</Text>
+        <Text>{t(tKeys.mentions.intellectualProperty.paragraph3)}</Text>
       </Stack>
 
       <Stack gap={2}>
         <Heading as="h2" size="md">
           {t(tKeys.mentions.content.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.content.paragraph1, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.content.paragraph2, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.content.paragraph3, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.content.paragraph1)}</Text>
+        <Text>{t(tKeys.mentions.content.paragraph2)}</Text>
+        <Text>{t(tKeys.mentions.content.paragraph3)}</Text>
       </Stack>
 
       <Stack gap={2}>
         <Heading as="h2" size="md">
           {t(tKeys.mentions.thirdPartyLinks.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.thirdPartyLinks.paragraph, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.thirdPartyLinks.paragraph)}</Text>
       </Stack>
 
       <Stack gap={2}>
         <Heading as="h2" size="md">
           {t(tKeys.mentions.personalData.heading)}
         </Heading>
-        <Text>{t(tKeys.mentions.personalData.intro)}</Text>
         <Text>
-          {t(tKeys.mentions.personalData.controller, {
-            companyName: process.env.NEXT_PUBLIC_COMPANY_NAME ?? '',
-            address: process.env.NEXT_PUBLIC_COMPANY_FULL_ADDRESS ?? '',
+          {t.rich(tKeys.mentions.personalData.intro, {
+            link: (chunks) => (
+              <Link href={`/${locale}/confidentialite`}>{chunks}</Link>
+            ),
           })}
         </Text>
-        <Text>
-          {t(tKeys.mentions.personalData.contact, {
-            dpoEmail: process.env.NEXT_PUBLIC_DPO_EMAIL ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.personalData.controller)}</Text>
+        <Text>{t(tKeys.mentions.personalData.contact)}</Text>
         <Text>{t(tKeys.mentions.personalData.authority)}</Text>
       </Stack>
 
@@ -164,9 +91,8 @@ export default async function Mentions() {
           {t(tKeys.mentions.cookies.heading)}
         </Heading>
         <Text>
-          {t(tKeys.mentions.cookies.paragraph, {
-            consentWithdrawalMethod:
-              process.env.NEXT_PUBLIC_CONSENT_WITHDRAWAL_METHOD ?? '',
+          {t.rich(tKeys.mentions.cookies.paragraph, {
+            link: (chunks) => <Link href={`/${locale}/cookies`}>{chunks}</Link>,
           })}
         </Text>
       </Stack>
@@ -175,29 +101,15 @@ export default async function Mentions() {
         <Heading as="h2" size="md">
           {t(tKeys.mentions.governingLaw.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.governingLaw.paragraph, {
-            governingLawCountry:
-              process.env.NEXT_PUBLIC_GOVERNING_LAW_COUNTRY ?? '',
-            judicialDistrict: process.env.NEXT_PUBLIC_JUDICIAL_DISTRICT ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.governingLaw.paragraph)}</Text>
       </Stack>
 
       <Stack gap={2}>
         <Heading as="h2" size="md">
           {t(tKeys.mentions.contact.heading)}
         </Heading>
-        <Text>
-          {t(tKeys.mentions.contact.paragraph, {
-            email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '',
-          })}
-        </Text>
-        <Text>
-          {t(tKeys.mentions.contact.lastUpdated, {
-            date: process.env.NEXT_PUBLIC_MENTIONS_LAST_UPDATED ?? '',
-          })}
-        </Text>
+        <Text>{t(tKeys.mentions.contact.paragraph)}</Text>
+        <Text>{t(tKeys.mentions.contact.lastUpdated)}</Text>
       </Stack>
     </Stack>
   );
