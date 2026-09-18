@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import type { IconType } from 'react-icons';
 import {
+  LuChartLine,
   LuLayoutDashboard,
   LuPanelLeftClose,
   LuPanelLeftOpen,
@@ -18,7 +19,7 @@ import { tKeys } from '@/localization/tKeys';
 import { Role } from '@/types/Role';
 
 interface NavItem {
-  key: 'dashboard' | 'users' | 'settings';
+  key: 'dashboard' | 'users' | 'analytics' | 'settings';
   href: string;
   icon: IconType;
   /** Whether the page behind this link actually exists yet. */
@@ -39,6 +40,13 @@ const NAV_ITEMS: NavItem[] = [
     key: 'users',
     href: '/dashboard/users',
     icon: LuUsers,
+    implemented: true,
+    allowedRoles: [Role.ADMIN],
+  },
+  {
+    key: 'analytics',
+    href: '/dashboard/analytics',
+    icon: LuChartLine,
     implemented: true,
     allowedRoles: [Role.ADMIN],
   },

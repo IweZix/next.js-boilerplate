@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
@@ -54,6 +55,7 @@ export default async function RootLayout({
             <ReactQueryProvider>{children}</ReactQueryProvider>
           </NextIntlClientProvider>
         </Provider>
+        <Analytics />
       </body>
     </html>
   );
