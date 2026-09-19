@@ -1,7 +1,6 @@
 'use client';
 
 import { Button, HStack } from '@chakra-ui/react';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { tKeys } from '@/localization/tKeys';
 import type { AnalyticsPeriodDays } from '@/types/Analytics';
@@ -16,12 +15,14 @@ const PERIOD_LABEL_KEYS: Record<AnalyticsPeriodDays, string> = {
 
 interface AnalyticsPeriodSelectorProps {
   period: AnalyticsPeriodDays;
-  locale: string;
+  isPending: boolean;
+  onSelect: (period: AnalyticsPeriodDays) => void;
 }
 
 export default function AnalyticsPeriodSelector({
   period,
-  locale,
+  isPending,
+  onSelect,
 }: AnalyticsPeriodSelectorProps) {
   const t = useTranslations();
 
@@ -32,17 +33,16 @@ export default function AnalyticsPeriodSelector({
         return (
           <Button
             key={option}
-            asChild
             size="sm"
             colorPalette="gray"
             variant={isActive ? 'solid' : 'ghost'}
             bg={isActive ? 'black' : undefined}
             color={isActive ? 'white' : undefined}
             _hover={isActive ? { bg: 'gray.800' } : undefined}
+            disabled={isPending}
+            onClick={() => onSelect(option)}
           >
-            <Link href={`/${locale}/dashboard/analytics?period=${option}`}>
-              {t(PERIOD_LABEL_KEYS[option])}
-            </Link>
+            {t(PERIOD_LABEL_KEYS[option])}
           </Button>
         );
       })}

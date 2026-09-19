@@ -1,10 +1,9 @@
-import { SimpleGrid, Stack, Text } from '@chakra-ui/react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import AnalyticsBarPanel from '@/components/core/analytics/bar-panel';
-import AnalyticsPeriodSelector from '@/components/core/analytics/period-selector';
+import AnalyticsPeriodTransition from '@/components/core/analytics/period-transition';
 import AnalyticsStatHeader from '@/components/core/analytics/stat-header';
 import AnalyticsTrendChart from '@/components/core/analytics/trend-chart';
-import PageHeader from '@/components/core/page-header';
 import {
   getCurrentPeriodRange,
   getPreviousPeriodRange,
@@ -84,12 +83,11 @@ export default async function AnalyticsPage({
   const emptyLabel = t(tKeys.analytics.noData);
 
   return (
-    <Stack gap={6}>
-      <PageHeader
-        title={t(tKeys.analytics.title)}
-        action={<AnalyticsPeriodSelector period={periodDays} locale={locale} />}
-      />
-
+    <AnalyticsPeriodTransition
+      title={t(tKeys.analytics.title)}
+      period={periodDays}
+      locale={locale}
+    >
       <AnalyticsStatHeader
         currentTotals={currentTotals}
         previousTotals={previousTotals}
@@ -150,6 +148,6 @@ export default async function AnalyticsPage({
           locale={locale}
         />
       </SimpleGrid>
-    </Stack>
+    </AnalyticsPeriodTransition>
   );
 }
