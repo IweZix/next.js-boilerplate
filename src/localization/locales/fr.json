@@ -30,6 +30,7 @@
     "nav": {
       "dashboard": "Tableau de bord",
       "users": "Utilisateurs",
+      "analytics": "Statistiques",
       "settings": "Paramètres"
     },
     "comingSoon": "Bientôt disponible",
@@ -136,5 +137,31 @@
       }
     },
     "save": "Enregistrer"
+  },
+  "analytics": {
+    "title": "Statistiques",
+    "periodSelector": {
+      "days7": "7 jours",
+      "days30": "30 jours",
+      "days90": "90 jours"
+    },
+    "comparedToPreviousPeriod": "vs les {days} jours précédents",
+    "stats": {
+      "visitors": "Visiteurs",
+      "pageviews": "Pages vues"
+    },
+    "chart": {
+      "title": "Évolution quotidienne"
+    },
+    "panels": {
+      "pages": "Pages les plus visitées",
+      "referrers": "Sources de trafic",
+      "countries": "Pays",
+      "devices": "Appareils",
+      "os": "Systèmes d'exploitation"
+    },
+    "direct": "Direct",
+    "loadError": "Impossible de charger ces données pour le moment.",
+    "noData": "Aucune donnée pour cette période."
   }
 }

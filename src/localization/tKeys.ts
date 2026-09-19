@@ -30,6 +30,7 @@ export const tKeys = {
     nav: {
       dashboard: 'sidebar.nav.dashboard',
       users: 'sidebar.nav.users',
+      analytics: 'sidebar.nav.analytics',
       settings: 'sidebar.nav.settings',
     },
     comingSoon: 'sidebar.comingSoon',
@@ -136,5 +137,31 @@ export const tKeys = {
       },
     },
     save: 'settings.save',
+  },
+  analytics: {
+    title: 'analytics.title',
+    periodSelector: {
+      days7: 'analytics.periodSelector.days7',
+      days30: 'analytics.periodSelector.days30',
+      days90: 'analytics.periodSelector.days90',
+    },
+    comparedToPreviousPeriod: 'analytics.comparedToPreviousPeriod',
+    stats: {
+      visitors: 'analytics.stats.visitors',
+      pageviews: 'analytics.stats.pageviews',
+    },
+    chart: {
+      title: 'analytics.chart.title',
+    },
+    panels: {
+      pages: 'analytics.panels.pages',
+      referrers: 'analytics.panels.referrers',
+      countries: 'analytics.panels.countries',
+      devices: 'analytics.panels.devices',
+      os: 'analytics.panels.os',
+    },
+    direct: 'analytics.direct',
+    loadError: 'analytics.loadError',
+    noData: 'analytics.noData',
   },
 } as const;
