@@ -31,6 +31,7 @@
       "dashboard": "Dashboard",
       "users": "Users",
       "analytics": "Analytics",
+      "annonces": "Announcements",
       "settings": "Settings"
     },
     "comingSoon": "Coming soon",
@@ -172,7 +173,83 @@
     "features": {
       "analytics": {
         "body": "Analytics is reserved for subscribed clients. Contact us to unlock this feature."
+      },
+      "banner": {
+        "body": "The announcement banner isn't included in your current plan. Contact us to unlock it."
       }
+    }
+  },
+  "announcements": {
+    "title": "Announcements",
+    "accessDenied": "Access restricted to administrators",
+    "addButton": "New announcement",
+    "emptyTitle": "No announcements",
+    "emptyDescription": "Create your first announcement to show it on the site.",
+    "columns": {
+      "message": "Message",
+      "period": "Period",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "live": "Live",
+      "scheduled": "Scheduled",
+      "expired": "Expired",
+      "disabled": "Disabled",
+      "pending": "Pending"
+    },
+    "period": {
+      "unlimited": "No limit",
+      "from": "From {date}",
+      "until": "Until {date}",
+      "range": "{start} to {end}"
+    },
+    "form": {
+      "createTitle": "New announcement",
+      "editTitle": "Edit announcement",
+      "messageLabel": "Message",
+      "messageCounter": "{count} / 160",
+      "linkUrlLabel": "Link (URL)",
+      "linkLabelLabel": "Link label",
+      "variantLabel": "Style",
+      "variant": {
+        "info": "Info",
+        "promo": "Promo",
+        "alerte": "Alert"
+      },
+      "startsAtLabel": "Start date",
+      "endsAtLabel": "End date",
+      "dateHelp": "The banner shows from the start of the first day through the end of the last day.",
+      "isActiveLabel": "Show on the site",
+      "previewTitle": "Preview",
+      "submitCreate": "Create announcement",
+      "submitEdit": "Save changes",
+      "createSuccess": "Announcement created",
+      "saveSuccess": "Changes saved",
+      "errors": {
+        "forbidden": "Action not allowed",
+        "feature_disabled": "This feature is disabled",
+        "message_required": "The message is required",
+        "message_too_long": "The message is over 160 characters",
+        "link_url_invalid": "Invalid link (use https:// or an internal path starting with /)",
+        "link_pair_required": "The link URL and label go together",
+        "link_label_length": "The label must be between 1 and 40 characters",
+        "end_before_start": "The end date must be after the start date",
+        "unexpected_error": "Something went wrong, try again"
+      }
+    },
+    "toggleOn": "Enable",
+    "toggleOff": "Disable",
+    "deleteConfirmTitle": "Delete this announcement?",
+    "deleteConfirmDescription": "This is permanent and cannot be undone.",
+    "deleteConfirmButton": "Delete",
+    "deleteCancel": "Cancel",
+    "deleteSuccess": "Announcement deleted",
+    "deleteError": "Couldn't delete this announcement",
+    "toggleError": "Couldn't update this announcement",
+    "public": {
+      "ariaLabel": "Announcement",
+      "dismissAriaLabel": "Close announcement"
     }
   }
 }

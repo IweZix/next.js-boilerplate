@@ -28,13 +28,14 @@
 import 'server-only';
 import { get } from '@vercel/global-config';
 
-export type Feature = 'analytics';
+export type Feature = 'analytics' | 'banner';
 
-export const ALL_FEATURES: readonly Feature[] = ['analytics'];
+export const ALL_FEATURES: readonly Feature[] = ['analytics', 'banner'];
 
 /** Locale-stripped route pathnames gated behind a feature flag. */
 export const GATED_PATHS: Record<string, Feature> = {
   '/dashboard/analytics': 'analytics',
+  '/dashboard/annonces': 'banner',
 };
 
 type FeatureMap = Record<Feature, boolean>;

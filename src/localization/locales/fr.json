@@ -31,6 +31,7 @@
       "dashboard": "Tableau de bord",
       "users": "Utilisateurs",
       "analytics": "Statistiques",
+      "annonces": "Annonces",
       "settings": "Paramètres"
     },
     "comingSoon": "Bientôt disponible",
@@ -172,7 +173,83 @@
     "features": {
       "analytics": {
         "body": "Les statistiques sont réservées aux clients abonnés. Contactez-nous pour débloquer cette fonctionnalité."
+      },
+      "banner": {
+        "body": "Le bandeau d'annonce n'est pas inclus dans votre offre actuelle. Contactez-nous pour le débloquer."
       }
+    }
+  },
+  "announcements": {
+    "title": "Annonces",
+    "accessDenied": "Accès réservé aux administrateurs",
+    "addButton": "Nouvelle annonce",
+    "emptyTitle": "Aucune annonce",
+    "emptyDescription": "Créez votre première annonce pour l'afficher sur le site.",
+    "columns": {
+      "message": "Message",
+      "period": "Période",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "status": {
+      "live": "En ligne",
+      "scheduled": "Programmée",
+      "expired": "Expirée",
+      "disabled": "Désactivée",
+      "pending": "En attente"
+    },
+    "period": {
+      "unlimited": "Sans limite",
+      "from": "À partir du {date}",
+      "until": "Jusqu'au {date}",
+      "range": "Du {start} au {end}"
+    },
+    "form": {
+      "createTitle": "Nouvelle annonce",
+      "editTitle": "Modifier l'annonce",
+      "messageLabel": "Message",
+      "messageCounter": "{count} / 160",
+      "linkUrlLabel": "Lien (URL)",
+      "linkLabelLabel": "Libellé du lien",
+      "variantLabel": "Style",
+      "variant": {
+        "info": "Info",
+        "promo": "Promo",
+        "alerte": "Alerte"
+      },
+      "startsAtLabel": "Date de début",
+      "endsAtLabel": "Date de fin",
+      "dateHelp": "Le bandeau s'affiche du début de la première journée jusqu'à la fin de la dernière.",
+      "isActiveLabel": "Afficher sur le site",
+      "previewTitle": "Aperçu",
+      "submitCreate": "Créer l'annonce",
+      "submitEdit": "Enregistrer les modifications",
+      "createSuccess": "Annonce créée",
+      "saveSuccess": "Modifications enregistrées",
+      "errors": {
+        "forbidden": "Action non autorisée",
+        "feature_disabled": "Cette fonctionnalité est désactivée",
+        "message_required": "Le message est requis",
+        "message_too_long": "Le message dépasse 160 caractères",
+        "link_url_invalid": "Lien invalide (utilisez https:// ou un chemin interne commençant par /)",
+        "link_pair_required": "L'URL et le libellé du lien vont ensemble",
+        "link_label_length": "Le libellé doit contenir entre 1 et 40 caractères",
+        "end_before_start": "La date de fin doit être après la date de début",
+        "unexpected_error": "Une erreur est survenue, réessaie"
+      }
+    },
+    "toggleOn": "Activer",
+    "toggleOff": "Désactiver",
+    "deleteConfirmTitle": "Supprimer cette annonce ?",
+    "deleteConfirmDescription": "Cette action est définitive et irréversible.",
+    "deleteConfirmButton": "Supprimer",
+    "deleteCancel": "Annuler",
+    "deleteSuccess": "Annonce supprimée",
+    "deleteError": "Impossible de supprimer cette annonce",
+    "toggleError": "Impossible de mettre à jour cette annonce",
+    "public": {
+      "ariaLabel": "Annonce",
+      "dismissAriaLabel": "Fermer l'annonce"
     }
   }
 }
