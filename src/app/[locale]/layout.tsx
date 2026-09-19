@@ -3,12 +3,19 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import AnnouncementBanner from '@/components/core/banners/announcement-banner';
 import EnvBanner from '@/components/core/banners/env-banner';
+import PublicOnly from '@/components/core/banners/public-only';
 import ReactQueryProvider from '@/components/core/providers/react-query-provider';
 import { Provider } from '@/components/ui/provider';
 import { Toaster } from '@/components/ui/toaster';
 import { routing } from '@/localization/routing';
 import type { Locale } from '@/types/Locale';
+
+// The banner must reflect a flag/date change within minutes without a
+// redeploy — never statically generate this layout (dashboard/layout.tsx's
+// own force-dynamic still wins for that nested subtree).
+export const revalidate = 300;
 
 /**
  * Metadata for each page, can be overridden by page-specific metadata (e.g., in page.tsx)
@@ -52,6 +59,9 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <EnvBanner />
             <Toaster />
+            <PublicOnly>
+              <AnnouncementBanner />
+            </PublicOnly>
             <ReactQueryProvider>{children}</ReactQueryProvider>
           </NextIntlClientProvider>
         </Provider>

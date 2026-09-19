@@ -56,6 +56,7 @@ Tailwind CSS v4 + shadcn/ui (radix-nova style, neutral base color, lucide icons)
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Google Maps API key |
 | `GLOBAL_CONFIG` | Connection string for the Vercel Global Config store backing the feature-flag system (`src/lib/features.ts`); legacy `EDGE_CONFIG` name also works |
 | `CONTACT_EMAIL` | Agency contact address used by the `/dashboard/upgrade` page's mailto button |
+| `SITE_ID` | Client-site identifier used to scope every `announcements` table query (`src/lib/announcements/repository.ts`) |
 
 Copy `.env.config` to `.env` to bootstrap local environment values.
 

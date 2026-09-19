@@ -9,6 +9,7 @@ import {
   LuChartLine,
   LuLayoutDashboard,
   LuLock,
+  LuMegaphone,
   LuPanelLeftClose,
   LuPanelLeftOpen,
   LuSettings,
@@ -21,7 +22,7 @@ import { tKeys } from '@/localization/tKeys';
 import { Role } from '@/types/Role';
 
 interface NavItem {
-  key: 'dashboard' | 'users' | 'analytics' | 'settings';
+  key: 'dashboard' | 'users' | 'analytics' | 'annonces' | 'settings';
   href: string;
   icon: IconType;
   /** Whether the page behind this link actually exists yet. */
@@ -54,6 +55,14 @@ const NAV_ITEMS: NavItem[] = [
     implemented: true,
     allowedRoles: [Role.ADMIN],
     feature: 'analytics',
+  },
+  {
+    key: 'annonces',
+    href: '/dashboard/annonces',
+    icon: LuMegaphone,
+    implemented: true,
+    allowedRoles: [Role.ADMIN],
+    feature: 'banner',
   },
   {
     key: 'settings',
