@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { LuMenu } from 'react-icons/lu';
 import SidebarContent from '@/components/core/dashboard/sidebar-content';
 import { StorageKeys, useLocalStorage } from '@/hooks/useLocalStorage';
+import type { Feature } from '@/lib/features';
 import { tKeys } from '@/localization/tKeys';
 import type { Role } from '@/types/Role';
 
@@ -16,9 +17,15 @@ interface SidebarProps {
   email?: string | null;
   fullName?: string;
   role: Role | null;
+  lockedFeatures: Feature[];
 }
 
-export default function Sidebar({ email, fullName, role }: SidebarProps) {
+export default function Sidebar({
+  email,
+  fullName,
+  role,
+  lockedFeatures,
+}: SidebarProps) {
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useLocalStorage(
@@ -43,6 +50,7 @@ export default function Sidebar({ email, fullName, role }: SidebarProps) {
           email={email}
           fullName={fullName}
           role={role}
+          lockedFeatures={lockedFeatures}
           isCollapsed={isCollapsed}
           onToggleCollapse={() => setIsCollapsed((prev) => !prev)}
         />
@@ -71,6 +79,7 @@ export default function Sidebar({ email, fullName, role }: SidebarProps) {
                 email={email}
                 fullName={fullName}
                 role={role}
+                lockedFeatures={lockedFeatures}
                 onNavigate={() => setIsOpen(false)}
               />
             </Drawer.Content>

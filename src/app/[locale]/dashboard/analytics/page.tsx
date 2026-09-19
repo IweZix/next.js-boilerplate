@@ -1,4 +1,5 @@
 import { SimpleGrid, Text } from '@chakra-ui/react';
+import { redirect } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import AnalyticsBarPanel from '@/components/core/analytics/bar-panel';
 import AnalyticsPeriodTransition from '@/components/core/analytics/period-transition';
@@ -14,6 +15,7 @@ import {
   toAnalyticsBarData,
   toAnalyticsTrendData,
 } from '@/lib/analytics';
+import { isEnabled } from '@/lib/features';
 import {
   assertCurrentUserIsAdmin,
   ForbiddenError,
@@ -38,6 +40,10 @@ export default async function AnalyticsPage({
       return <Text>{t(tKeys.users.accessDenied)}</Text>;
     }
     throw error;
+  }
+
+  if (!(await isEnabled('analytics'))) {
+    redirect(`/${locale}/dashboard/upgrade?feature=analytics`);
   }
 
   const { period: rawPeriod } = await searchParams;

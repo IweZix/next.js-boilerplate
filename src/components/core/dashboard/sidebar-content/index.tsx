@@ -8,6 +8,7 @@ import type { IconType } from 'react-icons';
 import {
   LuChartLine,
   LuLayoutDashboard,
+  LuLock,
   LuPanelLeftClose,
   LuPanelLeftOpen,
   LuSettings,
@@ -15,6 +16,7 @@ import {
 } from 'react-icons/lu';
 import LogoutButton from '@/components/core/auth/logout-button';
 import { Tooltip } from '@/components/ui/tooltip';
+import type { Feature } from '@/lib/features';
 import { tKeys } from '@/localization/tKeys';
 import { Role } from '@/types/Role';
 
@@ -26,6 +28,8 @@ interface NavItem {
   implemented: boolean;
   /** Roles allowed to see this item at all — checked before `implemented`. */
   allowedRoles: Role[];
+  /** Feature flag gating this item, if any — checked after `implemented`. */
+  feature?: Feature;
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -49,6 +53,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: LuChartLine,
     implemented: true,
     allowedRoles: [Role.ADMIN],
+    feature: 'analytics',
   },
   {
     key: 'settings',
@@ -63,6 +68,7 @@ interface SidebarContentProps {
   email?: string | null;
   fullName?: string;
   role: Role | null;
+  lockedFeatures: Feature[];
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
   onNavigate?: () => void;
@@ -72,6 +78,7 @@ export default function SidebarContent({
   email,
   fullName,
   role,
+  lockedFeatures,
   isCollapsed = false,
   onToggleCollapse,
   onNavigate,
@@ -141,8 +148,69 @@ export default function SidebarContent({
             );
           }
 
+          const isLocked =
+            item.feature && lockedFeatures.includes(item.feature);
+
+          if (isLocked) {
+            return (
+              <Tooltip
+                key={item.key}
+                content={label}
+                disabled={!isCollapsed}
+                positioning={{ placement: 'right' }}
+              >
+                {/* Native anchor: a feature-gated destination must always
+                    hit the server (middleware + page check) fresh, never a
+                    client-side navigation served from Next's route cache. */}
+                <a
+                  href={`/${locale}/dashboard/upgrade?feature=${item.feature}`}
+                  onClick={onNavigate}
+                >
+                  <Flex
+                    align="center"
+                    justify={isCollapsed ? 'center' : 'flex-start'}
+                    gap={2}
+                    px={3}
+                    py={2}
+                    rounded="md"
+                    color="fg.muted"
+                    opacity={0.6}
+                    _hover={{ bg: 'bg.muted' }}
+                  >
+                    <Icon />
+                    {!isCollapsed && (
+                      <>
+                        <Text flex="1">{label}</Text>
+                        <Badge size="sm" colorPalette="orange">
+                          <LuLock /> {t(tKeys.sidebar.featureLocked)}
+                        </Badge>
+                      </>
+                    )}
+                  </Flex>
+                </a>
+              </Tooltip>
+            );
+          }
+
           const href = `/${locale}${item.href}`;
           const isActive = pathname === href;
+
+          const navContent = (
+            <Flex
+              align="center"
+              justify={isCollapsed ? 'center' : 'flex-start'}
+              gap={2}
+              px={3}
+              py={2}
+              rounded="md"
+              bg={isActive ? 'bg.emphasized' : 'transparent'}
+              fontWeight={isActive ? 'semibold' : 'normal'}
+              _hover={{ bg: 'bg.muted' }}
+            >
+              <Icon />
+              {!isCollapsed && <Text>{label}</Text>}
+            </Flex>
+          );
 
           return (
             <Tooltip
@@ -151,22 +219,17 @@ export default function SidebarContent({
               disabled={!isCollapsed}
               positioning={{ placement: 'right' }}
             >
-              <Link href={href} onClick={onNavigate}>
-                <Flex
-                  align="center"
-                  justify={isCollapsed ? 'center' : 'flex-start'}
-                  gap={2}
-                  px={3}
-                  py={2}
-                  rounded="md"
-                  bg={isActive ? 'bg.emphasized' : 'transparent'}
-                  fontWeight={isActive ? 'semibold' : 'normal'}
-                  _hover={{ bg: 'bg.muted' }}
-                >
-                  <Icon />
-                  {!isCollapsed && <Text>{label}</Text>}
-                </Flex>
-              </Link>
+              {item.feature ? (
+                // Feature-gated destination: native anchor, same reasoning
+                // as the locked branch above — always hit the server fresh.
+                <a href={href} onClick={onNavigate}>
+                  {navContent}
+                </a>
+              ) : (
+                <Link href={href} onClick={onNavigate}>
+                  {navContent}
+                </Link>
+              )}
             </Tooltip>
           );
         })}

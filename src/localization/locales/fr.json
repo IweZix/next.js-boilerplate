@@ -34,6 +34,7 @@
       "settings": "Paramètres"
     },
     "comingSoon": "Bientôt disponible",
+    "featureLocked": "Verrouillé",
     "menu": "Menu",
     "collapse": "Réduire le menu",
     "expand": "Agrandir le menu"
@@ -163,5 +164,15 @@
     "direct": "Direct",
     "loadError": "Impossible de charger ces données pour le moment.",
     "noData": "Aucune donnée pour cette période."
+  },
+  "upgrade": {
+    "title": "Fonctionnalité non disponible",
+    "body": "Cette fonctionnalité n'est pas incluse dans votre offre actuelle. Contactez-nous pour la débloquer.",
+    "contactButton": "Nous contacter",
+    "features": {
+      "analytics": {
+        "body": "Les statistiques sont réservées aux clients abonnés. Contactez-nous pour débloquer cette fonctionnalité."
+      }
+    }
   }
 }

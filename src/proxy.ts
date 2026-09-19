@@ -2,6 +2,7 @@
 
 import { type NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
+import { featureForPath, isEnabled } from '@/lib/features';
 import { updateSession } from '@/lib/supabase/middleware';
 import { routing } from '@/localization/routing';
 
@@ -54,6 +55,15 @@ export default async function middleware(request: NextRequest) {
     return redirectTo(request, intlResponse, `/${locale}/login`);
   }
 
+  if (isProtectedPath && user) {
+    const feature = featureForPath(pathnameWithoutLocale);
+    if (feature && !(await isEnabled(feature))) {
+      return redirectTo(request, intlResponse, `/${locale}/dashboard/upgrade`, {
+        feature,
+      });
+    }
+  }
+
   if (isAuthPath && user) {
     return redirectTo(request, intlResponse, `/${locale}/dashboard`);
   }
@@ -65,9 +75,14 @@ function redirectTo(
   request: NextRequest,
   response: NextResponse,
   pathname: string,
+  searchParams?: Record<string, string>,
 ) {
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = pathname;
+  redirectUrl.search = '';
+  for (const [key, value] of Object.entries(searchParams ?? {})) {
+    redirectUrl.searchParams.set(key, value);
+  }
   const redirectResponse = NextResponse.redirect(redirectUrl);
   for (const cookie of response.cookies.getAll()) {
     redirectResponse.cookies.set(cookie);

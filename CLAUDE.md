@@ -54,6 +54,8 @@ Tailwind CSS v4 + shadcn/ui (radix-nova style, neutral base color, lucide icons)
 | `NEXT_PUBLIC_APP_ENV` | Controls env banner color: `local` (purple), `dev` (red), `prod` (green) |
 | `NEXT_PUBLIC_BACKEND_URL` | Base URL for the Axios custom instance |
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Google Maps API key |
+| `GLOBAL_CONFIG` | Connection string for the Vercel Global Config store backing the feature-flag system (`src/lib/features.ts`); legacy `EDGE_CONFIG` name also works |
+| `CONTACT_EMAIL` | Agency contact address used by the `/dashboard/upgrade` page's mailto button |
 
 Copy `.env.config` to `.env` to bootstrap local environment values.
 

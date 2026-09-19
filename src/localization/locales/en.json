@@ -34,6 +34,7 @@
       "settings": "Settings"
     },
     "comingSoon": "Coming soon",
+    "featureLocked": "Locked",
     "menu": "Menu",
     "collapse": "Collapse menu",
     "expand": "Expand menu"
@@ -163,5 +164,15 @@
     "direct": "Direct",
     "loadError": "Unable to load this data right now.",
     "noData": "No data for this period."
+  },
+  "upgrade": {
+    "title": "Feature not available",
+    "body": "This feature isn't included in your current plan. Contact us to unlock it.",
+    "contactButton": "Contact us",
+    "features": {
+      "analytics": {
+        "body": "Analytics is reserved for subscribed clients. Contact us to unlock this feature."
+      }
+    }
   }
 }

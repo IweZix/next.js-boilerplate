@@ -34,6 +34,7 @@ export const tKeys = {
       settings: 'sidebar.nav.settings',
     },
     comingSoon: 'sidebar.comingSoon',
+    featureLocked: 'sidebar.featureLocked',
     menu: 'sidebar.menu',
     collapse: 'sidebar.collapse',
     expand: 'sidebar.expand',
@@ -163,5 +164,15 @@ export const tKeys = {
     direct: 'analytics.direct',
     loadError: 'analytics.loadError',
     noData: 'analytics.noData',
+  },
+  upgrade: {
+    title: 'upgrade.title',
+    body: 'upgrade.body',
+    contactButton: 'upgrade.contactButton',
+    features: {
+      analytics: {
+        body: 'upgrade.features.analytics.body',
+      },
+    },
   },
 } as const;
