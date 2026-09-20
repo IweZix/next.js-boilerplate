@@ -10,14 +10,10 @@ import {
   Text,
   Textarea,
 } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
-import {
-  createAnnouncement,
-  updateAnnouncement,
-} from '@/app/[locale]/dashboard/annonces/actions';
 import { AnnouncementBannerView } from '@/components/core/banners/announcement-banner/view';
 import { toaster } from '@/components/ui/toaster';
 import {
@@ -27,6 +23,10 @@ import {
 import type { Announcement } from '@/lib/announcements/repository';
 import type { AnnouncementFormValues } from '@/lib/announcements/schema';
 import { tKeys } from '@/localization/tKeys';
+import {
+  createAnnouncement,
+  updateAnnouncement,
+} from '@/services/announcements';
 import type { AnnouncementVariant } from '@/types/Announcement';
 
 const VARIANT_ORDER: AnnouncementVariant[] = ['info', 'promo', 'alerte'];
@@ -61,6 +61,7 @@ export default function AnnouncementForm({
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const [message, setMessage] = useState(announcement?.message ?? '');
   const [linkUrl, setLinkUrl] = useState(announcement?.linkUrl ?? '');
@@ -124,7 +125,9 @@ export default function AnnouncementForm({
       if (mode === 'create') {
         router.push(`/${locale}/dashboard/annonces`);
       } else {
-        router.refresh();
+        queryClient.invalidateQueries({
+          queryKey: ['announcement', announcement?.id],
+        });
       }
     },
   });

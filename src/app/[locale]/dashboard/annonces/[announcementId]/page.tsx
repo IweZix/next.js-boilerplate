@@ -1,42 +1,50 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
-import { notFound, redirect } from 'next/navigation';
-import { getLocale, getTranslations } from 'next-intl/server';
+'use client';
+
+import { Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
+import { notFound, useParams, useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import AnnouncementForm from '@/components/core/announcements/announcement-form';
 import GoBackButton from '@/components/core/go-back-button';
-import { getAnnouncementById } from '@/lib/announcements/repository';
-import { isEnabled } from '@/lib/features';
-import {
-  assertCurrentUserIsAdmin,
-  ForbiddenError,
-} from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
+import { getAnnouncement } from '@/services/announcements';
 
-interface AnnouncementDetailPageProps {
-  params: Promise<{ announcementId: string }>;
-}
+export default function AnnouncementDetailPage() {
+  const t = useTranslations();
+  const locale = useLocale();
+  const router = useRouter();
+  const { announcementId } = useParams<{ announcementId: string }>();
 
-export default async function AnnouncementDetailPage({
-  params,
-}: AnnouncementDetailPageProps) {
-  const t = await getTranslations();
-  const locale = await getLocale();
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ['announcement', announcementId],
+    queryFn: () => getAnnouncement(announcementId),
+  });
 
-  try {
-    await assertCurrentUserIsAdmin();
-  } catch (error) {
-    if (error instanceof ForbiddenError) {
+  const isFeatureDisabled =
+    error instanceof Error && error.message === 'feature_disabled';
+
+  useEffect(() => {
+    if (isFeatureDisabled) {
+      router.replace(`/${locale}/dashboard/upgrade?feature=banner`);
+    }
+  }, [isFeatureDisabled, locale, router]);
+
+  if (isPending || isFeatureDisabled) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    if (error instanceof Error && error.message === 'not_found') {
+      notFound();
+    }
+    if (error instanceof Error && error.message === 'forbidden') {
       return <Text>{t(tKeys.announcements.accessDenied)}</Text>;
     }
-    throw error;
+    return <Text>{t(tKeys.announcements.detail.loadError)}</Text>;
   }
 
-  if (!(await isEnabled('banner'))) {
-    redirect(`/${locale}/dashboard/upgrade?feature=banner`);
-  }
-
-  const { announcementId } = await params;
-  const announcement = await getAnnouncementById(announcementId);
-  if (!announcement) notFound();
+  const { announcement } = data;
 
   return (
     <Stack gap={6}>

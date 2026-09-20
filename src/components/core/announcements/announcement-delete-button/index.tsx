@@ -1,13 +1,12 @@
 'use client';
 
 import { Button, Dialog, Portal, Text } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { deleteAnnouncement } from '@/app/[locale]/dashboard/annonces/actions';
 import { toaster } from '@/components/ui/toaster';
 import { tKeys } from '@/localization/tKeys';
+import { deleteAnnouncement } from '@/services/announcements';
 
 interface AnnouncementDeleteButtonProps {
   id: string;
@@ -17,7 +16,7 @@ export default function AnnouncementDeleteButton({
   id,
 }: AnnouncementDeleteButtonProps) {
   const t = useTranslations();
-  const router = useRouter();
+  const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
 
   const mutation = useMutation({
@@ -35,7 +34,7 @@ export default function AnnouncementDeleteButton({
         type: 'success',
       });
       setIsOpen(false);
-      router.refresh();
+      queryClient.invalidateQueries({ queryKey: ['announcements'] });
     },
     onError: () => {
       toaster.create({

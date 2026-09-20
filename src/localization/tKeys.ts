@@ -182,6 +182,7 @@ export const tKeys = {
   announcements: {
     title: 'announcements.title',
     accessDenied: 'announcements.accessDenied',
+    loadError: 'announcements.loadError',
     addButton: 'announcements.addButton',
     emptyTitle: 'announcements.emptyTitle',
     emptyDescription: 'announcements.emptyDescription',
@@ -250,6 +251,9 @@ export const tKeys = {
     public: {
       ariaLabel: 'announcements.public.ariaLabel',
       dismissAriaLabel: 'announcements.public.dismissAriaLabel',
+    },
+    detail: {
+      loadError: 'announcements.detail.loadError',
     },
   },
 } as const;

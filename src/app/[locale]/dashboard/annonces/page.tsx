@@ -1,7 +1,11 @@
-import { Badge, Button, Stack, Text } from '@chakra-ui/react';
+'use client';
+
+import { Badge, Button, Spinner, Stack, Text } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import AnnouncementDeleteButton from '@/components/core/announcements/announcement-delete-button';
 import AnnouncementToggleButton from '@/components/core/announcements/announcement-toggle-button';
 import DataTable, { type DataTableRow } from '@/components/core/data-table';
@@ -11,19 +15,11 @@ import {
   getAnnouncementPeriod,
 } from '@/lib/announcements/dates';
 import {
-  getActiveAnnouncementRow,
-  listAnnouncements,
-} from '@/lib/announcements/repository';
-import {
   type AnnouncementStatus,
   getAnnouncementStatus,
 } from '@/lib/announcements/status';
-import { isEnabled } from '@/lib/features';
-import {
-  assertCurrentUserIsAdmin,
-  ForbiddenError,
-} from '@/lib/supabase/list-users';
 import { tKeys } from '@/localization/tKeys';
+import { getAnnouncements } from '@/services/announcements';
 import { truncateLabel } from '@/utils/format';
 
 const STATUS_COLOR_PALETTE: Record<AnnouncementStatus, string> = {
@@ -34,28 +30,37 @@ const STATUS_COLOR_PALETTE: Record<AnnouncementStatus, string> = {
   pending: 'orange',
 };
 
-export default async function AnnouncementsPage() {
-  const t = await getTranslations();
-  const locale = await getLocale();
+export default function AnnouncementsPage() {
+  const t = useTranslations();
+  const locale = useLocale();
+  const router = useRouter();
 
-  try {
-    await assertCurrentUserIsAdmin();
-  } catch (error) {
-    if (error instanceof ForbiddenError) {
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ['announcements'],
+    queryFn: getAnnouncements,
+  });
+
+  const isFeatureDisabled =
+    error instanceof Error && error.message === 'feature_disabled';
+
+  useEffect(() => {
+    if (isFeatureDisabled) {
+      router.replace(`/${locale}/dashboard/upgrade?feature=banner`);
+    }
+  }, [isFeatureDisabled, locale, router]);
+
+  if (isPending || isFeatureDisabled) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    if (error instanceof Error && error.message === 'forbidden') {
       return <Text>{t(tKeys.announcements.accessDenied)}</Text>;
     }
-    throw error;
+    return <Text>{t(tKeys.announcements.loadError)}</Text>;
   }
 
-  if (!(await isEnabled('banner'))) {
-    redirect(`/${locale}/dashboard/upgrade?feature=banner`);
-  }
-
-  const [announcements, activeAnnouncement] = await Promise.all([
-    listAnnouncements(),
-    getActiveAnnouncementRow(),
-  ]);
-  const activeId = activeAnnouncement?.id ?? null;
+  const { announcements, activeAnnouncementId } = data;
   const now = new Date();
 
   function periodText(startsAt: string | null, endsAt: string | null): string {
@@ -80,7 +85,11 @@ export default async function AnnouncementsPage() {
   }
 
   const rows: DataTableRow[] = announcements.map((announcement) => {
-    const status = getAnnouncementStatus(announcement, activeId, now);
+    const status = getAnnouncementStatus(
+      announcement,
+      activeAnnouncementId,
+      now,
+    );
     return {
       id: announcement.id,
       cells: [

@@ -1,4 +1,9 @@
 import { z } from 'zod';
+import {
+  endDateInputToUtc,
+  startDateInputToUtc,
+} from '@/lib/announcements/dates';
+import type { AnnouncementWriteInput } from '@/lib/announcements/repository';
 
 const dateOnlySchema = z
   .string()
@@ -77,3 +82,19 @@ export const announcementInputSchema = z
 
 export type AnnouncementFormValues = z.input<typeof announcementInputSchema>;
 export type AnnouncementInput = z.infer<typeof announcementInputSchema>;
+
+export function toAnnouncementWriteInput(
+  data: AnnouncementInput,
+): AnnouncementWriteInput {
+  return {
+    message: data.message,
+    linkUrl: data.linkUrl,
+    linkLabel: data.linkLabel,
+    variant: data.variant,
+    startsAt: data.startsAt
+      ? startDateInputToUtc(data.startsAt).toISOString()
+      : null,
+    endsAt: data.endsAt ? endDateInputToUtc(data.endsAt).toISOString() : null,
+    isActive: data.isActive,
+  };
+}

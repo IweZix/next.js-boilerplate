@@ -182,6 +182,7 @@
   "announcements": {
     "title": "Annonces",
     "accessDenied": "Accès réservé aux administrateurs",
+    "loadError": "Impossible de charger les annonces",
     "addButton": "Nouvelle annonce",
     "emptyTitle": "Aucune annonce",
     "emptyDescription": "Créez votre première annonce pour l'afficher sur le site.",
@@ -250,6 +251,9 @@
     "public": {
       "ariaLabel": "Annonce",
       "dismissAriaLabel": "Fermer l'annonce"
+    },
+    "detail": {
+      "loadError": "Impossible de charger cette annonce"
     }
   }
 }

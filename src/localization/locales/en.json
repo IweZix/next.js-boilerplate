@@ -182,6 +182,7 @@
   "announcements": {
     "title": "Announcements",
     "accessDenied": "Access restricted to administrators",
+    "loadError": "Couldn't load announcements",
     "addButton": "New announcement",
     "emptyTitle": "No announcements",
     "emptyDescription": "Create your first announcement to show it on the site.",
@@ -250,6 +251,9 @@
     "public": {
       "ariaLabel": "Announcement",
       "dismissAriaLabel": "Close announcement"
+    },
+    "detail": {
+      "loadError": "Couldn't load this announcement"
     }
   }
 }

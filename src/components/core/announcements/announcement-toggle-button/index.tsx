@@ -1,12 +1,11 @@
 'use client';
 
 import { Button } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
-import { toggleAnnouncement } from '@/app/[locale]/dashboard/annonces/actions';
 import { toaster } from '@/components/ui/toaster';
 import { tKeys } from '@/localization/tKeys';
+import { toggleAnnouncement } from '@/services/announcements';
 
 interface AnnouncementToggleButtonProps {
   id: string;
@@ -18,7 +17,7 @@ export default function AnnouncementToggleButton({
   isActive,
 }: AnnouncementToggleButtonProps) {
   const t = useTranslations();
-  const router = useRouter();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: () => toggleAnnouncement(id, !isActive),
@@ -30,7 +29,7 @@ export default function AnnouncementToggleButton({
         });
         return;
       }
-      router.refresh();
+      queryClient.invalidateQueries({ queryKey: ['announcements'] });
     },
     onError: () => {
       toaster.create({
