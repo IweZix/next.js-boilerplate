@@ -1,6 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
 import Sidebar from '@/components/core/dashboard/sidebar';
+import PreferencesSync from '@/components/core/preferences-sync';
 import { getLockedFeatures } from '@/lib/features';
+import { getPreferencesSyncInfo } from '@/lib/preferences';
 import { getCurrentUser } from '@/lib/supabase/current-user';
 import { getUserRole } from '@/lib/supabase/role';
 import { getUserMetadata } from '@/lib/supabase/user-metadata';
@@ -19,9 +21,15 @@ export default async function DashboardLayout({
   const { firstName, lastName } = getUserMetadata(user);
   const fullName = [firstName, lastName].filter(Boolean).join(' ') || undefined;
   const lockedFeatures = await getLockedFeatures();
+  const preferences = await getPreferencesSyncInfo();
 
   return (
     <Flex minH="100vh" direction={{ base: 'column', md: 'row' }}>
+      <PreferencesSync
+        locale={preferences.locale}
+        theme={preferences.theme}
+        neverCustomized={preferences.neverCustomized}
+      />
       <Sidebar
         email={user?.email}
         fullName={fullName}

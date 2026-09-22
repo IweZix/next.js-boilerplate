@@ -138,7 +138,16 @@ export const tKeys = {
         en: 'settings.language.options.en',
       },
     },
-    save: 'settings.save',
+    theme: {
+      label: 'settings.theme.label',
+      description: 'settings.theme.description',
+      options: {
+        light: 'settings.theme.options.light',
+        dark: 'settings.theme.options.dark',
+        system: 'settings.theme.options.system',
+      },
+    },
+    updateError: 'settings.updateError',
   },
   analytics: {
     title: 'analytics.title',

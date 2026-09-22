@@ -138,7 +138,16 @@
         "en": "English"
       }
     },
-    "save": "Save"
+    "theme": {
+      "label": "Theme",
+      "description": "Choose the backoffice's appearance.",
+      "options": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    },
+    "updateError": "Couldn't save your preferences. Please try again."
   },
   "analytics": {
     "title": "Analytics",

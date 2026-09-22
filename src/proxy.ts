@@ -4,7 +4,9 @@ import { type NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { featureForPath, isEnabled } from '@/lib/features';
 import { updateSession } from '@/lib/supabase/middleware';
+import { secureCookieOptions } from '@/lib/supabase/secure-cookie-options';
 import { routing } from '@/localization/routing';
+import type { Locale } from '@/types/Locale';
 
 const handleIntl = createMiddleware(routing);
 
@@ -12,6 +14,12 @@ const localePattern = new RegExp(`^/(${routing.locales.join('|')})(/.*)?$`);
 
 const PROTECTED_PATHS = ['/dashboard'];
 const AUTH_PATHS = ['/login'];
+
+// Our own cookie, separate from next-intl's app-wide NEXT_LOCALE (which the
+// public site also relies on) — this one only caches whether this browser's
+// backoffice locale has already been reconciled with the DB, so it's never
+// read back for its value, only its presence.
+const ADMIN_LOCALE_COOKIE = 'ADMIN_LOCALE';
 
 export default async function middleware(request: NextRequest) {
   const intlResponse = handleIntl(request);
@@ -39,10 +47,16 @@ export default async function middleware(request: NextRequest) {
   }
 
   let user = null;
+  let supabase: Awaited<ReturnType<typeof updateSession>>['supabase'] | null =
+    null;
   try {
-    const { response: supabaseResponse, user: sessionUser } =
-      await updateSession(request);
+    const {
+      response: supabaseResponse,
+      user: sessionUser,
+      supabase: supabaseClient,
+    } = await updateSession(request);
     user = sessionUser;
+    supabase = supabaseClient;
     for (const cookie of supabaseResponse.cookies.getAll()) {
       intlResponse.cookies.set(cookie);
     }
@@ -53,6 +67,23 @@ export default async function middleware(request: NextRequest) {
 
   if (isProtectedPath && !user) {
     return redirectTo(request, intlResponse, `/${locale}/login`);
+  }
+
+  if (
+    isProtectedPath &&
+    user &&
+    supabase &&
+    !request.cookies.get(ADMIN_LOCALE_COOKIE)?.value
+  ) {
+    const redirected = await syncAdminLocale(
+      request,
+      intlResponse,
+      supabase,
+      user.id,
+      locale,
+      pathnameWithoutLocale,
+    );
+    if (redirected) return redirected;
   }
 
   if (isProtectedPath && user) {
@@ -88,6 +119,69 @@ function redirectTo(
     redirectResponse.cookies.set(cookie);
   }
   return redirectResponse;
+}
+
+/**
+ * Reconciles the ADMIN_LOCALE cookie with the user_preferences row, only
+ * called when the cookie is absent (login, cleared cookie, first visit).
+ *
+ * Only redirects DB -> URL, and only when the row was actually *customized*
+ * (updatedAt > createdAt). A never-customized row (still at the trigger's
+ * fresh default) must NOT force a redirect here — that would flip a user
+ * landing on e.g. /en/login back to /fr before PreferencesSync (client-side)
+ * ever gets a chance to recover their current URL locale into the DB. In
+ * that case we just mark the cookie with the current URL locale and let the
+ * client-side effect write it back.
+ */
+async function syncAdminLocale(
+  request: NextRequest,
+  intlResponse: NextResponse,
+  supabase: Awaited<ReturnType<typeof updateSession>>['supabase'],
+  userId: string,
+  locale: string,
+  pathnameWithoutLocale: string,
+): Promise<NextResponse | null> {
+  try {
+    const { data } = await supabase
+      .from('user_preferences')
+      .select('locale, createdAt, updatedAt')
+      .eq('userId', userId)
+      .maybeSingle();
+
+    const dbLocale = data?.locale as Locale | undefined;
+    const neverCustomized = !data || data.createdAt === data.updatedAt;
+    const cookieOptions = secureCookieOptions({
+      path: '/',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+    });
+
+    if (
+      !neverCustomized &&
+      dbLocale &&
+      dbLocale !== locale &&
+      routing.locales.includes(dbLocale)
+    ) {
+      const redirected = redirectTo(
+        request,
+        intlResponse,
+        `/${dbLocale}${pathnameWithoutLocale}`,
+      );
+      redirected.cookies.set(ADMIN_LOCALE_COOKIE, dbLocale, cookieOptions);
+      return redirected;
+    }
+
+    intlResponse.cookies.set(
+      ADMIN_LOCALE_COOKIE,
+      neverCustomized || !dbLocale ? locale : dbLocale,
+      cookieOptions,
+    );
+    return null;
+  } catch {
+    // Preference lookup failed — skip silently, never conflate with the
+    // outer auth fail-closed catch.
+    return null;
+  }
 }
 
 export const config = {
