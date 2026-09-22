@@ -32,6 +32,7 @@
       "users": "Utilisateurs",
       "analytics": "Statistiques",
       "annonces": "Annonces",
+      "journal": "Journal",
       "settings": "Paramètres"
     },
     "comingSoon": "Bientôt disponible",
@@ -112,7 +113,11 @@
       "deleteCancel": "Annuler",
       "deleteSuccess": "Compte supprimé",
       "deleteError": "Impossible de supprimer ce compte",
-      "cannotDeleteOwnAccount": "Tu ne peux pas supprimer ton propre compte"
+      "cannotDeleteOwnAccount": "Tu ne peux pas supprimer ton propre compte",
+      "tabs": {
+        "edit": "Modifier",
+        "history": "Historique"
+      }
     }
   },
   "resetPassword": {
@@ -262,7 +267,62 @@
       "dismissAriaLabel": "Fermer l'annonce"
     },
     "detail": {
-      "loadError": "Impossible de charger cette annonce"
+      "loadError": "Impossible de charger cette annonce",
+      "tabs": {
+        "edit": "Modifier",
+        "history": "Historique"
+      }
+    }
+  },
+  "journal": {
+    "title": "Journal d'audit",
+    "accessDenied": "Accès réservé aux administrateurs",
+    "loadError": "Impossible de charger le journal",
+    "empty": "Aucune action enregistrée pour vos filtres.",
+    "system": "Système",
+    "columns": {
+      "date": "Date",
+      "user": "Utilisateur",
+      "action": "Action",
+      "type": "Type",
+      "element": "Élément",
+      "details": "Détails"
+    },
+    "actions": {
+      "insert": "Création",
+      "update": "Modification",
+      "delete": "Suppression",
+      "restore": "Restauration"
+    },
+    "filters": {
+      "user": "Utilisateur",
+      "allUsers": "Tous les utilisateurs",
+      "system": "Système",
+      "type": "Type",
+      "allTypes": "Tous les types",
+      "action": "Action",
+      "allActions": "Toutes les actions",
+      "from": "Du",
+      "to": "Au",
+      "reset": "Réinitialiser"
+    },
+    "models": {
+      "announcements": "Annonce",
+      "users": "Utilisateur"
+    },
+    "diff": {
+      "seeMore": "Voir plus",
+      "seeLess": "Voir moins",
+      "createdValues": "Valeurs créées",
+      "deletedValues": "Valeurs au moment de la suppression"
+    },
+    "detailsPanel": {
+      "title": "Détails",
+      "close": "Fermer"
+    },
+    "history": {
+      "empty": "Aucune modification enregistrée",
+      "loadError": "Impossible de charger l'historique"
     }
   }
 }

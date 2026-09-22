@@ -1,12 +1,13 @@
 'use client';
 
-import { Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import { Heading, Spinner, Stack, Tabs, Text } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { notFound, useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import AnnouncementForm from '@/components/core/announcements/announcement-form';
 import GoBackButton from '@/components/core/go-back-button';
+import AuditHistory from '@/components/core/journal/audit-history';
 import { tKeys } from '@/localization/tKeys';
 import { getAnnouncement } from '@/services/announcements';
 
@@ -50,7 +51,22 @@ export default function AnnouncementDetailPage() {
     <Stack gap={6}>
       <GoBackButton href={`/${locale}/dashboard/annonces`} />
       <Heading size="lg">{t(tKeys.announcements.form.editTitle)}</Heading>
-      <AnnouncementForm mode="edit" announcement={announcement} />
+      <Tabs.Root defaultValue="edit">
+        <Tabs.List>
+          <Tabs.Trigger value="edit">
+            {t(tKeys.announcements.detail.tabs.edit)}
+          </Tabs.Trigger>
+          <Tabs.Trigger value="history">
+            {t(tKeys.announcements.detail.tabs.history)}
+          </Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="edit">
+          <AnnouncementForm mode="edit" announcement={announcement} />
+        </Tabs.Content>
+        <Tabs.Content value="history">
+          <AuditHistory tableName="announcements" recordId={announcement.id} />
+        </Tabs.Content>
+      </Tabs.Root>
     </Stack>
   );
 }

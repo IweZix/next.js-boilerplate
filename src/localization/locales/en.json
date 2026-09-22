@@ -32,6 +32,7 @@
       "users": "Users",
       "analytics": "Analytics",
       "annonces": "Announcements",
+      "journal": "Journal",
       "settings": "Settings"
     },
     "comingSoon": "Coming soon",
@@ -112,7 +113,11 @@
       "deleteCancel": "Cancel",
       "deleteSuccess": "Account deleted",
       "deleteError": "Couldn't delete this account",
-      "cannotDeleteOwnAccount": "You can't delete your own account"
+      "cannotDeleteOwnAccount": "You can't delete your own account",
+      "tabs": {
+        "edit": "Edit",
+        "history": "History"
+      }
     }
   },
   "resetPassword": {
@@ -262,7 +267,62 @@
       "dismissAriaLabel": "Close announcement"
     },
     "detail": {
-      "loadError": "Couldn't load this announcement"
+      "loadError": "Couldn't load this announcement",
+      "tabs": {
+        "edit": "Edit",
+        "history": "History"
+      }
+    }
+  },
+  "journal": {
+    "title": "Audit log",
+    "accessDenied": "Access restricted to administrators",
+    "loadError": "Couldn't load the journal",
+    "empty": "No actions recorded for your filters.",
+    "system": "System",
+    "columns": {
+      "date": "Date",
+      "user": "User",
+      "action": "Action",
+      "type": "Type",
+      "element": "Element",
+      "details": "Details"
+    },
+    "actions": {
+      "insert": "Created",
+      "update": "Updated",
+      "delete": "Deleted",
+      "restore": "Restored"
+    },
+    "filters": {
+      "user": "User",
+      "allUsers": "All users",
+      "system": "System",
+      "type": "Type",
+      "allTypes": "All types",
+      "action": "Action",
+      "allActions": "All actions",
+      "from": "From",
+      "to": "To",
+      "reset": "Reset"
+    },
+    "models": {
+      "announcements": "Announcement",
+      "users": "User"
+    },
+    "diff": {
+      "seeMore": "See more",
+      "seeLess": "See less",
+      "createdValues": "Created values",
+      "deletedValues": "Values at deletion time"
+    },
+    "detailsPanel": {
+      "title": "Details",
+      "close": "Close"
+    },
+    "history": {
+      "empty": "No changes recorded",
+      "loadError": "Couldn't load the history"
     }
   }
 }

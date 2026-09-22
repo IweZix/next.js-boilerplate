@@ -1,5 +1,6 @@
 import { randomBytes } from 'node:crypto';
 import type { User } from '@supabase/supabase-js';
+import { logAudit } from '@/lib/audit';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getCurrentUser } from '@/lib/supabase/current-user';
 import { getUserRole } from '@/lib/supabase/role';
@@ -130,6 +131,12 @@ export async function updateUserForAdmin(
   }
 
   const supabase = createAdminClient();
+  const { data: before } = await supabase.auth.admin.getUserById(userId);
+  const beforeMetadata = before?.user
+    ? getUserMetadata(before.user)
+    : { firstName: undefined, lastName: undefined };
+  const beforeRole = before?.user ? getUserRole(before.user) : null;
+
   const { data, error } = await supabase.auth.admin.updateUserById(userId, {
     user_metadata: { firstName: input.firstName, lastName: input.lastName },
     app_metadata: { role: input.role },
@@ -137,6 +144,26 @@ export async function updateUserForAdmin(
 
   if (error) {
     throw error;
+  }
+
+  const oldFields = {
+    firstName: beforeMetadata.firstName ?? null,
+    lastName: beforeMetadata.lastName ?? null,
+    role: beforeRole,
+  };
+  const newFields = {
+    firstName: input.firstName ?? null,
+    lastName: input.lastName ?? null,
+    role: input.role,
+  };
+  if (JSON.stringify(oldFields) !== JSON.stringify(newFields)) {
+    await logAudit({
+      action: 'update',
+      tableName: 'users',
+      recordId: userId,
+      oldData: oldFields,
+      newData: newFields,
+    });
   }
 
   return toAdminUser(data.user);
@@ -174,6 +201,18 @@ export async function createUserForAdmin(
     throw error;
   }
 
+  await logAudit({
+    action: 'insert',
+    tableName: 'users',
+    recordId: data.user.id,
+    newData: {
+      email: input.email,
+      firstName: input.firstName ?? null,
+      lastName: input.lastName ?? null,
+      role: input.role,
+    },
+  });
+
   return { user: toAdminUser(data.user), temporaryPassword };
 }
 
@@ -207,6 +246,12 @@ export async function setUserActiveForAdmin(
   }
 
   const supabase = createAdminClient();
+  const { data: before } = await supabase.auth.admin.getUserById(userId);
+  const wasActive = before?.user
+    ? !before.user.banned_until ||
+      new Date(before.user.banned_until) <= new Date()
+    : null;
+
   // No native "permanent ban" — a long duration is the practical equivalent.
   const { data, error } = await supabase.auth.admin.updateUserById(userId, {
     ban_duration: isActive ? 'none' : '876000h',
@@ -214,6 +259,16 @@ export async function setUserActiveForAdmin(
 
   if (error) {
     throw error;
+  }
+
+  if (wasActive !== isActive) {
+    await logAudit({
+      action: 'update',
+      tableName: 'users',
+      recordId: userId,
+      oldData: { isActive: wasActive },
+      newData: { isActive },
+    });
   }
 
   return toAdminUser(data.user);
@@ -228,9 +283,27 @@ export async function deleteUserForAdmin(userId: string): Promise<void> {
   }
 
   const supabase = createAdminClient();
+  const { data: before } = await supabase.auth.admin.getUserById(userId);
+  const snapshot = before?.user ? toAdminUser(before.user) : null;
+
   const { error } = await supabase.auth.admin.deleteUser(userId);
 
   if (error) {
     throw error;
   }
+
+  await logAudit({
+    action: 'delete',
+    tableName: 'users',
+    recordId: userId,
+    oldData: snapshot
+      ? {
+          email: snapshot.email ?? null,
+          firstName: snapshot.firstName ?? null,
+          lastName: snapshot.lastName ?? null,
+          role: snapshot.role,
+          isActive: snapshot.isActive,
+        }
+      : undefined,
+  });
 }

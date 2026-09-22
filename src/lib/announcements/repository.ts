@@ -1,6 +1,7 @@
 import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { assertCurrentUserIsAdmin } from '@/lib/supabase/list-users';
+import { createClient } from '@/lib/supabase/server';
 import type { AnnouncementVariant } from '@/types/Announcement';
 
 const SITE_ID = process.env.SITE_ID as string;
@@ -61,7 +62,7 @@ export async function createAnnouncement(
   input: AnnouncementWriteInput,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .insert({ ...input, siteId: SITE_ID })
@@ -76,7 +77,7 @@ export async function updateAnnouncement(
   input: AnnouncementWriteInput,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .update(input) // AnnouncementWriteInput carries no siteId field — never client-controllable
@@ -93,7 +94,7 @@ export async function toggleAnnouncement(
   isActive: boolean,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .update({ isActive })
@@ -107,7 +108,7 @@ export async function toggleAnnouncement(
 
 export async function deleteAnnouncement(id: string): Promise<void> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { error } = await supabase
     .from('announcements')
     .delete()

@@ -12,6 +12,7 @@ import {
   LuMegaphone,
   LuPanelLeftClose,
   LuPanelLeftOpen,
+  LuScrollText,
   LuSettings,
   LuUsers,
 } from 'react-icons/lu';
@@ -22,7 +23,13 @@ import { tKeys } from '@/localization/tKeys';
 import { Role } from '@/types/Role';
 
 interface NavItem {
-  key: 'dashboard' | 'users' | 'analytics' | 'annonces' | 'settings';
+  key:
+    | 'dashboard'
+    | 'users'
+    | 'analytics'
+    | 'annonces'
+    | 'journal'
+    | 'settings';
   href: string;
   icon: IconType;
   /** Whether the page behind this link actually exists yet. */
@@ -63,6 +70,13 @@ const NAV_ITEMS: NavItem[] = [
     implemented: true,
     allowedRoles: [Role.ADMIN],
     feature: 'banner',
+  },
+  {
+    key: 'journal',
+    href: '/dashboard/journal',
+    icon: LuScrollText,
+    implemented: true,
+    allowedRoles: [Role.ADMIN],
   },
   {
     key: 'settings',
