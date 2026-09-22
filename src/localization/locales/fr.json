@@ -138,7 +138,16 @@
         "en": "English"
       }
     },
-    "save": "Enregistrer"
+    "theme": {
+      "label": "Thème",
+      "description": "Choisissez l'apparence du back-office.",
+      "options": {
+        "light": "Clair",
+        "dark": "Sombre",
+        "system": "Système"
+      }
+    },
+    "updateError": "Impossible d'enregistrer vos préférences. Réessayez."
   },
   "analytics": {
     "title": "Statistiques",
