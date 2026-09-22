@@ -1,9 +1,9 @@
 import { Stack } from '@chakra-ui/react';
 import { getTranslations } from 'next-intl/server';
 import PageHeader from '@/components/core/page-header';
+import PreferencesForm from '@/components/core/preferences-form';
 import { getPreferences } from '@/lib/preferences';
 import { tKeys } from '@/localization/tKeys';
-import PreferencesForm from './preferences-form';
 
 export default async function Settings() {
   const t = await getTranslations();
