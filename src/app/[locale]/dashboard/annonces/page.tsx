@@ -49,7 +49,7 @@ export default function AnnouncementsPage() {
     }
   }, [isFeatureDisabled, locale, router]);
 
-  if (isPending || isFeatureDisabled) {
+  if (isFeatureDisabled) {
     return <Spinner />;
   }
 
@@ -60,7 +60,8 @@ export default function AnnouncementsPage() {
     return <Text>{t(tKeys.announcements.loadError)}</Text>;
   }
 
-  const { announcements, activeAnnouncementId } = data;
+  const announcements = data?.announcements ?? [];
+  const activeAnnouncementId = data?.activeAnnouncementId ?? null;
   const now = new Date();
 
   function periodText(startsAt: string | null, endsAt: string | null): string {
@@ -132,7 +133,7 @@ export default function AnnouncementsPage() {
           </Button>
         }
       />
-      {announcements.length === 0 ? (
+      {!isPending && announcements.length === 0 ? (
         <Stack align="center" gap={4} py={12}>
           <Text color="fg.muted">
             {t(tKeys.announcements.emptyDescription)}
@@ -158,6 +159,7 @@ export default function AnnouncementsPage() {
             t(tKeys.announcements.columns.actions),
           ]}
           rows={rows}
+          isLoading={isPending}
         />
       )}
     </Stack>
