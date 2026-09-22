@@ -16,6 +16,7 @@ export interface Announcement {
   startsAt: string | null;
   endsAt: string | null;
   isActive: boolean;
+  isDeleted: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -38,6 +39,7 @@ export async function listAnnouncements(): Promise<Announcement[]> {
     .from('announcements')
     .select('*')
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .order('createdAt', { ascending: false });
   if (error) throw error;
   return data as Announcement[];
@@ -53,6 +55,7 @@ export async function getAnnouncementById(
     .select('*')
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .maybeSingle();
   if (error) throw error;
   return data as Announcement | null;
@@ -83,6 +86,7 @@ export async function updateAnnouncement(
     .update(input) // AnnouncementWriteInput carries no siteId field — never client-controllable
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .select()
     .single();
   if (error) throw error;
@@ -100,18 +104,20 @@ export async function toggleAnnouncement(
     .update({ isActive })
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .select()
     .single();
   if (error) throw error;
   return data as Announcement;
 }
 
+/** Soft delete: a row is never physically removed, only flagged. */
 export async function deleteAnnouncement(id: string): Promise<void> {
   await assertCurrentUserIsAdmin();
   const supabase = await createClient();
   const { error } = await supabase
     .from('announcements')
-    .delete()
+    .update({ isDeleted: true })
     .eq('id', id)
     .eq('siteId', SITE_ID);
   if (error) throw error;
