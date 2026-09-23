@@ -114,8 +114,10 @@
       "deleteSuccess": "Account deleted",
       "deleteError": "Couldn't delete this account",
       "cannotDeleteOwnAccount": "You can't delete your own account",
+      "editButton": "Edit",
+      "editTitle": "Edit user",
       "tabs": {
-        "edit": "Edit",
+        "info": "Info",
         "history": "History"
       }
     }

@@ -114,8 +114,10 @@ export const tKeys = {
       deleteSuccess: 'users.detail.deleteSuccess',
       deleteError: 'users.detail.deleteError',
       cannotDeleteOwnAccount: 'users.detail.cannotDeleteOwnAccount',
+      editButton: 'users.detail.editButton',
+      editTitle: 'users.detail.editTitle',
       tabs: {
-        edit: 'users.detail.tabs.edit',
+        info: 'users.detail.tabs.info',
         history: 'users.detail.tabs.history',
       },
     },

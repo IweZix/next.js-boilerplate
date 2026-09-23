@@ -114,8 +114,10 @@
       "deleteSuccess": "Compte supprimé",
       "deleteError": "Impossible de supprimer ce compte",
       "cannotDeleteOwnAccount": "Tu ne peux pas supprimer ton propre compte",
+      "editButton": "Modifier",
+      "editTitle": "Modifier l'utilisateur",
       "tabs": {
-        "edit": "Modifier",
+        "info": "Infos",
         "history": "Historique"
       }
     }
