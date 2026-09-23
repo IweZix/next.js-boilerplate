@@ -46,6 +46,17 @@
     "accessDenied": "Access restricted to administrators",
     "addButton": "Add a user",
     "loadError": "Couldn't load users",
+    "searchPlaceholder": "Search by email or name...",
+    "sort": {
+      "label": "Sort by",
+      "default": "Default",
+      "ascending": "Ascending order",
+      "descending": "Descending order"
+    },
+    "empty": {
+      "createButton": "Create a user",
+      "noResults": "No users match this search."
+    },
     "columns": {
       "email": "Email",
       "name": "Name",

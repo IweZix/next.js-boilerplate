@@ -33,6 +33,62 @@ export interface AdminUsersPage {
   lastPage: number;
 }
 
+export type UserSortField = 'email' | 'name' | 'role' | 'status';
+export type SortOrder = 'asc' | 'desc';
+
+export interface ListUsersOptions {
+  search?: string;
+  sortBy?: UserSortField;
+  sortOrder?: SortOrder;
+}
+
+const LIST_USERS_BATCH_SIZE = 1000;
+
+/**
+ * The Admin Auth API's listUsers() only supports { page, perPage } — no
+ * search or sort (see PageParams in @supabase/auth-js, and its
+ * implementation, which only ever forwards page/per_page as query params).
+ * So search/sort/pagination for the admin users list all happen here, in
+ * memory, over every user fetched from Supabase. Fine for the user-base
+ * sizes this boilerplate targets; if a project ever has tens of thousands
+ * of users, this should move to a table mirroring auth.users instead.
+ */
+async function fetchAllUsers(
+  supabase: ReturnType<typeof createAdminClient>,
+): Promise<User[]> {
+  const users: User[] = [];
+
+  for (let page = 1; ; page += 1) {
+    const { data, error } = await supabase.auth.admin.listUsers({
+      page,
+      perPage: LIST_USERS_BATCH_SIZE,
+    });
+    if (error) throw error;
+
+    users.push(...data.users);
+    if (data.users.length < LIST_USERS_BATCH_SIZE) break;
+  }
+
+  return users;
+}
+
+function compareUsers(
+  a: AdminUser,
+  b: AdminUser,
+  sortBy: UserSortField,
+): number {
+  switch (sortBy) {
+    case 'email':
+      return (a.email ?? '').localeCompare(b.email ?? '');
+    case 'name':
+      return (a.fullName ?? '').localeCompare(b.fullName ?? '');
+    case 'role':
+      return (a.role ?? '').localeCompare(b.role ?? '');
+    case 'status':
+      return Number(a.isActive) - Number(b.isActive);
+  }
+}
+
 function toAdminUser(user: User): AdminUser {
   const { firstName, lastName } = getUserMetadata(user);
   const fullName = [firstName, lastName].filter(Boolean).join(' ') || undefined;
@@ -69,25 +125,38 @@ export async function assertCurrentUserIsAdmin(): Promise<void> {
 export async function listUsersForAdmin(
   page = 1,
   perPage = 10,
+  options: ListUsersOptions = {},
 ): Promise<AdminUsersPage> {
   await assertCurrentUserIsAdmin();
 
   const supabase = createAdminClient();
-  const { data, error } = await supabase.auth.admin.listUsers({
-    page,
-    perPage,
-  });
+  const rawUsers = await fetchAllUsers(supabase);
+  let users = rawUsers.map(toAdminUser);
 
-  if (error) {
-    throw error;
+  const query = options.search?.trim().toLowerCase();
+  if (query) {
+    users = users.filter(
+      (user) =>
+        user.email?.toLowerCase().includes(query) ||
+        user.fullName?.toLowerCase().includes(query),
+    );
   }
 
+  if (options.sortBy) {
+    const sortBy = options.sortBy;
+    const direction = options.sortOrder === 'desc' ? -1 : 1;
+    users = [...users].sort((a, b) => compareUsers(a, b, sortBy) * direction);
+  }
+
+  const total = users.length;
+  const start = (page - 1) * perPage;
+
   return {
-    users: data.users.map(toAdminUser),
+    users: users.slice(start, start + perPage),
     page,
     perPage,
-    total: data.total,
-    lastPage: data.lastPage,
+    total,
+    lastPage: Math.max(1, Math.ceil(total / perPage)),
   };
 }
 

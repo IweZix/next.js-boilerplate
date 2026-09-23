@@ -1,5 +1,17 @@
-import type { AdminUser } from '@/lib/supabase/list-users';
+import type {
+  AdminUser,
+  SortOrder,
+  UserSortField,
+} from '@/lib/supabase/list-users';
 import type { Role } from '@/types/Role';
+
+export type { SortOrder, UserSortField };
+
+export interface GetUsersOptions {
+  search?: string;
+  sortBy?: UserSortField;
+  sortOrder?: SortOrder;
+}
 
 export interface GetUsersResult {
   users: AdminUser[];

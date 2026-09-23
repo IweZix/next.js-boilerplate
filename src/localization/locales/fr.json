@@ -46,6 +46,17 @@
     "accessDenied": "Accès réservé aux administrateurs",
     "addButton": "Ajouter un utilisateur",
     "loadError": "Impossible de charger les utilisateurs",
+    "searchPlaceholder": "Rechercher un email ou un nom...",
+    "sort": {
+      "label": "Trier par",
+      "default": "Par défaut",
+      "ascending": "Ordre croissant",
+      "descending": "Ordre décroissant"
+    },
+    "empty": {
+      "createButton": "Créer un utilisateur",
+      "noResults": "Aucun utilisateur ne correspond à cette recherche."
+    },
     "columns": {
       "email": "Email",
       "name": "Nom",

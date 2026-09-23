@@ -2,6 +2,7 @@ import type {
   CreateUserPayload,
   CreateUserResult,
   GetUserResult,
+  GetUsersOptions,
   GetUsersResult,
   UpdateUserPayload,
 } from '@/services/types/users';
@@ -10,15 +11,23 @@ import type {
  * Fetches a list of users from the API.
  * @param page The page number to fetch.
  * @param perPage The number of users to fetch per page.
+ * @param options Optional search query and sort order.
  * @returns A promise resolving to the list of users and pagination information.
  */
 export async function getUsers(
   page: number,
   perPage: number,
+  options: GetUsersOptions = {},
 ): Promise<GetUsersResult> {
-  const response = await fetch(
-    `/api/admin/users?page=${page}&perPage=${perPage}`,
-  );
+  const searchParams = new URLSearchParams({
+    page: String(page),
+    perPage: String(perPage),
+  });
+  if (options.search) searchParams.set('search', options.search);
+  if (options.sortBy) searchParams.set('sortBy', options.sortBy);
+  if (options.sortOrder) searchParams.set('sortOrder', options.sortOrder);
+
+  const response = await fetch(`/api/admin/users?${searchParams.toString()}`);
 
   if (!response.ok) {
     const body = await response.json().catch(() => null);

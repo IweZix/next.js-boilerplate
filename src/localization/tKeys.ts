@@ -46,6 +46,17 @@ export const tKeys = {
     accessDenied: 'users.accessDenied',
     addButton: 'users.addButton',
     loadError: 'users.loadError',
+    searchPlaceholder: 'users.searchPlaceholder',
+    sort: {
+      label: 'users.sort.label',
+      default: 'users.sort.default',
+      ascending: 'users.sort.ascending',
+      descending: 'users.sort.descending',
+    },
+    empty: {
+      createButton: 'users.empty.createButton',
+      noResults: 'users.empty.noResults',
+    },
     columns: {
       email: 'users.columns.email',
       name: 'users.columns.name',
