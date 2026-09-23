@@ -118,7 +118,8 @@
       "editTitle": "Modifier l'utilisateur",
       "tabs": {
         "info": "Infos",
-        "history": "Historique"
+        "history": "Historique",
+        "logs": "Logs"
       }
     }
   },

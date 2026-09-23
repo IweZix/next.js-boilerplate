@@ -144,12 +144,18 @@ export default function UserDetailPage() {
           <Tabs.Trigger value="history">
             {t(tKeys.users.detail.tabs.history)}
           </Tabs.Trigger>
+          <Tabs.Trigger value="logs">
+            {t(tKeys.users.detail.tabs.logs)}
+          </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value="info">
           <UserInfo user={user} />
         </Tabs.Content>
         <Tabs.Content value="history">
           <AuditHistory tableName="users" recordId={user.id} />
+        </Tabs.Content>
+        <Tabs.Content value="logs">
+          <AuditHistory userId={user.id} />
         </Tabs.Content>
       </Tabs.Root>
     </Stack>

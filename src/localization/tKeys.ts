@@ -119,6 +119,7 @@ export const tKeys = {
       tabs: {
         info: 'users.detail.tabs.info',
         history: 'users.detail.tabs.history',
+        logs: 'users.detail.tabs.logs',
       },
     },
   },
