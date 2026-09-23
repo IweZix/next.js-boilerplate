@@ -32,6 +32,7 @@ export const tKeys = {
       users: 'sidebar.nav.users',
       analytics: 'sidebar.nav.analytics',
       annonces: 'sidebar.nav.annonces',
+      journal: 'sidebar.nav.journal',
       settings: 'sidebar.nav.settings',
     },
     comingSoon: 'sidebar.comingSoon',
@@ -45,6 +46,17 @@ export const tKeys = {
     accessDenied: 'users.accessDenied',
     addButton: 'users.addButton',
     loadError: 'users.loadError',
+    searchPlaceholder: 'users.searchPlaceholder',
+    sort: {
+      label: 'users.sort.label',
+      default: 'users.sort.default',
+      ascending: 'users.sort.ascending',
+      descending: 'users.sort.descending',
+    },
+    empty: {
+      createButton: 'users.empty.createButton',
+      noResults: 'users.empty.noResults',
+    },
     columns: {
       email: 'users.columns.email',
       name: 'users.columns.name',
@@ -113,6 +125,13 @@ export const tKeys = {
       deleteSuccess: 'users.detail.deleteSuccess',
       deleteError: 'users.detail.deleteError',
       cannotDeleteOwnAccount: 'users.detail.cannotDeleteOwnAccount',
+      editButton: 'users.detail.editButton',
+      editTitle: 'users.detail.editTitle',
+      tabs: {
+        info: 'users.detail.tabs.info',
+        history: 'users.detail.tabs.history',
+        logs: 'users.detail.tabs.logs',
+      },
     },
   },
   resetPassword: {
@@ -263,6 +282,61 @@ export const tKeys = {
     },
     detail: {
       loadError: 'announcements.detail.loadError',
+      tabs: {
+        edit: 'announcements.detail.tabs.edit',
+        history: 'announcements.detail.tabs.history',
+      },
+    },
+  },
+  journal: {
+    title: 'journal.title',
+    accessDenied: 'journal.accessDenied',
+    loadError: 'journal.loadError',
+    empty: 'journal.empty',
+    system: 'journal.system',
+    columns: {
+      date: 'journal.columns.date',
+      user: 'journal.columns.user',
+      action: 'journal.columns.action',
+      type: 'journal.columns.type',
+      element: 'journal.columns.element',
+      details: 'journal.columns.details',
+    },
+    actions: {
+      insert: 'journal.actions.insert',
+      update: 'journal.actions.update',
+      delete: 'journal.actions.delete',
+      restore: 'journal.actions.restore',
+    },
+    filters: {
+      user: 'journal.filters.user',
+      allUsers: 'journal.filters.allUsers',
+      system: 'journal.filters.system',
+      type: 'journal.filters.type',
+      allTypes: 'journal.filters.allTypes',
+      action: 'journal.filters.action',
+      allActions: 'journal.filters.allActions',
+      from: 'journal.filters.from',
+      to: 'journal.filters.to',
+      reset: 'journal.filters.reset',
+    },
+    models: {
+      announcements: 'journal.models.announcements',
+      users: 'journal.models.users',
+    },
+    diff: {
+      seeMore: 'journal.diff.seeMore',
+      seeLess: 'journal.diff.seeLess',
+      createdValues: 'journal.diff.createdValues',
+      deletedValues: 'journal.diff.deletedValues',
+    },
+    detailsPanel: {
+      title: 'journal.detailsPanel.title',
+      close: 'journal.detailsPanel.close',
+    },
+    history: {
+      empty: 'journal.history.empty',
+      loadError: 'journal.history.loadError',
     },
   },
 } as const;

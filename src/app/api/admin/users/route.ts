@@ -3,16 +3,29 @@ import {
   createUserForAdmin,
   ForbiddenError,
   listUsersForAdmin,
+  type UserSortField,
 } from '@/lib/supabase/list-users';
 import { Role } from '@/types/Role';
+
+const SORT_FIELDS: UserSortField[] = ['email', 'name', 'role', 'status'];
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = Math.max(1, Number(searchParams.get('page')) || 1);
   const perPage = Math.max(1, Number(searchParams.get('perPage')) || 10);
+  const search = searchParams.get('search') ?? undefined;
+  const sortByParam = searchParams.get('sortBy');
+  const sortBy = SORT_FIELDS.includes(sortByParam as UserSortField)
+    ? (sortByParam as UserSortField)
+    : undefined;
+  const sortOrder = searchParams.get('sortOrder') === 'desc' ? 'desc' : 'asc';
 
   try {
-    const result = await listUsersForAdmin(page, perPage);
+    const result = await listUsersForAdmin(page, perPage, {
+      search,
+      sortBy,
+      sortOrder,
+    });
     return NextResponse.json(result);
   } catch (error) {
     if (error instanceof ForbiddenError) {

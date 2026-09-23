@@ -1,6 +1,7 @@
 import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { assertCurrentUserIsAdmin } from '@/lib/supabase/list-users';
+import { createClient } from '@/lib/supabase/server';
 import type { AnnouncementVariant } from '@/types/Announcement';
 
 const SITE_ID = process.env.SITE_ID as string;
@@ -15,6 +16,7 @@ export interface Announcement {
   startsAt: string | null;
   endsAt: string | null;
   isActive: boolean;
+  isDeleted: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -37,6 +39,7 @@ export async function listAnnouncements(): Promise<Announcement[]> {
     .from('announcements')
     .select('*')
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .order('createdAt', { ascending: false });
   if (error) throw error;
   return data as Announcement[];
@@ -52,6 +55,7 @@ export async function getAnnouncementById(
     .select('*')
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .maybeSingle();
   if (error) throw error;
   return data as Announcement | null;
@@ -61,7 +65,7 @@ export async function createAnnouncement(
   input: AnnouncementWriteInput,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .insert({ ...input, siteId: SITE_ID })
@@ -76,12 +80,13 @@ export async function updateAnnouncement(
   input: AnnouncementWriteInput,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .update(input) // AnnouncementWriteInput carries no siteId field — never client-controllable
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .select()
     .single();
   if (error) throw error;
@@ -93,24 +98,26 @@ export async function toggleAnnouncement(
   isActive: boolean,
 ): Promise<Announcement> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from('announcements')
     .update({ isActive })
     .eq('id', id)
     .eq('siteId', SITE_ID)
+    .eq('isDeleted', false)
     .select()
     .single();
   if (error) throw error;
   return data as Announcement;
 }
 
+/** Soft delete: a row is never physically removed, only flagged. */
 export async function deleteAnnouncement(id: string): Promise<void> {
   await assertCurrentUserIsAdmin();
-  const supabase = createAdminClient();
+  const supabase = await createClient();
   const { error } = await supabase
     .from('announcements')
-    .delete()
+    .update({ isDeleted: true })
     .eq('id', id)
     .eq('siteId', SITE_ID);
   if (error) throw error;

@@ -65,6 +65,15 @@ export function utcToEndDateInputValue(utc: string | Date): string {
   return shiftDateString(zonedDateToInputValue(utc), -1);
 }
 
+/** Locale-aware display of a full timestamp, e.g. "20 août 2026, 14:32". */
+export function formatDisplayDateTime(iso: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: SITE_TIMEZONE,
+  }).format(new Date(iso));
+}
+
 /** Locale-aware display of a "YYYY-MM-DD" value, e.g. "20 août" / "August 20". */
 export function formatDisplayDate(dateOnly: string, locale: string): string {
   const { year, month, day } = parseDateOnly(dateOnly);
